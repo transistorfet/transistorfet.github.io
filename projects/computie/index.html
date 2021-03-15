@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="main">
+
+    <div id="sidebar">
+        <a href="../.."><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr><a href="../../projects/computie">Computie 68k</a><br>
+<a href="../../projects/molten">Molten</a><br>
+<a href="../../projects/nerve">Nerve Control Network</a><br>
+<a href="../../projects/rgbnode">RGB Node</a><br>
+<a href="../../projects/webmush">WebMUSH</a><br>
+<a href="../../projects/fallingrust">Falling Rust</a><br>
+<a href="../../projects/abugslife">A Bug's Life</a><br>
+<a href="../../projects/acamlslife">A Caml's Life</a><br>
+<a href="../../projects/synthetik">Synthetik Synth</a><br>
+<a href="../../projects/meteorman">Meteor Games</a><br>
+<a href="../../projects/logarithm">Logarithm IRC Bot</a><br>
+<a href="../../projects/sdm">Super Duper Moo</a><br>
+<a href="../../projects/sdrl">SDRL Interpreter</a><br>
+<a href="../../projects/stutter">Stutter IRC Client</a><br>
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
+        <a href="https://twitter.com/transistorfet"><img width="32" src="../../assets/twitter.svg"></a>
+        <br>
+        <a href="http://jabberwocky.ca/gitweb/">Gitweb</a>
+    </div>
+    <div id="content">
+
+<h1>Computie68k</h1>
+<h6><em>Started October 03, 2019</em></h6>
+<p>A 68k-based computer, running a simple unix-like operating system.  68k-SBC is a single board computer with
+a 68010 CPU, 1MB SRAM, 1MB Flash, and a 68681 Dual UART controller.  The OS is a simple monolithic kernel
+written in C, with preemptive multitasking via the 68681 timer interrupt.</p>
+<p>68k-SMT is a mostly identical design using SMT and PLCC components.  A CompactFlash card slot has been added
+to this version, but it is also possible to connect a simple breadboarded version to 68k-SBC.</p>
+<h2>The Operating System</h2>
+<p>Currently it doesn't have a name.  It's largely based on reading Operating Systems Design and Implementation 2ed by
+Andrew S. Tanenbaum, although I've gone with a monolithic design, at least for the time being, for the simplicity of
+it.  It can do preemptive multitasking using the 68681 timer.  It also has an implementation of the minix version 1
+filesystem, which uses RAM (through a device driver) to store the data, or a Compact Flash card connected as an IDE
+device.  The second serial port can be configured as a SLIP device, with a basic implementation of UDP and TCP through
+a BSD sockets-style API, and an NTP command is provided for updating the system time on boot (when booting from disk).</p>
+<p><img alt="alt text" src="images/OS-basic.gif" title="OS" /></p>
+<p>The above video shows connecting over serial from a modern PC and resetting the hardware to run the monitor in ROM
+which displays the welcome message.  The kernel is already loaded in RAM, so running the boot command will boot
+the kernel which then starts the shell.  From the shell, some basic file operations and the ps command are shown.</p>
+<h2>The 68k Single Board Computer</h2>
+<p>A simple single board computer using a Motorola 68010 CPU, which can connect to a host computer via USB/TTL-Serial.
+It has a bus for connecting a supervisor arduino or expansion devices, but it can operate standalone using the onboard
+UARTs.  It has 1MB of onboard Flash, 1MB of onboard SRAM, and a 68681 Dual UART chip with GPIO.  Some of the GPIO
+pins are wired to 4 general purpose LEDs and 2 general purpose buttons.</p>
+<p><a href="https://github.com/transistorfet/computie/raw/master/hardware/68k-SBC/68kBoard.pdf">68k Board Schematics</a></p>
+<p>The serial ports require external TTL-to-something conversion and are designed to be used with an FTDI USB-to-Serial
+cable or adapter.  Two optional jumpers can be used to supply power to the board from one of the USB ports (only one
+should be jumped at a time, and only if the onboard power supply is disconnected).  It typically takes about 365mA at
+5V to power.</p>
+<p>Two jumpers are provided to select what address the ROM will appear in (either 0x0000 or 0x2000), and whether to enable
+onboard DTACK generation for address space 0x0000.  By moving the ROM to 0x2000 and disabling DTACK in 0x0000, a
+connected arduino can boot the 68000 directly.</p>
+<p>I decided to use discrete 74 Series chips for the glue logic to keep it simple and easy for others to build.  I tried
+to minimize the amount of logic chips needed, so it doesn't have a watchdog timer to trigger a bus error when an
+unmapped address is accessed.</p>
+<p>It's currently clocked at 12MHz, although there seems to be an issue with the arduino's DTACK generation at that speed.
+It previously was working at 10MHz on the rev0 board.</p>
+<p>The SBC version uses all DIP packaged chips and through-hole parts.  The SMT version uses surface mount chips for the
+logic and ram, and PLCC packaged chips for the rest.  A CompactFlash socket and a 74HC32 to accommodate it has been
+added and the power supply has been removed, but it is otherwise the same design.</p>
+<h2>SMT Revision 1</h2>
+<p><img alt="alt text" src="images/68k-SMT-rev1/SMT.jpg" title="68k-SMT Rev. 1" />
+<img alt="alt text" src="images/68k-SMT-rev1/SMT-running.jpg" title="68k-SMT Running" /></p>
+<h2>SBC Revision 2</h2>
+<p><img alt="alt text" src="images/68k-SBC-rev2/SBC.jpg" title="68k-SBC Rev. 2" />
+<img alt="alt text" src="images/68k-SBC-rev2/ArduinoShield.jpg" title="Supervisor Arduino Shield" />
+<img alt="alt text" src="images/68k-SBC-rev2/SBC-running.jpg" title="68k-SBC Running" />
+<img alt="alt text" src="images/68k-SBC-rev2/PCBs.jpg" title="68k-SBC PCBs" /></p>
+<h2>SBC Revision 0</h2>
+<p>This version has 64KB of EEPROM instead of Flash, and doesn't have onboard interrupt circuitry.  It started off with a
+68000 CPU, but that was later upgraded to a 68010 to allow for relocatable interrupt tables when using off-board
+interrupt circuitry.</p>
+<p><img alt="alt text" src="images/68k-SBC-rev0/PCB-front.jpg" title="68k-SBC PCB Front" />
+<img alt="alt text" src="images/68k-SBC-rev0/SBC.jpg" title="68k-SBC" />
+<img alt="alt text" src="images/68k-SBC-rev0/PCB-patch.jpg" title="68k-SBC patch for design mistake" /></p>
+<p>I made a mistake and left out the logic for LDS/UDS in the chip select for the high and low memory chips.  When writing
+a single byte to memory, it would also attempt to write to both the high and low chips, instead of only one.  Thanks to
+a poster on EEVblog who suggested patching it with a P-channel MOSFET shown soldered to the back of the SRAM chips to
+interpose the UDS/LDS signals into the chip selects, with the original traces cut.</p>
+<h2>Breadboard Version</h2>
+<p><img alt="alt text" src="images/Breadboard-serial.jpg" title="68k-SBC Breadboard" /></p>
+<h2>Operating System Booting From Monitor/Compact Flash</h2>
+<p><img alt="alt text" src="images/OS-booting.gif" title="OS Booting" /></p>
+<p>The above video shows connecting over serial from a modern computer after first powering the board on.  The monitor
+runs first, giving the "&gt;" prompt.  The bootloader has been burnt into flash at address 0x20000.  From the monitor, the
+boot loader is run, which then loads the kernel from the attached compact flash card.  Each period (.) character
+printed represents 1 kilobyte of data loaded from disk).  The boot loader then jumps to the loaded kernel, which
+displays boot messages before running the init process from disk.  The init process first runs <code>sh /etc/rc</code>", which runs
+the ntpdate command to update the system time.  It then runs an interactive shell.</p>
+<p>Some commands are shown after boot, and then the httpd program is run (which has forking disabled for the time being).
+From another computer, the curl command is run to issue a request to the board.  The httpd program responds with the
+data "This is a secret message"</p><hr>
+<a name="download"></a><h3>Get the Source</h3><a href="https://github.com/transistorfet/computie">https://github.com/transistorfet/computie</a><br>
+<a href="http://jabberwocky.ca/gitweb/?p=computie.git">http://jabberwocky.ca/gitweb/?p=computie.git</a><br>
+Or clone with:<pre><code><a href="http://jabberwocky.ca/git/projects/computie/computie.git">git clone http://jabberwocky.ca/git/projects/computie/computie.git</a></code></pre>
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+

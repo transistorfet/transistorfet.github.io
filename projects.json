@@ -1,0 +1,83 @@
+[
+    {
+        "name": "computie",
+        "title": "Computie 68k",
+        "github": "default",
+        "repo": "projects/computie/computie.git"
+    },
+    {
+        "name": "molten",
+        "title": "Molten",
+        "github": "default",
+        "repo": "projects/molten/molten.git"
+    },
+    {
+        "name": "nerve",
+        "title": "Nerve Control Network",
+        "github": "default",
+        "repo": "projects/nerve/nerve.git"
+    },
+    {
+        "name": "rgbnode",
+        "title": "RGB Node",
+        "github": "default",
+        "repo": "projects/rgbnode/rgbnode.git"
+    },
+    {
+        "name": "webmush",
+        "title": "WebMUSH",
+        "github": "default",
+        "repo": "projects/webmush/webmush.git"
+    },
+    {
+        "name": "fallingrust",
+        "title": "Falling Rust",
+        "github": "default",
+        "repo": "projects/fallingrust/fallingrust.git"
+    },
+    {
+        "name": "abugslife",
+        "title": "A Bug's Life",
+        "github": "default",
+        "repo": "projects/abugslife/abugslife.git"
+    },
+    {
+        "name": "acamlslife",
+        "title": "A Caml's Life",
+        "github": "default",
+        "repo": "projects/acamlslife/acamlslife.git"
+    },
+    {
+        "name": "synthetik",
+        "title": "Synthetik Synth",
+        "github": "default",
+        "repo": "projects/synthetik/synthetik.git"
+    },
+    {
+        "name": "meteorman",
+        "title": "Meteor Games",
+        "github": "default",
+        "repo": "projects/meteorman/meteorman.git"
+    },
+    {
+        "name": "logarithm",
+        "title": "Logarithm IRC Bot",
+        "github": "default"
+    },
+    {
+        "name": "sdm",
+        "title": "Super Duper Moo",
+        "github": "default"
+    },
+    {
+        "name": "sdrl",
+        "title": "SDRL Interpreter",
+        "github": "default"
+    },
+    {
+        "name": "stutter",
+        "title": "Stutter IRC Client",
+        "github": "default"
+    }
+]
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="main">
+
+    <div id="sidebar">
+        <a href="../.."><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr><a href="../../projects/computie">Computie 68k</a><br>
+<a href="../../projects/molten">Molten</a><br>
+<a href="../../projects/nerve">Nerve Control Network</a><br>
+<a href="../../projects/rgbnode">RGB Node</a><br>
+<a href="../../projects/webmush">WebMUSH</a><br>
+<a href="../../projects/fallingrust">Falling Rust</a><br>
+<a href="../../projects/abugslife">A Bug's Life</a><br>
+<a href="../../projects/acamlslife">A Caml's Life</a><br>
+<a href="../../projects/synthetik">Synthetik Synth</a><br>
+<a href="../../projects/meteorman">Meteor Games</a><br>
+<a href="../../projects/logarithm">Logarithm IRC Bot</a><br>
+<a href="../../projects/sdm">Super Duper Moo</a><br>
+<a href="../../projects/sdrl">SDRL Interpreter</a><br>
+<a href="../../projects/stutter">Stutter IRC Client</a><br>
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
+        <a href="https://twitter.com/transistorfet"><img width="32" src="../../assets/twitter.svg"></a>
+        <br>
+        <a href="http://jabberwocky.ca/gitweb/">Gitweb</a>
+    </div>
+    <div id="content">
+
+<h1>WebMUSH</h1>
+<h6><em>Started February 16, 2017</em></h6>
+<p>A web-based MUSH (Multi-User Shared Hallucination) server, in the spirit of the MUDs, MUSHes, and MOOs of the 80's and
+90's. It is written is Node.js with Express for the backend, Mithril + Webpack for the frontend, and websockets for
+communicating between them. The world can be navagated using hyperlinks, or by typing eg. "/go north". The engine can
+be used either for social or game-playing purposes. </p>
+<h2>Configuration</h2>
+<p>The following environment variables are recognized:</p>
+<ul>
+<li>
+<p>PORT      The port number the server should run on.  Default: 3000</p>
+</li>
+<li>
+<p>DATA_DIR  The directory where data is stored (the object db and uploaded media).  It should match the layout of the data
+            directory in the repository.  Default: <repo>/data</p>
+</li>
+</ul>
+<h2>Running</h2>
+<p>The client code must be compiled with webpack before starting the server</p>
+<pre><code class="language-sh">npm install
+npm run build
+</code></pre>
+<p>Or nodemon can be used to recompile the client code and restart the server whenever a code change is made using</p>
+<pre><code class="language-sh">npm install -g nodemon
+npm run nodemon
+</code></pre>
+<p>The server can be started manually without automatic restarting using</p>
+<pre><code class="language-sh">npm start
+</code></pre>
+<h2>Screenshots</h2>
+<p><img alt="" src="images/Screenshot_2017-04-28-20-41-21.png" />
+<img alt="" src="images/Screenshot_2017-04-28-20-45-49.png" /></p><hr>
+<a name="download"></a><h3>Get the Source</h3><a href="https://github.com/transistorfet/webmush">https://github.com/transistorfet/webmush</a><br>
+<a href="http://jabberwocky.ca/gitweb/?p=webmush.git">http://jabberwocky.ca/gitweb/?p=webmush.git</a><br>
+Or clone with:<pre><code><a href="http://jabberwocky.ca/git/projects/webmush/webmush.git">git clone http://jabberwocky.ca/git/projects/webmush/webmush.git</a></code></pre>
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+

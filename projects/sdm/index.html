@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="main">
+
+    <div id="sidebar">
+        <a href="../.."><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr><a href="../../projects/computie">Computie 68k</a><br>
+<a href="../../projects/molten">Molten</a><br>
+<a href="../../projects/nerve">Nerve Control Network</a><br>
+<a href="../../projects/rgbnode">RGB Node</a><br>
+<a href="../../projects/webmush">WebMUSH</a><br>
+<a href="../../projects/fallingrust">Falling Rust</a><br>
+<a href="../../projects/abugslife">A Bug's Life</a><br>
+<a href="../../projects/acamlslife">A Caml's Life</a><br>
+<a href="../../projects/synthetik">Synthetik Synth</a><br>
+<a href="../../projects/meteorman">Meteor Games</a><br>
+<a href="../../projects/logarithm">Logarithm IRC Bot</a><br>
+<a href="../../projects/sdm">Super Duper Moo</a><br>
+<a href="../../projects/sdrl">SDRL Interpreter</a><br>
+<a href="../../projects/stutter">Stutter IRC Client</a><br>
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
+        <a href="https://twitter.com/transistorfet"><img width="32" src="../../assets/twitter.svg"></a>
+        <br>
+        <a href="http://jabberwocky.ca/gitweb/">Gitweb</a>
+    </div>
+    <div id="content">
+
+<h1>Super Duper MOO</h1>
+<h6><em>Started March 13, 2008</em></h6>
+<p>The Super Duper MOO is a generic text-based game/world engine that
+can be used to make a diverse range of games and interactive
+environments.  I started it as a fun project to relax and don't have
+much experience playing MUDs or MOOs myself.  It has multiple
+connection protocols such as telnet and IRC to make it more
+accessable to a wider audience through the reuse of existing client
+software.  Data is stored in xml files for easy expansion and manual
+editing if needed.  Originally written in C, it was rewritten in C++
+in 2010.  A custom scripting language based on Scheme has been
+integrated in order to provide logic coding for the game data itself.
+The engine/language use a prototype-based object oriented system, like
+the original LambdaMOO engine which provided much of the inspiration.
+Despite many hours of work, no official releases were ever made.
+It has largely been superseded by the IRCMOO project, written
+in python.</p>
+<h2>Running</h2>
+<p>There shouldn't be a need to change anything before compiling, but there are some basic settings in config.mk.
+After compiling, a single binary named 'moo' will be created in bin/.</p>
+<pre><code>tar -xvzf sdm.tar.gz
+cd sdm
+make
+bin/moo -l code/core.moo
+</code></pre>
+<p>Note: All paths are relative to the data directory, which defaults to data/, so the correct way to run the program
+is with 'code/core.moo' and not 'data/code/core.moo'</p>
+<h2>Scripting</h2>
+<h3>Basic Example of an Object</h3>
+<pre><code>(define *global*.thing (root:clone))
+
+(define thing.name &quot;generic-thing&quot;)
+(define thing.title &quot;something&quot;)
+(define thing.description &quot;You're not sure what it is.&quot;)
+
+(define thing:move (lambda (this where)
+    (define was this.location)
+    (if (and (not (null? was)) (not (was.contents:remove this)))
+        (return))
+    (define this.location where)
+    (where.contents:push this)
+))
+
+(define thing:look_self (lambda (this)
+    (user:tell (expand &quot;&lt;lightgreen&gt;$this.description&quot;))
+))
+</code></pre>
+<p>This is just a quick example to give a feel for the scripting language.  First, the root object
+is cloned and the newly created object is assigned to the global name 'thing'.  Some properties of the
+new object are set, and then 2 methods are defined.  The 'move' method is called when the object is
+moved from one location to another and the 'look_self' method is called when the user looks at this object.</p><hr>
+<a name="download"></a><h3>Get the Source</h3><a href="https://github.com/transistorfet/sdm">https://github.com/transistorfet/sdm</a><br>
+<a href="http://jabberwocky.ca/gitweb/?p=sdm.git">http://jabberwocky.ca/gitweb/?p=sdm.git</a><br>
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+

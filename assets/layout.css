@@ -1,0 +1,136 @@
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11pt;
+}
+
+a {
+  color: #209000;
+}
+
+a:visited {
+  color: #206000;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid #000000;
+}
+
+#main {
+  width: 750px;
+  margin: 2em auto;
+}
+
+#content {
+  float: right;
+  width: 570px;
+  padding-left: 1em;
+  text-align: justify;
+}
+
+#sidebar {
+  float: left;
+  width: 160px;
+  line-height: 150%;
+}
+
+#sidebar ul {
+  list-style-type: none;
+}
+
+#footer {
+  padding-top: 2px;
+  clear: both;
+  font-size: 9pt;
+}
+
+#footer .email {
+  color: gray;
+  float: right;
+}
+
+.date {
+  font-size: 9pt;
+  font-style: italic;
+  color: #2C3539;
+  text-align: right;
+  padding-bottom: 4px;
+}
+
+.notice {
+  border: 1px solid black;
+  font-size: 1.5em;
+  padding: 4px;
+}
+
+/* Project List Entries */
+
+.project {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 1em;
+  height: auto;
+  overflow: hidden;
+}
+
+.project a {
+  color: black;
+}
+
+.project h2 {
+  margin: 0px;
+  padding: 0px;
+}
+
+.project img {
+  margin: 10px;
+  float: right;
+  height: auto;
+}
+
+/* Images */
+
+img {
+  max-width: 600px;
+  max-height: 500px;
+}
+
+img.thumb {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+/* News Entry */
+
+h5 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: lightgrey;
+}
+
+.entry em {
+  font-size: 9pt;
+  font-style: italic;
+  color: #2C3539;
+  text-align: right;
+  padding: 2px 4px 2px 4px;
+  margin-right: 2px;
+}
+
+/* Code Block */
+
+pre {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 10px 10px 10px 10px;
+  background-color: #eeffcc;
+  border: 1px solid #ae3;
+  border-radius: 4px;
+  color: #333333;
+  font-family: monospace, sans-serif;
+  height: auto;
+  width: auto;
+}
+

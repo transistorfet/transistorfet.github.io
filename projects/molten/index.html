@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="main">
+
+    <div id="sidebar">
+        <a href="../.."><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr><a href="../../projects/computie">Computie 68k</a><br>
+<a href="../../projects/molten">Molten</a><br>
+<a href="../../projects/nerve">Nerve Control Network</a><br>
+<a href="../../projects/rgbnode">RGB Node</a><br>
+<a href="../../projects/webmush">WebMUSH</a><br>
+<a href="../../projects/fallingrust">Falling Rust</a><br>
+<a href="../../projects/abugslife">A Bug's Life</a><br>
+<a href="../../projects/acamlslife">A Caml's Life</a><br>
+<a href="../../projects/synthetik">Synthetik Synth</a><br>
+<a href="../../projects/meteorman">Meteor Games</a><br>
+<a href="../../projects/logarithm">Logarithm IRC Bot</a><br>
+<a href="../../projects/sdm">Super Duper Moo</a><br>
+<a href="../../projects/sdrl">SDRL Interpreter</a><br>
+<a href="../../projects/stutter">Stutter IRC Client</a><br>
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
+        <a href="https://twitter.com/transistorfet"><img width="32" src="../../assets/twitter.svg"></a>
+        <br>
+        <a href="http://jabberwocky.ca/gitweb/">Gitweb</a>
+    </div>
+    <div id="content">
+
+<h1>Molten</h1>
+<h6><em>Started November 06, 2017</em></h6>
+<p>Molten is a programming language which borrows from the ML family of languages,
+as well as from Rust and Python.  The compiler is written in Rust and uses
+LLVM to generate IR which can be compiled to machine code.</p>
+<p>I originally started this project in order to learn Rust.  It is intended to be
+a high level language with a full object system that facilitates both functional
+and object-oriented programming.  Some syntax elements have been changed from
+typical ML languages to follow conventions found in more common languages, such
+as C++, Rust, and Python (eg. parenthesis-delimited blocks, conventional class
+definitions, generics/type parameters with angle brackets, etc)</p>
+<h2>Installing</h2>
+<p>You will need <code>rustc</code> and <code>cargo</code> installed.  It's recommended that you use
+<code>rustup</code> to install these.  I've most recently tested it with rustc version 1.28.
+You will also need LLVM 7 installed, as well as libgc (Boehm-Demers-Weiser's
+Garbage Collector), and clang, although clang can be replace with gcc by editing
+the <code>molten</code> python script.</p>
+<p>On Debian/Ubuntu, run:
+<code>sudo apt-get install llvm-7 llvm-7-runtime llvm-7-dev clang libgc-dev</code></p>
+<p>On macOS, run:
+<code>brew install llvm@7</code></p>
+<p>You may need to add /usr/local/opt/llvm@7/bin to your path, and you will probably
+need to install libgc separately</p>
+<h2>Running</h2>
+<p>The <code>molten</code> script helps with compiling and linking IR files.  To run an example:</p>
+<pre><code>./molten run examples/fac.mol
+</code></pre>
+<p>This will run cargo to build the compiler if needed, then compile the fac.mol
+file, as well as all of its dependencies (in this case, the libcore.mol library),
+link them together using clang, along with libgc, and then run the binary.  It
+can also compile to LLVM IR, and run LLVM bitcode by using the <code>-S</code> flag.  The
+resulting .bc file can be run using <code>lli-7</code>.</p>
+<h2>Example</h2>
+<pre><code>fn fac(x) {
+    if x &lt; 1 then
+        1
+    else
+        x * fac(x - 1)
+}
+
+println(str(fac(10)))
+</code></pre>
+<h3>Types</h3>
+<pre><code>()                  // unit type
+Nil
+Bool
+Byte
+Char                // UCS-4 character
+Int
+Real
+String
+(Int, Int) -&gt; Int   // function type
+'a                  // type variable
+List&lt;Int&gt;           // list of integers
+(Int, Real)         // tuple type
+{ a: Int, b: Real } // record type
+</code></pre>
+<h3>Declarations</h3>
+<pre><code>let foo = 0
+let bar: String = &quot;Hey&quot;
+</code></pre>
+<h3>Functions</h3>
+<pre><code>fn foo(x, y) =&gt; x + y           // named inline function
+
+fn foo(x, y) { x + y }          // named block function
+
+let foo = fn x, y =&gt; x + y      // anonymous function
+
+fn foo(x: Int, y) -&gt; Int { x + y }  // with optional type annotations
+
+</code></pre>
+<h3>Invoking Functions</h3>
+<p>Unlike in ML, the brackets of a function call are not elidable.  This is a
+design decision to improve readability of the code and to make the parser
+simpler and more predictable.</p>
+<pre><code>foo(1, 2)
+</code></pre>
+<h3>Classes</h3>
+<pre><code>class Foo {
+    let mut name: String
+
+    fn new(self, name) {
+        self.name = name
+    }
+
+    fn get(self) =&gt; self.name
+
+    fn static(x) =&gt; x * 2
+}
+
+class Bar extends Foo {
+    fn get(self, title) =&gt; self.name + &quot; &quot; + title
+}
+
+let bar = new Bar(&quot;Mischief&quot;)
+bar.get(&quot;The Cat&quot;)              // returns &quot;Mischief The Cat&quot;
+Foo::static(5)
+</code></pre>
+<h3>Blocks</h3>
+<p>A block is a collection of expressions which return the result of the last
+expression in the block.  They can be used in place of a single expression.
+They do not create their own local scope, at least at the moment, so variables
+defined inside blocks will appear in the parent scope (usually the function
+the block is in).  Each expression in the block must end in a newline or
+semi-colon character (or be the last expression in the block).  This applies
+to the top level.</p>
+<pre><code>let is_zero = if self.x &lt;= 0 then {
+    self.x = 0
+    true
+} else {
+    false
+}
+</code></pre>
+<h3>Flow Control</h3>
+<p>The return value of an if statement is the result of the expression of the
+clause that is evaluated.  The types of both clauses must match.  The <code>else</code>
+clause can be left out as long as the true clause evaluates to Nil.</p>
+<pre><code>if x == 5 then
+    &quot;It's five&quot;
+else
+    &quot;It's not five&quot;
+
+match x {
+    1 =&gt; &quot;It's one&quot;
+    5 =&gt; &quot;It's five&quot;
+    _ =&gt; &quot;It's not one or five&quot;
+}
+</code></pre>
+<h3>And / Or</h3>
+<p>The keyword operators <code>and</code> and <code>or</code> have side-effects and will not execute
+the second expression if the result can be determined from the first
+expression.  The resulting value is the last expression that was executed.
+Operands are not limited to Bool values, although that may change in future.</p>
+<h3>Math</h3>
+<p>Infix operators are evaluated using order of operations.  Both sides of an
+infix operation must be on the same line, or else a <code>\</code> character can be used
+to continue the line.</p>
+<pre><code>5 + 12 * 2      // equals 29
+
+42 * 4 \
+   % 5          // equals 3
+</code></pre>
+<h3>Loops</h3>
+<pre><code>while is_true
+    println(&quot;looping&quot;)
+
+for i in [ 1, 2, 3 ]
+    println(&quot;counting &quot; + i)
+</code></pre>
+<h3>Lists</h3>
+<pre><code>let list1 = [ 1, 3, 6 ]
+for x in list1
+    println(str(x))
+
+let list2 = new List&lt;String&gt;();
+list2.insert(0, &quot;Hello&quot;)
+println(list2[0])
+</code></pre>
+<h3>Tuples</h3>
+<pre><code>let tup = (1, &quot;String&quot;, 4.5)
+println(tup.1)                  // prints &quot;String&quot;
+</code></pre>
+<h3>Records</h3>
+<p>Records are like tuples but with named fields.  Record literals use the
+equals sign ("=") to assign a value to a field.  Specifying a record type
+uses a colon (":") to separate the field name from the type.</p>
+<pre><code>let rec = { i = 1, s = &quot;String&quot;, r = 4.5 }
+println(rec.s)
+
+let rec: { i: Int, s: String, r: Real }
+</code></pre>
+<h3>Refs</h3>
+<p>A ref is an indirect reference to some data.  It can be passed around as a
+value, and dereferenced to get or set the data inside of it.  The internal value
+of a reference is always mutable</p>
+<pre><code>let r = ref 42
+println(str(*r))                // prints 42
+*r = 65
+println(str(*r))                // prints 65
+
+fn foo(x: ref Int) { }          // ref types look similar to ref constructors
+
+let r = ref { a = 42, b = &quot;The Answer&quot; }
+println(*r.b)                   // prints &quot;The Answer&quot;
+</code></pre>
+<h3>Enums (Tagged Unions)</h3>
+<p>An enum can either have no arguments, or a tuple of arguments.  Constructing an
+enum variant requires using the Resolve (::) notation.  Pattern matching is
+currently the only way to get values out of a variant.  The current implementation
+needs work and does not currently support nested variant types</p>
+<pre><code>enum Value =
+| None
+| Integer(Int)
+| String(String)
+| Pair(String, String)
+
+let val = Value::String(&quot;Hey&quot;)
+
+match val {
+    Value::String(s) =&gt; println(s)
+    _ =&gt; ()
+}
+</code></pre>
+<h3>Exceptions</h3>
+<p>Exceptions aren't quite settled yet.</p>
+<pre><code>try open(&quot;file.txt&quot;) {
+    e =&gt; println(&quot;Exception Occurred: &quot; + e)
+}
+
+try {
+    //...
+    raise &quot;Problem&quot;
+} catch {
+    e =&gt; println(e)
+}
+</code></pre>
+<h3>Annotations</h3>
+<p>A value can be type annotated using a colon followed by the type.</p>
+<pre><code>5 : Int
+str(i : Int)
+(func() : String)
+</code></pre>
+<h3>Import</h3>
+<pre><code>import libcore
+</code></pre>
+<h3>External Functions</h3>
+<p>A function can be declared without being implemented, and functions can
+also be defined with an ABI specifier so that they are accessible to
+other languages.  Only C support is currently implemented. A C function
+cannot be a closure.</p>
+<pre><code>decl foo(Int) -&gt; Int         // external molten function
+decl bar(Int) -&gt; Int / C     // external C function
+
+fn baz(i: Int) / C {
+    // molten function that can be called from C
+}
+</code></pre>
+<h3>Linking to C</h3>
+<p>An example of writing a C file, and linking it to a molten program is shown
+in <code>lib/libccore.c</code>.  When imported into a molten file and compiled with the
+<code>molten</code> script, the library will be compiling using clang and the
+<code>libccore.cdec</code> (manually maintained) will be copied to <code>libccore.dec</code>.  The
+importing molten program will be able to use declarations from libccore.cdec.
+Some declarations that can be used in C are in <code>include/molten.h</code>, such as
+accessing the garbage collected allocator.</p>
+<h2>Previously Uncompleted</h2>
+<ul>
+<li>
+<p>Dynamic Dispatch/vtables works now!</p>
+</li>
+<li>
+<p>Closures have been implemented! Most functions and methods are now
+  closures, although there is a new ABI type (MF) which is a
+  non-closure function that can still be overloaded and can still
+  throw exceptions (when they're implemented). It's mostly used by
+  builtin functions</p>
+</li>
+<li>
+<p>Class field initializers are working!  It now adds a new closure to
+  each class called <strong>init</strong> which is called during "new" to initialize
+  the class members</p>
+</li>
+<li>
+<p>Exceptions have finally been added using the setjmp/longjmp functions</p>
+</li>
+<li>
+<p>Enums have been added but with a lot of limitations.  It's not possible
+  to use an enum inside itself (eg. to make a tree data structure).  It
+  also doesn't properly calculate the enum size, because that will require
+  having the target architecture info.</p>
+</li>
+<li>
+<p>Garbage collection has been added using the Boehm-Demers-Weiser
+  Conservative C Garbage Collector.  It is possible to compile without
+  the garbage collector by using the <code>--no-gc</code> command line argument.</p>
+</li>
+</ul>
+<p>I'd be happy to hear of any additional features ideas or suggestions, if
+you'd like to leave them under "Issues" on github.</p><hr>
+<a name="download"></a><h3>Get the Source</h3><a href="https://github.com/transistorfet/molten">https://github.com/transistorfet/molten</a><br>
+<a href="http://jabberwocky.ca/gitweb/?p=molten.git">http://jabberwocky.ca/gitweb/?p=molten.git</a><br>
+Or clone with:<pre><code><a href="http://jabberwocky.ca/git/projects/molten/molten.git">git clone http://jabberwocky.ca/git/projects/molten/molten.git</a></code></pre>
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+

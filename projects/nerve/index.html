@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="main">
+
+    <div id="sidebar">
+        <a href="../.."><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr><a href="../../projects/computie">Computie 68k</a><br>
+<a href="../../projects/molten">Molten</a><br>
+<a href="../../projects/nerve">Nerve Control Network</a><br>
+<a href="../../projects/rgbnode">RGB Node</a><br>
+<a href="../../projects/webmush">WebMUSH</a><br>
+<a href="../../projects/fallingrust">Falling Rust</a><br>
+<a href="../../projects/abugslife">A Bug's Life</a><br>
+<a href="../../projects/acamlslife">A Caml's Life</a><br>
+<a href="../../projects/synthetik">Synthetik Synth</a><br>
+<a href="../../projects/meteorman">Meteor Games</a><br>
+<a href="../../projects/logarithm">Logarithm IRC Bot</a><br>
+<a href="../../projects/sdm">Super Duper Moo</a><br>
+<a href="../../projects/sdrl">SDRL Interpreter</a><br>
+<a href="../../projects/stutter">Stutter IRC Client</a><br>
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
+        <a href="https://twitter.com/transistorfet"><img width="32" src="../../assets/twitter.svg"></a>
+        <br>
+        <a href="http://jabberwocky.ca/gitweb/">Gitweb</a>
+    </div>
+    <div id="content">
+
+<h1>Nerve Control Network</h1>
+<h6><em>Started August 05, 2013</em></h6>
+<p>Nerve is a web-based home automation system implemented in python3.  It's primarily used as an interface to a media
+player/media library (VLC, XMMS2, etc).  Its modular structure makes it easy to extend and customize, and its generic
+widgets and devices system makes it easier to tie together different hardware devices, sensors, and internet
+information sources into one place (or across distributed servers).</p>
+<h2>Installation</h2>
+<p>Unpack the source code where ever is most convenient.  Check out dependencies.txt for a list of the Debian packages
+required for various features.  Most Debian/Ubuntu based distros will likely have the same package names.  The code has
+been run in Windows 7, with python and the necessary python libraries installed manually, although I no longer test the
+code on Windows.</p>
+<p>To run the code, while in the source directory, use the command:</p>
+<pre><code>python3 nerve.py
+</code></pre>
+<p>The default configuration directory is ~/.nerve, however it can be set on the command line:</p>
+<pre><code>python3 nerve.py -c config/&lt;site&gt;
+</code></pre>
+<p>The configuration for a particular instance is stored entirely in the configuration directory.  Different instances can
+be run on the same computer by simply specifying a different configuration directory to use.</p>
+<p>Even better is to run nerve using:</p>
+<pre><code>nerve.sh config/&lt;site&gt;
+</code></pre>
+<p>This script will check for a 'restart' exit status and relaunch nerve if found, so that the server can be restarted
+using a specific query.</p>
+<h2>Configuration</h2>
+<p>To configure an instance of nerve, you might want to start with one of the example configurations included in the
+config/ directory of the source code.  The settings.json file is the main config file.  It describes what objects to
+create when the system starts, what configuration settings each object should initially be set to, and where in the
+object filesystem hierarchy the object should be placed.</p>
+<p>At the heart of each instance is a hierarchy of objects that are accessible with a path-like reference.  The three top
+level 'directories' are '/modules', '/devices', and '/servers'.  The contents of the '/modules' directory is
+automatically generated based on the available modules in the system.  The '/devices' and '/servers' directories
+contain all the device and server objects respectively.  This is by convention only and is not enforced.</p>
+<h2>Gallery</h2>
+<p><img alt="" src="images/02-remote-extended-player-controls.png" />
+<img alt="" src="images/04-playlist-current.png" />
+<img alt="" src="images/05-media-search.png" />
+<img alt="" src="images/08-weather.png" />
+<img alt="" src="images/11-datalog-legend.png" />
+<img alt="" src="images/18-light-theme.png" />
+<img alt="" src="images/19-light-theme-playlist.png" />
+<img alt="" src="images/21-light-theme-datalog.png" /></p>
+<p><a href="https://github.com/transistorfet/nerve/blob/master/GALLERY.md">More pictures</a></p><hr>
+<a name="download"></a><h3>Get the Source</h3><a href="https://github.com/transistorfet/nerve">https://github.com/transistorfet/nerve</a><br>
+<a href="http://jabberwocky.ca/gitweb/?p=nerve.git">http://jabberwocky.ca/gitweb/?p=nerve.git</a><br>
+Or clone with:<pre><code><a href="http://jabberwocky.ca/git/projects/nerve/nerve.git">git clone http://jabberwocky.ca/git/projects/nerve/nerve.git</a></code></pre>
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+

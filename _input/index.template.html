@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="{rootdir}/assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="{rootdir}/assets/layout.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="main">
+
+    <div id="sidebar">
+        <a href="{rootdir}"><h3>Projects</h3></a>
+        <hr>
+
+        {% sidebar %}
+
+        <hr>
+        <a href="http://github.com/transistorfet"><img src="{rootdir}/assets/GitHub-Mark-32px.png"></a><br>
+        <a href="http://jabberwocky.ca/gitweb/">Gitweb</a><br>
+    </div>
+    <div id="content">
+
+        {% content %}
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="{rootdir}/generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+
