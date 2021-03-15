@@ -19,20 +19,32 @@ hr {
 }
 
 #main {
-  width: 850px;
   margin: 2em auto;
 }
 
+@media all and (min-width: 850px) {
+  #main {
+    width: 850px;
+  }
+
+  #content {
+    float: right;
+    width: 650px;
+  }
+
+  #sidebar {
+    float: left;
+    width: 160px;
+  }
+}
+
 #content {
-  float: right;
-  width: 670px;
-  padding-left: 1em;
+  padding: 0px 10px;
   text-align: justify;
 }
 
 #sidebar {
-  float: left;
-  width: 160px;
+  padding: 0px 10px;
   line-height: 150%;
 }
 
