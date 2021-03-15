@@ -1,11 +1,12 @@
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Recursive', sans-serif;
   font-size: 11pt;
 }
 
 a {
   color: #209000;
+  text-decoration: none;
 }
 
 a:visited {
@@ -18,13 +19,13 @@ hr {
 }
 
 #main {
-  width: 750px;
+  width: 850px;
   margin: 2em auto;
 }
 
 #content {
   float: right;
-  width: 570px;
+  width: 670px;
   padding-left: 1em;
   text-align: justify;
 }
@@ -93,7 +94,7 @@ hr {
 /* Images */
 
 img {
-  max-width: 600px;
+  max-width: 640px;
   max-height: 500px;
 }
 

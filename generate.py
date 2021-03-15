@@ -28,14 +28,14 @@ def fetch_project(name, repo):
     if not os.path.exists(name):
         res = subprocess.run("git clone --no-checkout {}".format(repo), shell=True)
     else:
-        res = subprocess.run("(cd {} && git pull)".format(name), shell=True)
+        res = subprocess.run("(cd {} && git fetch)".format(name), shell=True)
 
     if res.returncode != 0:
         print("Unable to fetch {} via {}".format(name, repo))
         return
 
-    subprocess.run("(cd {} && git checkout HEAD -- README.md)".format(name), shell=True)
-    subprocess.run("(cd {} && git checkout HEAD -- images)".format(name), shell=True)
+    subprocess.run("(cd {} && git checkout origin/HEAD -- README.md)".format(name), shell=True)
+    subprocess.run("(cd {} && git checkout origin/HEAD -- images)".format(name), shell=True)
 
 
 def fetch_all_projects(projects):
@@ -97,14 +97,17 @@ class Template (object):
         self.middle = middle
         self.footer = footer
 
-    def generate_sidebar(self, rootdir):
+    def generate_sidebar(self, project, rootdir):
         html = ''
+        if project:
+            html += '<a href="#download">Get the Source</a><hr>'
+
         for project in self.projects:
             html += '<a href="{}">{}</a><br>\n'.format(os.path.join(rootdir, 'projects', project['name']), project['title'])
         return html
 
     def generate_download(self, project):
-        html = '<hr><h3>Get the Source</h3>'
+        html = '<hr>\n<a name="download"></a><h3>Get the Source</h3>'
 
         if 'github' in project and project['github']:
             html += '<a href="{0}">{0}</a><br>\n'.format(project['github'] if project['github'] != 'default' else github_link_fmt.format(project['name']))
@@ -122,7 +125,7 @@ class Template (object):
 
         with open(filename, 'w') as f:
             f.write(self.header.format(**data))
-            f.write(self.generate_sidebar(rootdir))
+            f.write(self.generate_sidebar(project, rootdir))
             f.write(self.middle.format(**data))
             f.write(html)
             if project:
