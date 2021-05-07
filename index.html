@@ -21,6 +21,7 @@
 <a href="./projects/molten">Molten</a><br>
 <a href="./projects/nerve">Nerve Control Network</a><br>
 <a href="./projects/rgbnode">RGB Node</a><br>
+<a href="./projects/rgbnode-rs">RGB Node with Rust</a><br>
 <a href="./projects/webmush">WebMUSH</a><br>
 <a href="./projects/fallingrust">Falling Rust</a><br>
 <a href="./projects/abugslife">A Bug's Life</a><br>
@@ -81,6 +82,15 @@ current setup).
 </div>
 
 <div class="project">
+<a href="projects/rgbnode-rs/"><h2>RGB Node, but with Rust on an STM32</h2></a>
+<p>A port of RGBNode to Rust using an STM32F103 Bluepill board.  It uses the usbd-serial crate to communicate
+with a computer, and uses the infrared crate to receive IR commands from the same repurposed TV remote.  Currently
+it's only built as a prototype on a breadboard, and doesn't include the daisy-chained MIDI-based bus for controlling
+multiple units
+</p>
+</div>
+
+<div class="project">
 <a href="projects/webmush/"><h2>WebMUSH</h2><img src="assets/cover-webmush.png" /></a>
 <p>A web-based multi-user shared hallucination, in the spirit of the MUDs, MUSHes, and MOOs of the 80's and 90's.
 </p>
@@ -88,7 +98,8 @@ current setup).
 
 <div class="project">
 <a href="projects/fallingrust/"><h2>Falling Rust</h2></a>
-<p>A simple falling sand game written in Rust and compiled to Web Assembly.
+<p>A simple falling sand game written in Rust and compiled to Web Assembly.  A demo is available at
+<a href="https://transistorfet.github.io/fallingrust">here</a>
 </p>
 </div>
 

@@ -24,6 +24,12 @@
         "repo": "projects/rgbnode/rgbnode.git"
     },
     {
+        "name": "rgbnode-rs",
+        "title": "RGB Node with Rust",
+        "github": "default",
+        "repo": "projects/rgbnode-rs/rgbnode-rs.git"
+    },
+    {
         "name": "webmush",
         "title": "WebMUSH",
         "github": "default",

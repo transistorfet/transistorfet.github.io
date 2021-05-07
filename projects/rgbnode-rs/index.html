@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="main">
+
+    <div id="sidebar">
+        <a href="../.."><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr><a href="../../projects/computie">Computie 68k</a><br>
+<a href="../../projects/molten">Molten</a><br>
+<a href="../../projects/nerve">Nerve Control Network</a><br>
+<a href="../../projects/rgbnode">RGB Node</a><br>
+<a href="../../projects/rgbnode-rs">RGB Node with Rust</a><br>
+<a href="../../projects/webmush">WebMUSH</a><br>
+<a href="../../projects/fallingrust">Falling Rust</a><br>
+<a href="../../projects/abugslife">A Bug's Life</a><br>
+<a href="../../projects/acamlslife">A Caml's Life</a><br>
+<a href="../../projects/synthetik">Synthetik Synth</a><br>
+<a href="../../projects/meteorman">Meteor Games</a><br>
+<a href="../../projects/logarithm">Logarithm IRC Bot</a><br>
+<a href="../../projects/sdm">Super Duper Moo</a><br>
+<a href="../../projects/sdrl">SDRL Interpreter</a><br>
+<a href="../../projects/stutter">Stutter IRC Client</a><br>
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
+        <a href="https://twitter.com/transistorfet"><img width="32" src="../../assets/twitter.svg"></a>
+        <br>
+        <a href="http://jabberwocky.ca/gitweb/">Gitweb</a>
+    </div>
+    <div id="content">
+
+<p>RGBNode-rs
+==========</p>
+<h6><em>Started April 30, 2021</em></h6>
+<p>This is a port of <a href="https://github.com/transistorfet/rgbnode">RGBNode</a> to Rust using a Bluepill with a STM32F103
+microcontroller.  It uses <a href="https://github.com/mvirkkunen/usbd-serial">usbd-serial</a> to connect to a computer via
+serial, which can control the RGB output from a computer using a simple line-based text protocol.  It also has
+an IR receiver using the <a href="https://github.com/jkristell/infrared">infrared</a> library, with some custom codes that
+can also control the RGB output.</p>
+<p>I've been using OpenOCD to flash and debug the board.  To build the code and flash the board:</p>
+<pre><code>cargo build --release
+openocd -f openocd.cfg -c &quot;program target/thumbv7m-none-eabi/release/rgbnode-rs verify reset exit&quot;
+</code></pre>
+<p>It is also possible to flash the program from within gdb:</p>
+<pre><code>openocd
+
+# then, in a separate terminal run
+
+gdb-multiarch target/thumbv7m-none-eabi/release/rgbnode-rs
+(gdb) target extended-remote :3333
+(gdb) monitor arm semihosting enable
+(gdb) load
+(gdb) run
+</code></pre>
+<p>A .gdbinit file is include which will connect to the remote debugger and enable semihosting, but it must be explicitly
+allow from ~/.gdbinit with a line like:</p>
+<pre><code>add-auto-load-safe-path /path/to/project/rgbnode-rs/.gdbinit
+</code></pre>
+<p>Note: the OpenOCD target in openocd.cfg has been set to stm32f1x-clone.cfg, which is a copy of the standard
+scripts/target/stm32f1x.cfg with <code>set _CPUTAPID 0x1ba01477</code> changed to <code>set _CPUTAPID 0x2ba01477</code> in order to work with
+the CKS clone of the STM32 chip on my very cheap bluepill boards.</p>
+<p>These boards also have an incorrect pullup resistor for D+ (10kOhm instead of 1.8kOhm), which makes the USB device
+unable to be recognized by my computer.  I've attached an external 1.8kOhm resistor between 3.3V and PA12.  See
+https://cgit.pinealservo.com/BluePill_Rust/resources/src/branch/master/notes.org#headline-2 for more details</p>
+<h1>Using via Serial</h1>
+<p>The following commands are recognized over serial:</p>
+<pre><code>power &lt;0|1&gt;
+Toggle power.  If the optional argument is provided, turn on (1) or off (0)
+
+intensity [0-255]
+Change the intensity (brightness) to the given value
+
+index [0-30]
+Change the colour to a preset indexed colour (the actual number will be mod the number of index colours)
+
+delay [0-100_000]
+Change the delay used by animations to the given value.  For strobe, this will be the time between flashes.
+For colour swirl, this will be the fade time, follow by twice this delay of hold time between colour changes
+
+channel [0-9]
+Change the colour mode to use (this is mapped to the IR remote channel numbers)
+
+red [0-255]
+Change just the red colour channel to the given value
+
+green [0-255]
+Change just the green colour channel to the given value
+
+blue [0-255]
+Change just the blue colour channel to the given value
+
+indexup
+Increment the indexed colour to use
+
+indexdown
+Decrement the indexed colour to use
+
+version
+Print the firmware version number
+</code></pre><hr>
+<a name="download"></a><h3>Get the Source</h3><a href="https://github.com/transistorfet/rgbnode-rs">https://github.com/transistorfet/rgbnode-rs</a><br>
+<a href="http://jabberwocky.ca/gitweb/?p=rgbnode-rs.git">http://jabberwocky.ca/gitweb/?p=rgbnode-rs.git</a><br>
+Or clone with:<pre><code><a href="http://jabberwocky.ca/git/projects/rgbnode-rs/rgbnode-rs.git">git clone http://jabberwocky.ca/git/projects/rgbnode-rs/rgbnode-rs.git</a></code></pre>
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+
