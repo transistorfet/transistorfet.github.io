@@ -116,7 +116,7 @@ class Template (object):
 
         if 'repo' in project and project['repo']:
             link = project['repo'] if '://' in project['repo'] else repo_link_fmt.format(project['name'])
-            html += 'Or clone with:<pre><code><a href="{0}">git clone {0}</a></code></pre>\n'.format(link)
+            html += 'Or clone with:<pre><code>git clone {0}</code></pre>\n'.format(link)
         return html
 
     def render_template(self, filename, html, project=None):
