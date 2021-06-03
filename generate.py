@@ -9,7 +9,7 @@ import subprocess
 
 
 local_repos = "/media/home/git"
-repo_link_fmt = 'http://jabberwocky.ca/git/{}'
+repo_link_fmt = 'http://jabberwocky.ca/git/{}.git'
 gitweb_link_fmt = 'http://jabberwocky.ca/gitweb/?p={}.git'
 github_link_fmt = 'https://github.com/transistorfet/{}'
 
@@ -115,7 +115,7 @@ class Template (object):
         html += '<a href="{0}">{0}</a><br>\n'.format(gitweb_link_fmt.format(project['name']))
 
         if 'repo' in project and project['repo']:
-            link = project['repo'] if '://' in project['repo'] else repo_link_fmt.format(project['repo'])
+            link = project['repo'] if '://' in project['repo'] else repo_link_fmt.format(project['name'])
             html += 'Or clone with:<pre><code><a href="{0}">git clone {0}</a></code></pre>\n'.format(link)
         return html
 
