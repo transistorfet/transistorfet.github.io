@@ -10,8 +10,8 @@ import subprocess
 
 local_repos = "/media/home/git"
 repo_link_fmt = 'http://jabberwocky.ca/git/{}.git'
-gitweb_link_fmt = 'http://jabberwocky.ca/gitweb/?p={}.git'
 github_link_fmt = 'https://github.com/transistorfet/{}'
+github_git_fmt = 'git@github.com:transistorfet/{}'
 
 input_dir = "_input"
 repos_dir = "_repos"
@@ -107,16 +107,11 @@ class Template (object):
         return html
 
     def generate_download(self, project):
-        html = '<hr>\n<a name="download"></a><h3>Get the Source</h3>'
+        html = '<hr>\n<a name="download"></a>\n<h3>Get the Source</h3>\n'
 
         if 'github' in project and project['github']:
-            html += '<a href="{0}">{0}</a><br>\n'.format(project['github'] if project['github'] != 'default' else github_link_fmt.format(project['name']))
-
-        html += '<a href="{0}">{0}</a><br>\n'.format(gitweb_link_fmt.format(project['name']))
-
-        if 'repo' in project and project['repo']:
-            link = project['repo'] if '://' in project['repo'] else repo_link_fmt.format(project['name'])
-            html += 'Or clone with:<pre><code>git clone {0}</code></pre>\n'.format(link)
+            html += '<a href="{0}">{0}</a><br><br>\n'.format(project['github'] if project['github'] != 'default' else github_link_fmt.format(project['name']))
+            html += 'Or clone with:<pre><code>git clone {0}</code></pre>\n'.format(github_git_fmt.format(project['name']))
         return html
 
     def render_template(self, filename, html, project=None):
