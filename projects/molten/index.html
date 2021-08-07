@@ -53,15 +53,15 @@ as C++, Rust, and Python (eg. parenthesis-delimited blocks, conventional class
 definitions, generics/type parameters with angle brackets, etc)</p>
 <h2>Installing</h2>
 <p>You will need <code>rustc</code> and <code>cargo</code> installed.  It's recommended that you use
-<code>rustup</code> to install these.  I've most recently tested it with rustc version 1.28.
-You will also need LLVM 7 installed, as well as libgc (Boehm-Demers-Weiser's
+<code>rustup</code> to install these.  I've most recently tested it with rustc version 1.52.
+You will also need LLVM 11 installed, as well as libgc (Boehm-Demers-Weiser's
 Garbage Collector), and clang, although clang can be replace with gcc by editing
 the <code>molten</code> python script.</p>
 <p>On Debian/Ubuntu, run:
-<code>sudo apt-get install llvm-7 llvm-7-runtime llvm-7-dev clang libgc-dev</code></p>
+<code>sudo apt-get install llvm-11 llvm-11-runtime llvm-11-dev clang libgc-dev</code></p>
 <p>On macOS, run:
-<code>brew install llvm@7</code></p>
-<p>You may need to add /usr/local/opt/llvm@7/bin to your path, and you will probably
+<code>brew install llvm@11</code></p>
+<p>You may need to add /usr/local/opt/llvm@11/bin to your path, and you will probably
 need to install libgc separately</p>
 <h2>Running</h2>
 <p>The <code>molten</code> script helps with compiling and linking IR files.  To run an example:</p>
@@ -71,7 +71,7 @@ need to install libgc separately</p>
 file, as well as all of its dependencies (in this case, the libcore.mol library),
 link them together using clang, along with libgc, and then run the binary.  It
 can also compile to LLVM IR, and run LLVM bitcode by using the <code>-S</code> flag.  The
-resulting .bc file can be run using <code>lli-7</code>.</p>
+resulting .bc file can be run using <code>lli-11</code>.</p>
 <h2>Example</h2>
 <pre><code>fn fac(x) {
     if x &lt; 1 then
@@ -242,6 +242,48 @@ match val {
     Value::String(s) =&gt; println(s)
     _ =&gt; ()
 }
+</code></pre>
+<h3>Traits and Trait Objects</h3>
+<p>A trait can be defined with method declarations in the body, with the predefined
+type alias "Self" used to refer to the current trait object</p>
+<pre><code>trait Add {
+    decl add(Self, Self) -&gt; Self
+}
+</code></pre>
+<p>A trait can then be implemented for a given type.  An impl block can only have
+function definitions that match the trait declarations.  Inside the impl block
+the "Self" type alias will refer to the implementation type.  Trait objects
+that are passed to arguments with type "Self" will automatically be unpacked
+into their impl type, and if the return type has type "Self", the result will
+automatically be packed back into a trait object.</p>
+<pre><code>impl Add for Int {
+    fn add(x: Self, y: Self) -&gt; Self {
+        x + y
+    }
+}
+
+impl Add for Real {
+    fn add(x: Self, y: Self) -&gt; Self {
+        x + y
+    }
+}
+</code></pre>
+<p>Traits are not an object type, but instead are specified as a constraint on a
+universal variable using a <code>where</code> clause.  If the actual type given does not
+implement the constrained trait, then an type error will be raised.  Currently
+trait objects can only be created by passing them into a function that takes a
+universal variable with a constraint.  At the moment, only one trait can be
+specified as a constraint but this will be changed in future.</p>
+<pre><code>fn do_some_adding(x: 'a) -&gt; 'a where a: Add {
+    x.add(x)
+}
+
+println(str(do_some_adding(400)))
+println(str(do_some_adding(1.5)))
+</code></pre>
+<p>The above example will output:</p>
+<pre><code>800
+3.000000
 </code></pre>
 <h3>Exceptions</h3>
 <p>Exceptions aren't quite settled yet.</p>

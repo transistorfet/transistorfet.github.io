@@ -107,9 +107,8 @@ class Template (object):
         return html
 
     def generate_download(self, project):
-        html = '<hr>\n<a name="download"></a>\n<h3>Get the Source</h3>\n'
-
         if 'github' in project and project['github']:
+            html = '<hr>\n<a name="download"></a>\n<h3>Get the Source</h3>\n'
             html += '<a href="{0}">{0}</a><br><br>\n'.format(project['github'] if project['github'] != 'default' else github_link_fmt.format(project['name']))
             html += 'Or clone with:<pre><code>git clone {0}</code></pre>\n'.format(github_git_fmt.format(project['name']))
         return html
