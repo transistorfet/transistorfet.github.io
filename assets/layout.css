@@ -22,7 +22,7 @@ hr {
 /* Page Layout */
 
 #main {
-  margin: 3em auto;
+  margin: 1em auto;
   padding: 0px 10px;
 }
 
@@ -48,6 +48,10 @@ hr {
 }
 
 @media all and (max-width: 1000px) {
+  #main { 
+    margin-top: 3em;
+  }
+
   .toggle-trigger[type="checkbox"]:checked + .toggle {
     display: none;
   }
