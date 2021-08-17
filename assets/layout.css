@@ -22,7 +22,7 @@ hr {
 /* Page Layout */
 
 #main {
-  margin: 2em auto;
+  margin: 3em auto;
   padding: 0px 10px;
 }
 
@@ -78,7 +78,7 @@ input.toggle-trigger
 }
 
 #sidebar {
-  line-height: 150%;
+  line-height: 1.5em;
 }
 
 #sidebar h3 {
@@ -106,9 +106,14 @@ input.toggle-trigger
 
 #content h1 {
   text-decoration: underline;
+  line-height: 1.25em;
 }
 
 #content h6 {       /* Started Date */
+}
+
+#content ul {
+  text-align: left;
 }
 
 /* Images */
