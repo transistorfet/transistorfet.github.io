@@ -1,7 +1,8 @@
 
 body {
   font-family: 'Recursive', sans-serif;
-  font-size: 11pt;
+  font-size: 12pt;
+  line-height: 1.4em;
 }
 
 a {
@@ -18,38 +19,76 @@ hr {
   border-bottom: 1px solid #000000;
 }
 
+/* Page Layout */
+
 #main {
   margin: 2em auto;
+  padding: 0px 10px;
 }
 
-@media all and (min-width: 850px) {
+@media all and (min-width: 1000px) {
   #main {
-    width: 850px;
+    width: 1000px;
   }
 
   #content {
     float: right;
-    width: 650px;
+    width: 760px;
   }
 
   #sidebar {
     float: left;
-    width: 160px;
+    width: 220px;
+    display: block;
+  }
+
+  #menu-toggle {
+    display: none;
   }
 }
 
+@media all and (max-width: 1000px) {
+  .toggle-trigger[type="checkbox"]:checked + .toggle {
+    display: none;
+  }
+}
+
+input.toggle-trigger
+{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 32px;
+  height: 32px;
+  opacity: 0;
+  
+  cursor: pointer;
+}
+
+#menu-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 32px;
+}
+
 #content {
-  padding: 0px 10px;
   text-align: justify;
 }
 
 #sidebar {
-  padding: 0px 10px;
   line-height: 150%;
 }
 
+#sidebar h3 {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
 #sidebar ul {
-  list-style-type: none;
+  padding-left: 1em;
+  margin: 0em 0em;
 }
 
 #footer {
@@ -63,21 +102,52 @@ hr {
   float: right;
 }
 
-.date {
-  font-size: 9pt;
-  font-style: italic;
-  color: #2C3539;
-  text-align: right;
-  padding-bottom: 4px;
+/* Markdown Elements Styling */
+
+#content h1 {
+  text-decoration: underline;
 }
 
-.notice {
-  border: 1px solid black;
-  font-size: 1.5em;
-  padding: 4px;
+#content h6 {       /* Started Date */
 }
 
-/* Project List Entries */
+/* Images */
+
+#content img {
+  max-width: 750px;
+  max-height: 750px;
+}
+
+#content img.thumb {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+/* Code Block */
+
+#content pre {
+  height: auto;
+  width: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #ae3;
+  border-radius: 4px;
+  color: #333333;
+  background-color: #eeffcc;
+  font-family: monospace, sans-serif;
+}
+
+#content code:not(pre > code) {
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  color: #333333;
+  background-color: #eeffcc;
+  font-size: 0.85em;
+  font-family: monospace, sans-serif;
+}
+
+/* Project List Entries (Main Index) */
 
 .project {
   border: 1px solid black;
@@ -103,47 +173,20 @@ hr {
   height: auto;
 }
 
-/* Images */
-
-img {
-  max-width: 640px;
-  max-height: 500px;
-}
-
-img.thumb {
-  max-width: 200px;
-  max-height: 200px;
-}
-
 /* News Entry */
 
-h5 {
+#content h5 {           /* The news entry header, which uses `#####` */
   margin-top: 0px;
   margin-bottom: 0px;
   background-color: lightgrey;
 }
 
-.entry em {
+#content .entry em {    /* The date inside a news entry */
   font-size: 9pt;
   font-style: italic;
   color: #2C3539;
   text-align: right;
   padding: 2px 4px 2px 4px;
   margin-right: 2px;
-}
-
-/* Code Block */
-
-pre {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 10px 10px 10px 10px;
-  background-color: #eeffcc;
-  border: 1px solid #ae3;
-  border-radius: 4px;
-  color: #333333;
-  font-family: monospace, sans-serif;
-  height: auto;
-  width: auto;
 }
 

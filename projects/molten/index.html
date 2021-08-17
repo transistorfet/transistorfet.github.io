@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Projects</title>
+    <title>Molten</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,11 +13,14 @@
 <body>
 <div id="main">
 
-    <div id="sidebar">
+    <div id="menu-toggle">&#x2630;</div>
+    <input class="toggle-trigger" type="checkbox" checked />
+    <div id="sidebar" class="toggle">
         <a href="../.."><h2>Projects</h2></a>
         <hr>
 
-<a href="#download">Get the Source</a><hr><a href="../../projects/computie">Computie 68k</a><br>
+<a href="#download">Get the Source</a><hr>
+<a href="../../projects/computie">Computie 68k</a><br>
 <a href="../../projects/molten">Molten</a><br>
 <a href="../../projects/nerve">Nerve Control Network</a><br>
 <a href="../../projects/rgbnode">RGB Node</a><br>
@@ -32,7 +35,10 @@
 <a href="../../projects/sdm">Super Duper Moo</a><br>
 <a href="../../projects/sdrl">SDRL Interpreter</a><br>
 <a href="../../projects/stutter">Stutter IRC Client</a><br>
-
+<hr>
+<h3>Articles</h3>
+<ul><li><a href="../../articles/molten_overview.html">An Overview Of Molten Internals</a></li>
+</ul>
         <hr>
         <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
         <a href="https://twitter.com/transistorfet"><img width="32" src="../../assets/twitter.svg"></a>
@@ -50,13 +56,14 @@ a high level language with a full object system that facilitates both functional
 and object-oriented programming.  Some syntax elements have been changed from
 typical ML languages to follow conventions found in more common languages, such
 as C++, Rust, and Python (eg. parenthesis-delimited blocks, conventional class
-definitions, generics/type parameters with angle brackets, etc)</p>
+definitions, generics/type parameters with angle brackets, etc).  For more info
+on the internals, see <a href="https://transistorfet.github.io/articles/molten_overview.html">An Overview Of Molten Internals</a></p>
 <h2>Installing</h2>
 <p>You will need <code>rustc</code> and <code>cargo</code> installed.  It's recommended that you use
 <code>rustup</code> to install these.  I've most recently tested it with rustc version 1.52.
 You will also need LLVM 11 installed, as well as libgc (Boehm-Demers-Weiser's
-Garbage Collector), and clang, although clang can be replace with gcc by editing
-the <code>molten</code> python script.</p>
+Garbage Collector), and clang to linking, although clang can be replace with gcc
+by editing the <code>molten</code> python script.</p>
 <p>On Debian/Ubuntu, run:
 <code>sudo apt-get install llvm-11 llvm-11-runtime llvm-11-dev clang libgc-dev</code></p>
 <p>On macOS, run:
@@ -92,8 +99,8 @@ Int
 Real
 String
 (Int, Int) -&gt; Int   // function type
-'a                  // type variable
-List&lt;Int&gt;           // list of integers
+'a                  // universal type variable
+Array&lt;Int&gt;          // array of integers
 (Int, Real)         // tuple type
 { a: Int, b: Real } // record type
 </code></pre>
@@ -117,9 +124,105 @@ design decision to improve readability of the code and to make the parser
 simpler and more predictable.</p>
 <pre><code>foo(1, 2)
 </code></pre>
+<h3>Blocks</h3>
+<p>A block is a collection of expressions which return the result of the last
+expression in the block.  They can be used in place of a single expression.
+They do not create their own local scope, at least at the moment, so variables
+defined inside blocks will appear in the parent scope (usually the function
+the block is in).  Each expression in the block must end in a newline or
+semi-colon character (or be the last expression in the block).  This applies
+to the top level.</p>
+<pre><code>let is_zero = if self.x &lt;= 0 then {
+    self.x = 0
+    true
+} else {
+    false
+}
+</code></pre>
+<h3>Flow Control</h3>
+<p>The return value of an if expression is the result of evaluating either the
+<code>then</code> clause or <code>else</code> clause.  The types of both clauses must match.  The
+<code>else</code> clause can be left out as long as the true clause evaluates to Nil.</p>
+<pre><code>if x == 5 then
+    &quot;It's five&quot;
+else
+    &quot;It's not five&quot;
+</code></pre>
+<p>A match expression allows pattern matching, which can unpack refs, tuples,
+records, and enums.  It can bind values to named variables in the pattern
+and creates a new scope for each arm of the match expression.</p>
+<pre><code>match x with
+| 1 =&gt; &quot;It's one&quot;
+| 5 =&gt; &quot;It's five&quot;
+| int =&gt; &quot;It's not one or five, it's &quot; + str(int)
+</code></pre>
+<h3>And / Or</h3>
+<p>The keyword operators <code>and</code> and <code>or</code> have side-effects and will not execute
+the second expression if the result can be determined from the first
+expression.  The resulting value is the last expression that was executed.
+Operands are not limited to Bool values, although that may change in future.</p>
+<h3>Math</h3>
+<p>Infix operators are evaluated using order of operations.  Both sides of an
+infix operation must be on the same line, or else a <code>\</code> character can be used
+to continue the line.</p>
+<pre><code>5 + 12 * 2      // equals 29
+
+42 * 4 \
+   % 5          // equals 3
+</code></pre>
+<h3>Tuples</h3>
+<pre><code>let tup = (1, &quot;String&quot;, 4.5)
+println(tup.1)                  // prints &quot;String&quot;
+</code></pre>
+<h3>Records</h3>
+<p>Records are like tuples but with named fields.  Record literals use the
+equals sign ("=") to assign a value to a field.  Specifying a record type
+uses a colon (":") to separate the field name from the type.</p>
+<pre><code>let rec = { i = 1, s = &quot;String&quot;, r = 4.5 }
+println(rec.s)
+
+let rec: { i: Int, s: String, r: Real }
+</code></pre>
+<h3>Arrays</h3>
+<pre><code>let array1 = [ 1, 3, 6 ]
+for x in array1
+    println(str(x))
+
+let array2 = new Array&lt;String&gt;();
+array2.insert(0, &quot;Hello&quot;)
+println(array2[0])
+</code></pre>
+<p>The Array type is defined in libcore, which must be imported if arrays are used.</p>
+<h3>Loops</h3>
+<pre><code>while is_true
+    println(&quot;looping&quot;)
+
+for i in iter([ 1, 2, 3 ])
+    println(&quot;counting &quot; + i)
+</code></pre>
+<p>For loops take an instance of <code>Iterator&lt;'item&gt;</code> and calls the <code>.next()</code> method
+on it, running the body for each <code>Option::Some('item)</code> returned.  The <code>iter</code>
+function is defined for different types to convert them into an appropriate
+iterator.  In the case of arrays, it will return the result of
+<code>new ArrayInterator&lt;'item&gt;(input_array)</code></p>
+<h3>Refs</h3>
+<p>A ref is an indirect reference to some data.  It can be passed around as a
+value, and dereferenced to get or set the data inside of it.  The internal value
+of a reference is always mutable</p>
+<pre><code>let r = ref 42
+println(str(*r))                // prints 42
+*r = 65
+println(str(*r))                // prints 65
+
+fn foo(x: ref Int) { }          // ref types look similar to ref constructors
+
+let r = ref { a = 42, b = &quot;The Answer&quot; }
+println(*r.b)                   // prints &quot;The Answer&quot;
+</code></pre>
 <h3>Classes</h3>
 <pre><code>class Foo {
-    let mut name: String
+    // A field with type String
+    val mut name: String
 
     fn new(self, name) {
         self.name = name
@@ -138,110 +241,49 @@ let bar = new Bar(&quot;Mischief&quot;)
 bar.get(&quot;The Cat&quot;)              // returns &quot;Mischief The Cat&quot;
 Foo::static(5)
 </code></pre>
-<h3>Blocks</h3>
-<p>A block is a collection of expressions which return the result of the last
-expression in the block.  They can be used in place of a single expression.
-They do not create their own local scope, at least at the moment, so variables
-defined inside blocks will appear in the parent scope (usually the function
-the block is in).  Each expression in the block must end in a newline or
-semi-colon character (or be the last expression in the block).  This applies
-to the top level.</p>
-<pre><code>let is_zero = if self.x &lt;= 0 then {
-    self.x = 0
-    true
-} else {
-    false
-}
-</code></pre>
-<h3>Flow Control</h3>
-<p>The return value of an if statement is the result of the expression of the
-clause that is evaluated.  The types of both clauses must match.  The <code>else</code>
-clause can be left out as long as the true clause evaluates to Nil.</p>
-<pre><code>if x == 5 then
-    &quot;It's five&quot;
-else
-    &quot;It's not five&quot;
-
-match x {
-    1 =&gt; &quot;It's one&quot;
-    5 =&gt; &quot;It's five&quot;
-    _ =&gt; &quot;It's not one or five&quot;
-}
-</code></pre>
-<h3>And / Or</h3>
-<p>The keyword operators <code>and</code> and <code>or</code> have side-effects and will not execute
-the second expression if the result can be determined from the first
-expression.  The resulting value is the last expression that was executed.
-Operands are not limited to Bool values, although that may change in future.</p>
-<h3>Math</h3>
-<p>Infix operators are evaluated using order of operations.  Both sides of an
-infix operation must be on the same line, or else a <code>\</code> character can be used
-to continue the line.</p>
-<pre><code>5 + 12 * 2      // equals 29
-
-42 * 4 \
-   % 5          // equals 3
-</code></pre>
-<h3>Loops</h3>
-<pre><code>while is_true
-    println(&quot;looping&quot;)
-
-for i in [ 1, 2, 3 ]
-    println(&quot;counting &quot; + i)
-</code></pre>
-<h3>Lists</h3>
-<pre><code>let list1 = [ 1, 3, 6 ]
-for x in list1
-    println(str(x))
-
-let list2 = new List&lt;String&gt;();
-list2.insert(0, &quot;Hello&quot;)
-println(list2[0])
-</code></pre>
-<h3>Tuples</h3>
-<pre><code>let tup = (1, &quot;String&quot;, 4.5)
-println(tup.1)                  // prints &quot;String&quot;
-</code></pre>
-<h3>Records</h3>
-<p>Records are like tuples but with named fields.  Record literals use the
-equals sign ("=") to assign a value to a field.  Specifying a record type
-uses a colon (":") to separate the field name from the type.</p>
-<pre><code>let rec = { i = 1, s = &quot;String&quot;, r = 4.5 }
-println(rec.s)
-
-let rec: { i: Int, s: String, r: Real }
-</code></pre>
-<h3>Refs</h3>
-<p>A ref is an indirect reference to some data.  It can be passed around as a
-value, and dereferenced to get or set the data inside of it.  The internal value
-of a reference is always mutable</p>
-<pre><code>let r = ref 42
-println(str(*r))                // prints 42
-*r = 65
-println(str(*r))                // prints 65
-
-fn foo(x: ref Int) { }          // ref types look similar to ref constructors
-
-let r = ref { a = 42, b = &quot;The Answer&quot; }
-println(*r.b)                   // prints &quot;The Answer&quot;
-</code></pre>
+<p>All methods are both closures, and virtual methods, so they can access
+variables in their parents' scopes and also be overridden by a child class's
+implementation of the same method, accessible with a reference to the parent
+class type.</p>
+<p>Fields can have an optional type, but not an initializer.  If a class has at
+least one field, it must have at least one "new" constructor, which must assign
+to each field an initial value.  The type can be inferred from this assignment
+if the optional type is not supplied.  If a field is declared as mutable, it
+can be reassigned to, but if the <code>mut</code> keyword is absent, the field can only be
+assigned to within the constructor, and will be immutable after the constructor
+has returned.  Every constructor must also call the <code>Super::new</code> method of its
+parent class, if it has a parent that has a constructor.</p>
 <h3>Enums (Tagged Unions)</h3>
 <p>An enum can either have no arguments, or a tuple of arguments.  Constructing an
 enum variant requires using the Resolve (::) notation.  Pattern matching is
-currently the only way to get values out of a variant.  The current implementation
-needs work and does not currently support nested variant types</p>
+currently the only way to get values out of a variant.  Unlike with classes,
+which allocate memory for a new instance, enums are immediate data types like
+tuples and records.  In order to store it in a memory location, a <code>ref</code> must
+be used.  A ref is required in order to make a recursive enum.</p>
 <pre><code>enum Value =
 | None
 | Integer(Int)
 | String(String)
 | Pair(String, String)
+| Reference(ref Value)          // A recursive reference
 
 let val = Value::String(&quot;Hey&quot;)
 
-match val {
-    Value::String(s) =&gt; println(s)
-    _ =&gt; ()
+match val with
+| Value::String(s) =&gt; println(s)
+| _ =&gt; ()
+</code></pre>
+<p>Methods can be added to enums using a <code>methods</code> body.  Currently it can only be
+used with enums.</p>
+<pre><code>methods Value {
+    fn is_some(val: Value) {
+        match val with
+        | Value::None =&gt; false
+        | _ =&gt; true
+    }
 }
+
+val.is_some()
 </code></pre>
 <h3>Traits and Trait Objects</h3>
 <p>A trait can be defined with method declarations in the body, with the predefined
@@ -286,17 +328,15 @@ println(str(do_some_adding(1.5)))
 3.000000
 </code></pre>
 <h3>Exceptions</h3>
-<p>Exceptions aren't quite settled yet.</p>
-<pre><code>try open(&quot;file.txt&quot;) {
-    e =&gt; println(&quot;Exception Occurred: &quot; + e)
-}
+<p>All exceptions must be an instance of the <code>Exception</code> class defined in libcore.</p>
+<pre><code>try open(&quot;file.txt&quot;)
+with e =&gt; println(&quot;Exception Occurred: &quot; + e.msg)
 
 try {
     //...
     raise &quot;Problem&quot;
-} catch {
+} with
     e =&gt; println(e)
-}
 </code></pre>
 <h3>Annotations</h3>
 <p>A value can be type annotated using a colon followed by the type.</p>
@@ -357,6 +397,11 @@ accessing the garbage collected allocator.</p>
 <p>Garbage collection has been added using the Boehm-Demers-Weiser
   Conservative C Garbage Collector.  It is possible to compile without
   the garbage collector by using the <code>--no-gc</code> command line argument.</p>
+</li>
+<li>
+<p>Traits have finally been added.  They currently are limited to one
+  trait constraint per type variable, but I will hopefully add
+  trait depedencies/inheritence soon</p>
 </li>
 </ul>
 <p>I'd be happy to hear of any additional features ideas or suggestions, if

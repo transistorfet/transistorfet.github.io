@@ -36,6 +36,7 @@ def fetch_project(name, repo):
 
     subprocess.run("(cd {} && git checkout origin/HEAD -- README.md)".format(name), shell=True)
     subprocess.run("(cd {} && git checkout origin/HEAD -- images)".format(name), shell=True)
+    subprocess.run("(cd {} && git checkout origin/HEAD -- docs/articles)".format(name), shell=True)
 
 
 def fetch_all_projects(projects):
@@ -71,6 +72,30 @@ def find_source_files(project, filename):
     return paths
 
 
+def get_markdown_files(dirname):
+    if not os.path.exists(dirname):
+        return []
+    return [ os.path.join(dirname, name) for name in os.listdir(dirname) if name.endswith('.md') ]
+
+
+def collect_articles(projects):
+    files = get_markdown_files(os.path.join(input_dir, 'articles'))
+    for project in projects:
+        files.extend(get_markdown_files(os.path.join(repos_dir, project['name'], 'docs', 'articles')))
+
+    articles = []
+    for filename in files:
+        title = ""
+        for line in load_file(filename).splitlines():
+            if line.startswith("==="):
+                break
+            title = line
+        dest = os.path.splitext(os.path.basename(filename))[0] + '.html'
+        articles.append({ 'src': filename, 'dest': dest, 'title': title })
+    articles.sort(key=lambda a: a['dest'])
+    return articles
+
+
 def load_file(filename):
     with open(filename, 'r') as f:
         return f.read()
@@ -83,9 +108,16 @@ def convert_markdown(filename):
     return html
 
 
+def make_output_path(*args):
+    path = os.path.join(output_dir, *args[:-1])
+    os.makedirs(path, exist_ok=True)
+    return os.path.join(path, args[-1])
+
+
 class Template (object):
-    def __init__(self, filename, projects):
+    def __init__(self, filename, projects, articles):
         self.projects = projects
+        self.articles = articles
 
         with open(filename, 'r') as f:
             data = f.read()
@@ -97,54 +129,73 @@ class Template (object):
         self.middle = middle
         self.footer = footer
 
-    def generate_sidebar(self, project, rootdir):
+    def generate_sidebar(self, data):
         html = ''
-        if project:
-            html += '<a href="#download">Get the Source</a><hr>'
+        if data.get('project_github'):
+            html += '<a href="#download">Get the Source</a><hr>\n'
 
         for project in self.projects:
-            html += '<a href="{}">{}</a><br>\n'.format(os.path.join(rootdir, 'projects', project['name']), project['title'])
+            html += '<a href="{}">{}</a><br>\n'.format(os.path.join(data['rootdir'], 'projects', project['name']), project['title'])
+        if self.articles and len(self.articles) > 0:
+            html += '<hr>\n'
+            html += '<h3>Articles</h3>\n'
+            html += self.generate_articles_list(data)
         return html
 
-    def generate_download(self, project):
-        if 'github' in project and project['github']:
-            html = '<hr>\n<a name="download"></a>\n<h3>Get the Source</h3>\n'
-            html += '<a href="{0}">{0}</a><br><br>\n'.format(project['github'] if project['github'] != 'default' else github_link_fmt.format(project['name']))
-            html += 'Or clone with:<pre><code>git clone {0}</code></pre>\n'.format(github_git_fmt.format(project['name']))
+    def generate_articles_list(self, data):
+        html = '<ul>'
+        for article in self.articles:
+            html += '<li><a href="{}">{}</a></li>\n'.format(os.path.join(data['rootdir'], 'articles', article['dest']), article['title'])
+        html += '</ul>'
         return html
 
-    def render_template(self, filename, html, project=None):
-        rootdir = '.' if not project else '../..'
-        data = { 'rootdir': rootdir }
+    def generate_download(self, name, github):
+        html = '<hr>\n<a name="download"></a>\n<h3>Get the Source</h3>\n'
+        html += '<a href="{0}">{0}</a><br><br>\n'.format(github if github != 'default' else github_link_fmt.format(name))
+        html += 'Or clone with:<pre><code>git clone {0}</code></pre>\n'.format(github_git_fmt.format(name))
+        return html
 
+    def generate_project_index(self, filename, data):
+        html = load_file(filename)
+        if self.articles and len(self.articles) > 0:
+            html += '<h2>Articles</h2>\n'
+            html += self.generate_articles_list(data)
+        return html
+
+    def render_template(self, filename, html, data):
         with open(filename, 'w') as f:
             f.write(self.header.format(**data))
-            f.write(self.generate_sidebar(project, rootdir))
+            f.write(self.generate_sidebar(data))
             f.write(self.middle.format(**data))
             f.write(html)
-            if project:
-                f.write(self.generate_download(project))
+            if data.get('project_github'):
+                f.write(self.generate_download(data['project_name'], data['project_github']))
             f.write(self.footer.format(**data))
 
 
-def generate_site(projects):
+def generate_site(projects, articles):
     os.makedirs(output_dir, exist_ok=True)
-    template = Template(os.path.join(input_dir, 'index.template.html'), projects)
+    template = Template(os.path.join(input_dir, 'index.template.html'), projects, articles)
 
     # Generate the project index
     index = os.path.join(input_dir, 'index.html')
     if os.path.exists(index):
-        template.render_template(os.path.join(output_dir, 'index.html'), load_file(index))
+        html = template.generate_project_index(index, dict(rootdir='.'))
+        template.render_template(os.path.join(output_dir, 'index.html'), html, dict(rootdir='.', title='Projects'))
 
     for project in projects:
         print(project['name'])
-        project_output_dir = os.path.join(output_dir, 'projects', project['name'])
-        os.makedirs(project_output_dir, exist_ok=True)
 
         # Generate project file from README markdown
         readme = find_source_files(project['name'], 'README.md')
         if readme:
-            template.render_template(os.path.join(project_output_dir, 'index.html'), convert_markdown(readme[0]), project=project)
+            destpath = make_output_path('projects', project['name'], 'index.html')
+            data = dict(rootdir='../..', title=project['title'], project_name=project['name'], project_github=project['github'])
+            template.render_template(destpath, convert_markdown(readme[0]), data)
+
+    for article in articles:
+        data = dict(rootdir='..', title=article['title'])
+        template.render_template(os.path.join(output_dir, 'articles', article['dest']), convert_markdown(article['src']), data)
 
 
 def main():
@@ -161,8 +212,9 @@ def main():
         if not args.no_copy:
             copy_images(projects)
 
+    articles = collect_articles(projects)
     if not args.no_generate:
-        generate_site(projects)
+        generate_site(projects, articles)
 
 
 if __name__ == '__main__':
