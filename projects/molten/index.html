@@ -63,7 +63,7 @@ Internals</a></p>
 <p>You will need <code>rustc</code> and <code>cargo</code> installed.  It's recommended that you use
 <code>rustup</code> to install these.  I've most recently tested it with rustc version
 1.52.  You will also need LLVM 11 installed, as well as libgc
-(Boehm-Demers-Weiser's Garbage Collector), and clang to linking, although clang
+(Boehm-Demers-Weiser's Garbage Collector), and clang for linking, although clang
 can be replace with gcc by editing the <code>molten</code> python script.</p>
 <p>On Debian/Ubuntu, run:
 <code>sudo apt-get install llvm-11 llvm-11-runtime llvm-11-dev clang libgc-dev</code></p>
@@ -209,6 +209,15 @@ creates a new scope for each arm of the match expression.</p>
 | 5 =&gt; &quot;It's five&quot;
 | num =&gt; &quot;It's not one or five, it's &quot; + str(num)
 </code></pre>
+<p>Values can be unpacked with match as well, including records, tuples, refs, and
+enum variants.  A underscore <code>_</code> will match any value, and an identifier (eg.
+<code>value</code>) will match anything and bind that value to the name in the process, so
+that it can be referenced inside the match arm.  Here's an example using a
+record:</p>
+<pre><code>match { num = 10, name = &quot;Ten&quot; } with
+| { num = 10, name = value } =&gt; println(value)
+| { num = _, name = value } =&gt; println(&quot;Something else named &quot; + value)
+</code></pre>
 <h3>Loops</h3>
 <pre><code>while true
     println(&quot;looping&quot;)
@@ -303,79 +312,77 @@ val.is_some()
 </code></pre>
 <h3>Traits and Trait Objects</h3>
 <p>A trait can be defined with method declarations in the body, with the predefined
-type alias "Self" used to refer to the current trait object ```
-trait Add {
+type alias "Self" used to refer to the current trait object</p>
+<pre><code>trait Add {
     decl add(Self, Self) -&gt; Self
-}</p>
-<pre><code>
-A trait can then be implemented for a given type.  An impl block can only have
-function definitions that match the trait declarations.  Inside the impl block
-the &quot;Self&quot; type alias will refer to the implementation type.  Trait objects that
-are passed to arguments with type &quot;Self&quot; will automatically be unpacked into
-their impl type, and if the return type has type &quot;Self&quot;, the result will
-automatically be packed back into a trait object.
+}
 </code></pre>
-<p>impl Add for Int {
+<p>A trait can then be implemented for a given type.  An impl block can only have
+function definitions that match the trait declarations.  Inside the impl block
+the "Self" type alias will refer to the implementation type.  Trait objects that
+are passed to arguments with type "Self" will automatically be unpacked into
+their impl type, and if the return type has type "Self", the result will
+automatically be packed back into a trait object.</p>
+<pre><code>impl Add for Int {
     fn add(x: Self, y: Self) -&gt; Self {
         x + y
     }
-}</p>
-<p>impl Add for Real {
+}
+
+impl Add for Real {
     fn add(x: Self, y: Self) -&gt; Self {
         x + y
     }
-}</p>
-<pre><code>
-Traits are not an object type, but instead are specified as a constraint on a
-universal variable using a `where` clause.  If the actual type given does not
+}
+</code></pre>
+<p>Traits are not an object type, but instead are specified as a constraint on a
+universal variable using a <code>where</code> clause.  If the actual type given does not
 implement the constrained trait, then an type error will be raised.  Currently
 trait objects can only be created by passing them into a function that takes a
 universal variable with a constraint.  At the moment, only one trait can be
-specified as a constraint but this will be changed in future.
-</code></pre>
-<p>fn do_some_adding(x: 'a) -&gt; 'a where a: Add {
+specified as a constraint but this will be changed in future.</p>
+<pre><code>fn do_some_adding(x: 'a) -&gt; 'a where a: Add {
     x.add(x)
-}</p>
-<p>println(str(do_some_adding(400)))
-println(str(do_some_adding(1.5)))</p>
-<pre><code>The above example will output:
+}
+
+println(str(do_some_adding(400)))
+println(str(do_some_adding(1.5)))
 </code></pre>
-<p>800
-3.000000</p>
-<pre><code>
-### Exceptions
-All exceptions must be an instance of the `Exception` class defined in libcore.
+<p>The above example will output:</p>
+<pre><code>800
+3.000000
 </code></pre>
-<p>try open("file.txt")
-with e =&gt; println("Exception Occurred: " + e.msg)</p>
-<p>try {
+<h3>Exceptions</h3>
+<p>All exceptions must be an instance of the <code>Exception</code> class defined in libcore.</p>
+<pre><code>try open(&quot;file.txt&quot;)
+with e =&gt; println(&quot;Exception Occurred: &quot; + e.msg)
+
+try {
     //...
-    raise "Problem"
+    raise &quot;Problem&quot;
 } with
-    e =&gt; println(e)</p>
-<pre><code>
-### Annotations
-A value can be type annotated using a colon followed by the type.
+    e =&gt; println(e)
 </code></pre>
-<p>5 : Int
+<h3>Annotations</h3>
+<p>A value can be type annotated using a colon followed by the type.</p>
+<pre><code>5 : Int
 str(i : Int)
-(func() : String)</p>
-<pre><code>
-### Import
+(func() : String)
 </code></pre>
-<p>import libcore</p>
-<pre><code>
-### External Functions
-A function can be declared without being implemented, and functions can also be
+<h3>Import</h3>
+<pre><code>import libcore
+</code></pre>
+<h3>External Functions</h3>
+<p>A function can be declared without being implemented, and functions can also be
 defined with an ABI specifier so that they are accessible to other languages.
-Only C support is currently implemented. A C function cannot be a closure.
-</code></pre>
-<p>decl foo(Int) -&gt; Int         // external molten function
-decl bar(Int) -&gt; Int / C     // external C function</p>
-<p>fn baz(i: Int) / C {
+Only C support is currently implemented. A C function cannot be a closure.</p>
+<pre><code>decl foo(Int) -&gt; Int         // external molten function
+decl bar(Int) -&gt; Int / C     // external C function
+
+fn baz(i: Int) / C {
     // molten function that can be called from C
 }
-```</p>
+</code></pre>
 <h3>Linking to C</h3>
 <p>An example of writing a C file, and linking it to a molten program is shown in
 <code>lib/libccore.c</code>.  When imported into a molten file and compiled with the
