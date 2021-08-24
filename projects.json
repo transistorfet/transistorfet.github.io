@@ -36,6 +36,12 @@
         "repo": "projects/webmush/webmush.git"
     },
     {
+        "name": "conlog",
+        "title": "Conlog",
+        "github": "default",
+        "repo": "projects/conlog/conlog.git"
+    },
+    {
         "name": "fallingrust",
         "title": "Falling Rust",
         "github": "default",
