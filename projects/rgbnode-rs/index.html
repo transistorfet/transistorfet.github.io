@@ -47,8 +47,7 @@
     </div>
     <div id="content">
 
-<p>RGBNode-rs
-==========</p>
+<h1>RGBNode-rs</h1>
 <h6><em>Started April 30, 2021</em></h6>
 <p>This is a port of <a href="https://github.com/transistorfet/rgbnode">RGBNode</a> to Rust using a Bluepill with a STM32F103
 microcontroller.  It uses <a href="https://github.com/mvirkkunen/usbd-serial">usbd-serial</a> to connect to a computer via
@@ -82,40 +81,29 @@ unable to be recognized by my computer.  I've attached an external 1.8kOhm resis
 https://cgit.pinealservo.com/BluePill_Rust/resources/src/branch/master/notes.org#headline-2 for more details</p>
 <h1>Using via Serial</h1>
 <p>The following commands are recognized over serial:</p>
-<pre><code>power &lt;0|1&gt;
-Toggle power.  If the optional argument is provided, turn on (1) or off (0)
-
-intensity [0-255]
-Change the intensity (brightness) to the given value
-
-index [0-30]
-Change the colour to a preset indexed colour (the actual number will be mod the number of index colours)
-
-delay [0-100_000]
-Change the delay used by animations to the given value.  For strobe, this will be the time between flashes.
-For colour swirl, this will be the fade time, follow by twice this delay of hold time between colour changes
-
-channel [0-9]
-Change the colour mode to use (this is mapped to the IR remote channel numbers)
-
-red [0-255]
-Change just the red colour channel to the given value
-
-green [0-255]
-Change just the green colour channel to the given value
-
-blue [0-255]
-Change just the blue colour channel to the given value
-
-indexup
-Increment the indexed colour to use
-
-indexdown
-Decrement the indexed colour to use
-
-version
-Print the firmware version number
-</code></pre><hr>
+<p><code>power &lt;0|1&gt;</code>
+    Toggle power.  If the optional argument is provided, turn on (1) or off (0)</p>
+<p><code>intensity [0-255]</code>
+    Change the intensity (brightness) to the given value</p>
+<p><code>index [0-30]</code>
+    Change the colour to a preset indexed colour (the actual number will be mod the number of index colours)</p>
+<p><code>delay [0-100_000]</code>
+    Change the delay used by animations to the given value.  For strobe, this will be the time between flashes.
+    For colour swirl, this will be the fade time, follow by twice this delay of hold time between colour changes</p>
+<p><code>channel [0-9]</code>
+    Change the colour mode to use (this is mapped to the IR remote channel numbers)</p>
+<p><code>red [0-255]</code>
+    Change just the red colour channel to the given value</p>
+<p><code>green [0-255]</code>
+    Change just the green colour channel to the given value</p>
+<p><code>blue [0-255]</code>
+    Change just the blue colour channel to the given value</p>
+<p><code>indexup</code>
+    Increment the indexed colour to use</p>
+<p><code>indexdown</code>
+    Decrement the indexed colour to use</p>
+<p><code>version</code>
+    Print the firmware version number</p><hr>
 <a name="download"></a>
 <h3>Get the Source</h3>
 <a href="https://github.com/transistorfet/rgbnode-rs">https://github.com/transistorfet/rgbnode-rs</a><br><br>
