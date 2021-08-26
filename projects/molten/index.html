@@ -360,9 +360,9 @@ with e =&gt; println(&quot;Exception Occurred: &quot; + e.msg)
 
 try {
     //...
-    raise &quot;Problem&quot;
+    raise new Exception(&quot;Problem&quot;)
 } with
-    e =&gt; println(e)
+    e =&gt; println(e.msg)
 </code></pre>
 <h3>Annotations</h3>
 <p>A value can be type annotated using a colon followed by the type.</p>
