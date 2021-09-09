@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/code.css" type="text/css" charset="utf-8" />
 </head>
 <body>
 <div id="main">
@@ -37,8 +39,8 @@
 <a href="../../projects/sdrl">SDRL Interpreter</a><br>
 <a href="../../projects/stutter">Stutter IRC Client</a><br>
 <hr>
-<h3>Articles</h3>
-<ul><li><a href="../../articles/molten_overview.html">An Overview Of Molten Internals</a></li>
+<h3>Posts</h3>
+<ul><li><a href="../../posts/molten_overview.html">An Overview Of Molten Internals</a></li>
 </ul>
         <hr>
         <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
@@ -53,19 +55,22 @@
 It currently supports predicates, integers, strings, and lists, and will parse
 some infix operators including +, -, =, \=, and 'is'.</p>
 <p>To run the REPL:</p>
-<pre><code>cargo run -- inputfile.plg
-</code></pre>
+<div class="codehilite"><pre><span></span><code>cargo run -- inputfile.plg
+</code></pre></div>
+
 <p>where "inputfile.plg" has an initial set of facts and rules to populate the
 database with.  It will then accept input at the <code>?-</code> prompt.</p>
 <p>Try running the <code>metro1.plg</code> file and at the prompt enter:</p>
-<pre><code>?- murderer(X).
-</code></pre>
+<div class="codehilite"><pre><span></span><code>?- murderer(X).
+</code></pre></div>
+
 <p>You should see a trace of the deduction and the final result:</p>
-<pre><code>Result: murderer(sir_raymond)
-</code></pre>
+<div class="codehilite"><pre><span></span><code>Result: murderer(sir_raymond)
+</code></pre></div>
+
 <p>Some tests are also included, which can be run using:</p>
-<pre><code>cargo test
-</code></pre><hr>
+<div class="codehilite"><pre><span></span><code>cargo test
+</code></pre></div><hr>
 <a name="download"></a>
 <h3>Get the Source</h3>
 <a href="https://github.com/transistorfet/conlog">https://github.com/transistorfet/conlog</a><br><br>

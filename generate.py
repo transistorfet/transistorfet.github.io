@@ -36,7 +36,7 @@ def fetch_project(name, repo):
 
     subprocess.run("(cd {} && git checkout origin/HEAD -- README.md)".format(name), shell=True)
     subprocess.run("(cd {} && git checkout origin/HEAD -- images)".format(name), shell=True)
-    subprocess.run("(cd {} && git checkout origin/HEAD -- docs/articles)".format(name), shell=True)
+    subprocess.run("(cd {} && git checkout origin/HEAD -- docs/posts)".format(name), shell=True)
 
 
 def fetch_all_projects(projects):
@@ -61,6 +61,12 @@ def copy_images(projects):
                 subprocess.run("cp -R {} {}".format(images, os.path.join(output_dir, 'projects', project['name']) + '/'), shell=True)
 
 
+def copy_post_images(post_dir):
+    image_dir = os.path.join(post_dir, 'images')
+    if os.path.exists(image_dir):
+        subprocess.run("cp -R {} {}".format(image_dir, os.path.join(output_dir, 'posts') + '/'), shell=True)
+
+
 def find_source_files(project, filename):
     paths = []
     path = os.path.join(input_dir, project, filename)
@@ -75,15 +81,16 @@ def find_source_files(project, filename):
 def get_markdown_files(dirname):
     if not os.path.exists(dirname):
         return []
+    copy_post_images(dirname)
     return [ os.path.join(dirname, name) for name in os.listdir(dirname) if name.endswith('.md') ]
 
 
-def collect_articles(projects):
-    files = get_markdown_files(os.path.join(input_dir, 'articles'))
+def collect_posts(projects):
+    files = get_markdown_files(os.path.join(input_dir, 'posts'))
     for project in projects:
-        files.extend(get_markdown_files(os.path.join(repos_dir, project['name'], 'docs', 'articles')))
+        files.extend(get_markdown_files(os.path.join(repos_dir, project['name'], 'docs', 'posts')))
 
-    articles = []
+    posts = []
     for filename in files:
         title = ""
         for line in load_file(filename).splitlines():
@@ -91,9 +98,9 @@ def collect_articles(projects):
                 break
             title = line
         dest = os.path.splitext(os.path.basename(filename))[0] + '.html'
-        articles.append({ 'src': filename, 'dest': dest, 'title': title })
-    articles.sort(key=lambda a: a['dest'])
-    return articles
+        posts.append({ 'src': filename, 'dest': dest, 'title': title })
+    posts.sort(key=lambda a: a['dest'])
+    return posts
 
 
 def load_file(filename):
@@ -104,7 +111,7 @@ def load_file(filename):
 def convert_markdown(filename):
     with open(filename, 'r') as f:
         text = f.read()
-        html = markdown.markdown(text, extensions=['extra'])
+        html = markdown.markdown(text, extensions=['extra', 'codehilite'], extension_configs={ 'codehilite': { 'guess_lang': False } })
     return html
 
 
@@ -115,9 +122,9 @@ def make_output_path(*args):
 
 
 class Template (object):
-    def __init__(self, filename, projects, articles):
+    def __init__(self, filename, projects, posts):
         self.projects = projects
-        self.articles = articles
+        self.posts = posts
 
         with open(filename, 'r') as f:
             data = f.read()
@@ -136,16 +143,16 @@ class Template (object):
 
         for project in self.projects:
             html += '<a href="{}">{}</a><br>\n'.format(os.path.join(data['rootdir'], 'projects', project['name']), project['title'])
-        if self.articles and len(self.articles) > 0:
+        if self.posts and len(self.posts) > 0:
             html += '<hr>\n'
-            html += '<h3>Articles</h3>\n'
-            html += self.generate_articles_list(data)
+            html += '<h3>Posts</h3>\n'
+            html += self.generate_posts_list(data)
         return html
 
-    def generate_articles_list(self, data):
+    def generate_posts_list(self, data):
         html = '<ul>'
-        for article in self.articles:
-            html += '<li><a href="{}">{}</a></li>\n'.format(os.path.join(data['rootdir'], 'articles', article['dest']), article['title'])
+        for post in self.posts:
+            html += '<li><a href="{}">{}</a></li>\n'.format(os.path.join(data['rootdir'], 'posts', post['dest']), post['title'])
         html += '</ul>'
         return html
 
@@ -157,9 +164,9 @@ class Template (object):
 
     def generate_project_index(self, filename, data):
         html = load_file(filename)
-        if self.articles and len(self.articles) > 0:
-            html += '<h2>Articles</h2>\n'
-            html += self.generate_articles_list(data)
+        if self.posts and len(self.posts) > 0:
+            html += '<h2>Posts</h2>\n'
+            html += self.generate_posts_list(data)
         return html
 
     def render_template(self, filename, html, data):
@@ -173,9 +180,9 @@ class Template (object):
             f.write(self.footer.format(**data))
 
 
-def generate_site(projects, articles):
+def generate_site(projects, posts):
     os.makedirs(output_dir, exist_ok=True)
-    template = Template(os.path.join(input_dir, 'index.template.html'), projects, articles)
+    template = Template(os.path.join(input_dir, 'index.template.html'), projects, posts)
 
     # Generate the project index
     index = os.path.join(input_dir, 'index.html')
@@ -193,9 +200,9 @@ def generate_site(projects, articles):
             data = dict(rootdir='../..', title=project['title'], project_name=project['name'], project_github=project['github'])
             template.render_template(destpath, convert_markdown(readme[0]), data)
 
-    for article in articles:
-        data = dict(rootdir='..', title=article['title'])
-        template.render_template(os.path.join(output_dir, 'articles', article['dest']), convert_markdown(article['src']), data)
+    for post in posts:
+        data = dict(rootdir='..', title=post['title'])
+        template.render_template(os.path.join(output_dir, 'posts', post['dest']), convert_markdown(post['src']), data)
 
 
 def main():
@@ -212,9 +219,9 @@ def main():
         if not args.no_copy:
             copy_images(projects)
 
-    articles = collect_articles(projects)
+    posts = collect_posts(projects)
     if not args.no_generate:
-        generate_site(projects, articles)
+        generate_site(projects, posts)
 
 
 if __name__ == '__main__':

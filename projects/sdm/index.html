@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/code.css" type="text/css" charset="utf-8" />
 </head>
 <body>
 <div id="main">
@@ -37,8 +39,8 @@
 <a href="../../projects/sdrl">SDRL Interpreter</a><br>
 <a href="../../projects/stutter">Stutter IRC Client</a><br>
 <hr>
-<h3>Articles</h3>
-<ul><li><a href="../../articles/molten_overview.html">An Overview Of Molten Internals</a></li>
+<h3>Posts</h3>
+<ul><li><a href="../../posts/molten_overview.html">An Overview Of Molten Internals</a></li>
 </ul>
         <hr>
         <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
@@ -67,20 +69,21 @@ in python.</p>
 <h2>Running</h2>
 <p>There shouldn't be a need to change anything before compiling, but there are some basic settings in config.mk.
 After compiling, a single binary named 'moo' will be created in bin/.</p>
-<pre><code>tar -xvzf sdm.tar.gz
+<div class="codehilite"><pre><span></span><code>tar -xvzf sdm.tar.gz
 cd sdm
 make
 bin/moo -l code/core.moo
-</code></pre>
+</code></pre></div>
+
 <p>Note: All paths are relative to the data directory, which defaults to data/, so the correct way to run the program
 is with 'code/core.moo' and not 'data/code/core.moo'</p>
 <h2>Scripting</h2>
 <h3>Basic Example of an Object</h3>
-<pre><code>(define *global*.thing (root:clone))
+<div class="codehilite"><pre><span></span><code>(define *global*.thing (root:clone))
 
 (define thing.name &quot;generic-thing&quot;)
 (define thing.title &quot;something&quot;)
-(define thing.description &quot;You're not sure what it is.&quot;)
+(define thing.description &quot;You&#39;re not sure what it is.&quot;)
 
 (define thing:move (lambda (this where)
     (define was this.location)
@@ -93,7 +96,8 @@ is with 'code/core.moo' and not 'data/code/core.moo'</p>
 (define thing:look_self (lambda (this)
     (user:tell (expand &quot;&lt;lightgreen&gt;$this.description&quot;))
 ))
-</code></pre>
+</code></pre></div>
+
 <p>This is just a quick example to give a feel for the scripting language.  First, the root object
 is cloned and the newly created object is assigned to the global name 'thing'.  Some properties of the
 new object are set, and then 2 methods are defined.  The 'move' method is called when the object is

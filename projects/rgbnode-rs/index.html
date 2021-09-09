@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/code.css" type="text/css" charset="utf-8" />
 </head>
 <body>
 <div id="main">
@@ -37,8 +39,8 @@
 <a href="../../projects/sdrl">SDRL Interpreter</a><br>
 <a href="../../projects/stutter">Stutter IRC Client</a><br>
 <hr>
-<h3>Articles</h3>
-<ul><li><a href="../../articles/molten_overview.html">An Overview Of Molten Internals</a></li>
+<h3>Posts</h3>
+<ul><li><a href="../../posts/molten_overview.html">An Overview Of Molten Internals</a></li>
 </ul>
         <hr>
         <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
@@ -55,11 +57,12 @@ serial, which can control the RGB output from a computer using a simple line-bas
 an IR receiver using the <a href="https://github.com/jkristell/infrared">infrared</a> library, with some custom codes that
 can also control the RGB output.</p>
 <p>I've been using OpenOCD to flash and debug the board.  To build the code and flash the board:</p>
-<pre><code>cargo build --release
+<div class="codehilite"><pre><span></span><code>cargo build --release
 openocd -f openocd.cfg -c &quot;program target/thumbv7m-none-eabi/release/rgbnode-rs verify reset exit&quot;
-</code></pre>
+</code></pre></div>
+
 <p>It is also possible to flash the program from within gdb:</p>
-<pre><code>openocd
+<div class="codehilite"><pre><span></span><code>openocd
 
 # then, in a separate terminal run
 
@@ -68,11 +71,13 @@ gdb-multiarch target/thumbv7m-none-eabi/release/rgbnode-rs
 (gdb) monitor arm semihosting enable
 (gdb) load
 (gdb) run
-</code></pre>
+</code></pre></div>
+
 <p>A .gdbinit file is include which will connect to the remote debugger and enable semihosting, but it must be explicitly
 allow from ~/.gdbinit with a line like:</p>
-<pre><code>add-auto-load-safe-path /path/to/project/rgbnode-rs/.gdbinit
-</code></pre>
+<div class="codehilite"><pre><span></span><code>add-auto-load-safe-path /path/to/project/rgbnode-rs/.gdbinit
+</code></pre></div>
+
 <p>Note: the OpenOCD target in openocd.cfg has been set to stm32f1x-clone.cfg, which is a copy of the standard
 scripts/target/stm32f1x.cfg with <code>set _CPUTAPID 0x1ba01477</code> changed to <code>set _CPUTAPID 0x2ba01477</code> in order to work with
 the CKS clone of the STM32 chip on my very cheap bluepill boards.</p>

@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/code.css" type="text/css" charset="utf-8" />
 </head>
 <body>
 <div id="main">
@@ -37,8 +39,8 @@
 <a href="../../projects/sdrl">SDRL Interpreter</a><br>
 <a href="../../projects/stutter">Stutter IRC Client</a><br>
 <hr>
-<h3>Articles</h3>
-<ul><li><a href="../../articles/molten_overview.html">An Overview Of Molten Internals</a></li>
+<h3>Posts</h3>
+<ul><li><a href="../../posts/molten_overview.html">An Overview Of Molten Internals</a></li>
 </ul>
         <hr>
         <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
@@ -59,16 +61,19 @@ required for various features.  Most Debian/Ubuntu based distros will likely hav
 been run in Windows 7, with python and the necessary python libraries installed manually, although I no longer test the
 code on Windows.</p>
 <p>To run the code, while in the source directory, use the command:</p>
-<pre><code>python3 nerve.py
-</code></pre>
+<div class="codehilite"><pre><span></span><code>python3 nerve.py
+</code></pre></div>
+
 <p>The default configuration directory is ~/.nerve, however it can be set on the command line:</p>
-<pre><code>python3 nerve.py -c config/&lt;site&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><code>python3 nerve.py -c config/&lt;site&gt;
+</code></pre></div>
+
 <p>The configuration for a particular instance is stored entirely in the configuration directory.  Different instances can
 be run on the same computer by simply specifying a different configuration directory to use.</p>
 <p>Even better is to run nerve using:</p>
-<pre><code>nerve.sh config/&lt;site&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><code>nerve.sh config/&lt;site&gt;
+</code></pre></div>
+
 <p>This script will check for a 'restart' exit status and relaunch nerve if found, so that the server can be restarted
 using a specific query.</p>
 <h2>Configuration</h2>

@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/code.css" type="text/css" charset="utf-8" />
 </head>
 <body>
 <div id="main">
@@ -37,8 +39,8 @@
 <a href="../../projects/sdrl">SDRL Interpreter</a><br>
 <a href="../../projects/stutter">Stutter IRC Client</a><br>
 <hr>
-<h3>Articles</h3>
-<ul><li><a href="../../articles/molten_overview.html">An Overview Of Molten Internals</a></li>
+<h3>Posts</h3>
+<ul><li><a href="../../posts/molten_overview.html">An Overview Of Molten Internals</a></li>
 </ul>
         <hr>
         <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
@@ -59,15 +61,17 @@ of all image links posted.  Logarithm also provides useful commands to users
 of the channel, such as a calculator, decision maker and 8ball game.  It has
 been in use since 2002.</p>
 <h2>Running</h2>
-<pre><code>tar -xvzf logarithm.tar.gz
+<div class="codehilite"><pre><span></span><code>tar -xvzf logarithm.tar.gz
 cd logarithm
 ./logarithm start
-</code></pre>
+</code></pre></div>
+
 <p>Make sure to edit the files in etc/ with the required settings before running.  The most pertinent
 settings are the bot's nick, the server to connect to, and the channels to join once connected.</p>
 <p>Logarithm can also be started automatically by adding the following line to your user crontab:</p>
-<pre><code>*/5 * * * *     cd /home/logarithm &amp;&amp; ./logarithm.chk
-</code></pre>
+<div class="codehilite"><pre><span></span><code>*/5 * * * *     cd /home/logarithm &amp;&amp; ./logarithm.chk
+</code></pre></div>
+
 <h2>News</h2>
 <h5>Version 0.9 Released!</h5>
 <p class="entry"><em>April 24, 2010</em>

@@ -45,6 +45,11 @@ hr {
   #menu-toggle {
     display: none;
   }
+
+  #content img {
+    max-width: 750px;
+    max-height: 750px;
+  }
 }
 
 @media all and (max-width: 1000px) {
@@ -109,8 +114,18 @@ input.toggle-trigger
 /* Markdown Elements Styling */
 
 #content h1 {
+  text-align: left;
   text-decoration: underline;
   line-height: 1.25em;
+  font-size: 20pt;
+}
+
+#content h2 {
+  font-size: 16pt;
+}
+
+#content h3 {
+  font-size: 14pt;
 }
 
 #content h6 {       /* Started Date */
@@ -123,8 +138,8 @@ input.toggle-trigger
 /* Images */
 
 #content img {
-  max-width: 750px;
-  max-height: 750px;
+  max-width: 100%;
+  max-height: auto;
 }
 
 #content img.thumb {
@@ -133,6 +148,10 @@ input.toggle-trigger
 }
 
 /* Code Block */
+
+#content code {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
 
 #content pre {
   height: auto;
@@ -144,7 +163,7 @@ input.toggle-trigger
   border-radius: 4px;
   color: #333333;
   background-color: #eeffcc;
-  font-family: monospace, sans-serif;
+  font-size: 11pt;
 }
 
 #content code:not(pre > code) {
@@ -153,7 +172,6 @@ input.toggle-trigger
   color: #333333;
   background-color: #eeffcc;
   font-size: 0.85em;
-  font-family: monospace, sans-serif;
 }
 
 /* Project List Entries (Main Index) */

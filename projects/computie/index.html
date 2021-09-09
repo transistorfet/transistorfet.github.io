@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/code.css" type="text/css" charset="utf-8" />
 </head>
 <body>
 <div id="main">
@@ -37,8 +39,8 @@
 <a href="../../projects/sdrl">SDRL Interpreter</a><br>
 <a href="../../projects/stutter">Stutter IRC Client</a><br>
 <hr>
-<h3>Articles</h3>
-<ul><li><a href="../../articles/molten_overview.html">An Overview Of Molten Internals</a></li>
+<h3>Posts</h3>
+<ul><li><a href="../../posts/molten_overview.html">An Overview Of Molten Internals</a></li>
 </ul>
         <hr>
         <a href="https://github.com/transistorfet"><img width="32" src="../../assets/github.png"></a>
@@ -70,7 +72,7 @@ the kernel which then starts the shell.  From the shell, some basic file operati
 It has a bus for connecting a supervisor arduino or expansion devices, but it can operate standalone using the onboard
 UARTs.  It has 1MB of onboard Flash, 1MB of onboard SRAM, and a 68681 Dual UART chip with GPIO.  Some of the GPIO
 pins are wired to 4 general purpose LEDs and 2 general purpose buttons.</p>
-<p><a href="https://github.com/transistorfet/computie/raw/master/hardware/68k-SBC/68kBoard.pdf">68k Board Schematics</a></p>
+<p><a href="https://github.com/transistorfet/computie/raw/main/hardware/68k-SBC/68kBoard.pdf">68k Board Schematics</a></p>
 <p>The serial ports require external TTL-to-something conversion and are designed to be used with an FTDI USB-to-Serial
 cable or adapter.  Two optional jumpers can be used to supply power to the board from one of the USB ports (only one
 should be jumped at a time, and only if the onboard power supply is disconnected).  It typically takes about 365mA at
