@@ -185,13 +185,10 @@ input.toggle-trigger
   overflow: hidden;
 }
 
-.project a {
-  color: black;
-}
-
 .project h2 {
   margin: 0px;
   padding: 0px;
+  color: black;
 }
 
 .project img {

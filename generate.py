@@ -156,17 +156,19 @@ class Template (object):
         html += '</ul>'
         return html
 
-    def generate_download(self, name, github):
-        html = '<hr>\n<a name="download"></a>\n<h3>Get the Source</h3>\n'
-        html += '<a href="{0}">{0}</a><br><br>\n'.format(github if github != 'default' else github_link_fmt.format(name))
-        html += 'Or clone with:<pre><code>git clone {0}</code></pre>\n'.format(github_git_fmt.format(name))
-        return html
-
-    def generate_project_index(self, filename, data):
+    def generate_main_page(self, filename, data):
         html = load_file(filename)
         if self.posts and len(self.posts) > 0:
             html += '<h2>Posts</h2>\n'
             html += self.generate_posts_list(data)
+        return html
+
+    def generate_project_page(self, readme, data):
+        html = convert_markdown(readme)
+        if data.get('project_github'):
+            html += '<hr>\n<a name="download"></a>\n<h3>Get the Source</h3>\n'
+            html += '<a href="{0}">{0}</a><br><br>\n'.format(data['project_github'] if data['project_github'] != 'default' else github_link_fmt.format(data['project_name']))
+            html += 'Or clone with:<pre><code>git clone {0}</code></pre>\n'.format(github_git_fmt.format(data['project_name']))
         return html
 
     def render_template(self, filename, html, data):
@@ -175,8 +177,6 @@ class Template (object):
             f.write(self.generate_sidebar(data))
             f.write(self.middle.format(**data))
             f.write(html)
-            if data.get('project_github'):
-                f.write(self.generate_download(data['project_name'], data['project_github']))
             f.write(self.footer.format(**data))
 
 
@@ -187,7 +187,7 @@ def generate_site(projects, posts):
     # Generate the project index
     index = os.path.join(input_dir, 'index.html')
     if os.path.exists(index):
-        html = template.generate_project_index(index, dict(rootdir='.'))
+        html = template.generate_main_page(index, dict(rootdir='.'))
         template.render_template(os.path.join(output_dir, 'index.html'), html, dict(rootdir='.', title='Projects'))
 
     for project in projects:
@@ -198,7 +198,7 @@ def generate_site(projects, posts):
         if readme:
             destpath = make_output_path('projects', project['name'], 'index.html')
             data = dict(rootdir='../..', title=project['title'], project_name=project['name'], project_github=project['github'])
-            template.render_template(destpath, convert_markdown(readme[0]), data)
+            template.render_template(destpath, template.generate_project_page(readme[0], data), data)
 
     for post in posts:
         data = dict(rootdir='..', title=post['title'])

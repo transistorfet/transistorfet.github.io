@@ -18,6 +18,12 @@
         "repo": "projects/nerve/nerve.git"
     },
     {
+        "name": "moa",
+        "title": "Moa Emulator",
+        "github": "default",
+        "repo": "projects/moa/moa.git"
+    },
+    {
         "name": "rgbnode",
         "title": "RGB Node",
         "github": "default",
