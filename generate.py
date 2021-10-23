@@ -9,7 +9,6 @@ import subprocess
 
 
 local_repos = "/media/home/git"
-repo_link_fmt = 'http://jabberwocky.ca/git/{}.git'
 github_link_fmt = 'https://github.com/transistorfet/{}'
 github_git_fmt = 'git@github.com:transistorfet/{}'
 

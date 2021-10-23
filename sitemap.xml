@@ -4,111 +4,114 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
-  <loc>https://transistorfet.github.io/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/.</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/.</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/computie/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/computie/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/molten/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/molten/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/nerve/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/moa/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/rgbnode/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/nerve/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/rgbnode-rs/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/rgbnode/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/webmush/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/rgbnode-rs/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/conlog/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/webmush/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/fallingrust/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/conlog/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/abugslife/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/fallingrust/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/acamlslife/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/abugslife/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/synthetik/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/acamlslife/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/meteorman/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/synthetik/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/logarithm/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/meteorman/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/sdm/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/logarithm/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/sdrl/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/sdm/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/projects/stutter/</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/sdrl/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/posts/2021-09-bootstrapping_with_arduino.html</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/projects/stutter/</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://jabberwocky.ca/posts/2021-09-bootstrapping_with_arduino.html</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.90</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/posts/molten_overview.html</loc>
-  <lastmod>2021-09-13T01:49:32+00:00</lastmod>
+  <loc>https://jabberwocky.ca/posts/molten_overview.html</loc>
+  <lastmod>2021-10-20T01:49:32+00:00</lastmod>
   <priority>0.90</priority>
 </url>
 <url>
-  <loc>https://transistorfet.github.io/fallingrust/</loc>
+  <loc>https://jabberwocky.ca/fallingrust/</loc>
   <lastmod>2021-03-30T04:11:09+00:00</lastmod>
   <priority>0.80</priority>
 </url>
