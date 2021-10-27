@@ -141,7 +141,7 @@ class Template (object):
             html += '<a href="#download">Get the Source</a><hr>\n'
 
         for project in self.projects:
-            html += '<a href="{}">{}</a><br>\n'.format(os.path.join(data['rootdir'], 'projects', project['name']), project['title'])
+            html += '<a href="{}">{}</a><br>\n'.format(os.path.join(data['rootdir'], 'projects', project['name']) + '/', project['title'])
         if self.posts and len(self.posts) > 0:
             html += '<hr>\n'
             html += '<h3>Posts</h3>\n'
