@@ -9,6 +9,7 @@ import subprocess
 
 
 local_repos = "/media/home/git"
+cannonical_root = 'https://jabberwocky.ca'
 github_link_fmt = 'https://github.com/transistorfet/{}'
 github_git_fmt = 'git@github.com:transistorfet/{}'
 
@@ -114,26 +115,13 @@ def convert_markdown(filename):
     return html
 
 
-def make_output_path(*args):
-    path = os.path.join(output_dir, *args[:-1])
-    os.makedirs(path, exist_ok=True)
-    return os.path.join(path, args[-1])
-
-
 class Template (object):
     def __init__(self, filename, projects, posts):
         self.projects = projects
         self.posts = posts
 
         with open(filename, 'r') as f:
-            data = f.read()
-
-        (header, remain) = re.split(r'[ \t]*\{% sidebar %\}[ \t]*\n', data, 1)
-        (middle, footer) = re.split(r'[ \t]*\{% content %\}[ \t]*\n', remain, 1)
-
-        self.header = header
-        self.middle = middle
-        self.footer = footer
+            self.template = f.read()
 
     def generate_sidebar(self, data):
         html = ''
@@ -171,37 +159,44 @@ class Template (object):
         return html
 
     def render_template(self, filename, html, data):
-        with open(filename, 'w') as f:
-            f.write(self.header.format(**data))
-            f.write(self.generate_sidebar(data))
-            f.write(self.middle.format(**data))
-            f.write(html)
-            f.write(self.footer.format(**data))
+        data['cannonical_root'] = cannonical_root
+        data['cannonical_link'] = os.path.join(cannonical_root, data['link'])
+
+        fullpath = os.path.join(output_dir, filename)
+        os.makedirs(os.path.dirname(fullpath), exist_ok=True)
+        with open(fullpath, 'w') as f:
+            data['sidebar'] = self.generate_sidebar(data)
+            data['content'] = html
+            f.write(self.template.format(**data))
 
 
 def generate_site(projects, posts):
     os.makedirs(output_dir, exist_ok=True)
     template = Template(os.path.join(input_dir, 'index.template.html'), projects, posts)
 
-    # Generate the project index
+    # Generate the main page index
     index = os.path.join(input_dir, 'index.html')
     if os.path.exists(index):
-        html = template.generate_main_page(index, dict(rootdir='.'))
-        template.render_template(os.path.join(output_dir, 'index.html'), html, dict(rootdir='.', title='Projects'))
+        data = dict(rootdir='.', link='', title='Projects')
+        html = template.generate_main_page(index, data)
+        template.render_template('index.html', html, data)
 
+    # Generate each project readme page
     for project in projects:
         print(project['name'])
 
         # Generate project file from README markdown
         readme = find_source_files(project['name'], 'README.md')
         if readme:
-            destpath = make_output_path('projects', project['name'], 'index.html')
-            data = dict(rootdir='../..', title=project['title'], project_name=project['name'], project_github=project['github'])
-            template.render_template(destpath, template.generate_project_page(readme[0], data), data)
+            link = os.path.join('projects', project['name'])
+            data = dict(rootdir='../..', link=link + '/', title=project['title'], project_name=project['name'], project_github=project['github'])
+            template.render_template(os.path.join(link, 'index.html'), template.generate_project_page(readme[0], data), data)
 
+    # Generate each post page
     for post in posts:
-        data = dict(rootdir='..', title=post['title'])
-        template.render_template(os.path.join(output_dir, 'posts', post['dest']), convert_markdown(post['src']), data)
+        link = os.path.join('posts', post['dest'])
+        data = dict(rootdir='..', link=link, title=post['title'])
+        template.render_template(link, convert_markdown(post['src']), data)
 
 
 def main():

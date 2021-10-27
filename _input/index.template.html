@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>{title}</title>
+    <link rel="cannonical" href="{cannonical_link}" />
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,7 +22,7 @@
         <a href="{rootdir}/"><h2>Projects</h2></a>
         <hr>
 
-        {% sidebar %}
+{sidebar}
 
         <hr>
         <a href="https://github.com/transistorfet"><img width="32" src="{rootdir}/assets/github.png"></a>
@@ -30,7 +31,7 @@
     </div>
     <div id="content">
 
-        {% content %}
+{content}
 
     </div>
     <div id="footer">
