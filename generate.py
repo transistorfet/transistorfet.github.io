@@ -9,7 +9,7 @@ import subprocess
 
 
 local_repos = "/media/home/git"
-cannonical_root = 'https://jabberwocky.ca'
+canonical_root = 'https://jabberwocky.ca'
 github_link_fmt = 'https://github.com/transistorfet/{}'
 github_git_fmt = 'git@github.com:transistorfet/{}'
 
@@ -159,8 +159,8 @@ class Template (object):
         return html
 
     def render_template(self, filename, html, data):
-        data['cannonical_root'] = cannonical_root
-        data['cannonical_link'] = os.path.join(cannonical_root, data['link'])
+        data['canonical_root'] = canonical_root
+        data['canonical_link'] = os.path.join(canonical_root, data['link'])
 
         fullpath = os.path.join(output_dir, filename)
         os.makedirs(os.path.dirname(fullpath), exist_ok=True)
