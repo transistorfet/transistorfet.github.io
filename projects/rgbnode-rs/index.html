@@ -54,8 +54,8 @@
     </div>
     <div id="content">
 
-<h1>RGBNode-rs</h1>
-<h6><em>Started April 30, 2021</em></h6>
+<h1 id="rgbnode-rs">RGBNode-rs</h1>
+<h6 id="started-april-30-2021"><em>Started April 30, 2021</em></h6>
 <p>This is a port of <a href="https://github.com/transistorfet/rgbnode">RGBNode</a> to Rust using a Bluepill with a STM32F103
 microcontroller.  It uses <a href="https://github.com/mvirkkunen/usbd-serial">usbd-serial</a> to connect to a computer via
 serial, which can control the RGB output from a computer using a simple line-based text protocol.  It also has
@@ -89,7 +89,7 @@ the CKS clone of the STM32 chip on my very cheap bluepill boards.</p>
 <p>These boards also have an incorrect pullup resistor for D+ (10kOhm instead of 1.8kOhm), which makes the USB device
 unable to be recognized by my computer.  I've attached an external 1.8kOhm resistor between 3.3V and PA12.  See
 https://cgit.pinealservo.com/BluePill_Rust/resources/src/branch/master/notes.org#headline-2 for more details</p>
-<h1>Using via Serial</h1>
+<h1 id="using-via-serial">Using via Serial</h1>
 <p>The following commands are recognized over serial:</p>
 <p><code>power &lt;0|1&gt;</code>
     Toggle power.  If the optional argument is provided, turn on (1) or off (0)</p>

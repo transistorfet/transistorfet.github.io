@@ -54,8 +54,8 @@
     </div>
     <div id="content">
 
-<h1>SDRL</h1>
-<h6><em>Started January 23, 2004</em></h6>
+<h1 id="sdrl">SDRL</h1>
+<h6 id="started-january-23-2004"><em>Started January 23, 2004</em></h6>
 <p>SDRL is a very strange language I made near the end of university.  It was the evolution of efforts to make a language
 with an overly simplified syntax.  The previous languages were purposefuly obtuse and all language constructs were a single
 character.  With SDRL, the actual parser was selectable, with the default eventually being a scheme/lisp-like syntax, but
@@ -63,7 +63,7 @@ it was designed such that almost everything was a function.  The only 'form' (in
 which returns an expression-type object (the parsed AST) for the code that appears within the brackets.  Everything else is a
 function, including the (if ...) statements, which are passed the conditional blocks as expression-type values.  It then
 evaluates the appropriate expression based on the result of the conditional expression.</p>
-<h2>Running</h2>
+<h2 id="running">Running</h2>
 <p>There shouldn't be a need to run ./configure before compiling.  After compiling, a single binary named 'sdrl'
 will be created in bin/, as well as some static libraries lib/.  There is no install option.</p>
 <div class="codehilite"><pre><span></span><code>tar -xvzf sdrl.tar.gz
@@ -72,7 +72,7 @@ make
 bin/sdrl test.sdrl
 </code></pre></div>
 
-<h2>Towers of Hanoi Example in SDRL</h2>
+<h2 id="towers-of-hanoi-example-in-sdrl">Towers of Hanoi Example in SDRL</h2>
 <div class="codehilite"><pre><span></span><code>(set move-tower (lexblock
     (setlist (@ func from to discs) ($ _))
     (if (= ($ discs) 1)
@@ -94,8 +94,8 @@ bin/sdrl test.sdrl
 (move-tower 1 3 3)
 </code></pre></div>
 
-<h2>News</h2>
-<h5>Version 0.3 Released!</h5>
+<h2 id="news">News</h2>
+<h5 id="version-03-released">Version 0.3 Released!</h5>
 <p class="entry"><em>December 23, 2007</em>
 It's been a long long time since the last release and most of the changes in this release were implemented shortly
 after that last release but as things go, I drifted into other projects and never got around to releasing those
@@ -108,13 +108,13 @@ libraries.  The parser has been completely removed from the core and put into th
 easy selection of the parser.  The primary parser has been changed to the "lispy" parser.  I also added the beginnings
 of a proper automated test suite.  Plans for the next release are primarily to polish and optimize the code where
 possible.</p>
-<h5>Version 0.2 Released!</h5>
+<h5 id="version-02-released">Version 0.2 Released!</h5>
 <p class="entry"><em>March 30, 2005</em>
 Version 0.2 has been released.  Its been over a year and after some time away I have completely re-written the
 interpreter.  It is completely incompatible with version 0.1 (but I assure you, much better).  I already have plans for
 a next release but I am not sure how much I will implement by then.  Possible features include a dynamic parser, full
 garbage collection (and therefore references), and better error handling/reporting mechanisms.</p>
-<h5>Version 0.1 Released!</h5>
+<h5 id="version-01-released">Version 0.1 Released!</h5>
 <p class="entry"><em>February 09, 2004</em>
 Version 0.1 has been released.  It is very primative but it works.  I already have some ideas for major improvements but
 I am unsure when I will get around to implementing them.</p><hr>

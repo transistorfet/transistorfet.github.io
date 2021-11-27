@@ -53,8 +53,8 @@
     </div>
     <div id="content">
 
-<h1>Bootstrapping a Homebuilt Computer Using An Arduino</h1>
-<h6><em>Written September 2021</em></h6>
+<h1 id="bootstrapping-a-homebuilt-computer-using-an-arduino">Bootstrapping a Homebuilt Computer Using An Arduino</h1>
+<h6 id="written-september-2021"><em>Written September 2021</em></h6>
 <p>Over the last couple of years I've been working on a series of projects to build my own computer
 from scratch.  It had been a dream of mine when I first started learning about computers and
 electronics to build my own computer, and I tried designing some on paper with what I knew, but such
@@ -67,7 +67,7 @@ breadboard, I thought perhaps I could use an Arduino Mega, with it's multitude o
 Initially I thought I could use it to program a Flash or EEPROM chip separately, but after thinking
 about it a bit, I realized I could program a RAM chip in the same circuit as the CPU.  What follows
 is my journey towards building my first single board computer through incremental experimentation.</p>
-<h2>The Chips</h2>
+<h2 id="the-chips">The Chips</h2>
 <p>PDP-11/Hack is based around an old PDP-11 processor module that was bought online on Ebay.  I hadn't
 thought about buying used parts online before since I didn't expect them to work, but that got me
 searching around for what was available.  While Ebay had many used chips, especially the less common
@@ -85,7 +85,7 @@ compatible memory chip of the same size would be relabelled as a more popular pa
 the popular HM628512 static RAM chip.</p>
 <p>I ordered some Z80s, 6502s, 65816s, 68000s, 68010s, 8088s, and 8086s, as well as some peripheral
 chips for each CPU, some memory chips, and various speeds of crystals.</p>
-<h2>The First Fiddlings</h2>
+<h2 id="the-first-fiddlings">The First Fiddlings</h2>
 <p>While waiting for my first orders of chips to arrive, I searched though the various old chips that I
 had scavenged from disassembled equipment over the years.  I happened to have a <a href="https://datasheet.octopart.com/M5M5118P-Mitsubishi-datasheet-154393393.pdf">Mitsubishi
 M5M5118P</a> Static RAM
@@ -190,7 +190,7 @@ counterfeit and non-functional.  Sadly though, I found out with 68k-SBC Rev.0, w
 EEPROMs, that the data would often disappear after a few hours or days.  Luckily I didn't need them
 while testing Rev.0, so I didn't bother buying new EEPROMs from digikey, and I switched to Flash
 chips for the next revision.</p>
-<h2>On To Z80s</h2>
+<h2 id="on-to-z80s">On To Z80s</h2>
 <p>The Z80 CPUs I had ordered arrived first, so I started with them.  The Z80 has separate pins for the
 address and data lines, which simplifies the wiring, and it also has a static core, so running it at
 a very low frequency is possible.  I whipped up a simple oscillator using a 555 timer set to
@@ -367,7 +367,7 @@ lost a lot of time trying to figure out why the program was not executing as exp
 realized it was caused by the damage to the breadboard.  The fact that all the wires were still
 joined together in bundles of 8 or 12 also caused issues since they couldn't move relative to each
 other, and the tension caused by this would pull out some of the wires, causing poor connections.</p>
-<h2>Add Simplicity</h2>
+<h2 id="add-simplicity">Add Simplicity</h2>
 <p>With the concept of intercepting the bus request proven, I set about making a much simpler
 breadboard setup without memory chips.  By this point, I had homed in on the 68000 as the CPU to
 push forward with.  It would have more processing power and addressable memory than most of the
@@ -454,7 +454,7 @@ prompt will be displayed which responds to some simple commands, such as <code>r
 <code>reset</code> to reset it.  The memory chip tests can be run from the command prompt as well.  I've mostly
 hand-changed the address and size values used by the memory tests as needed rather than allowing
 them to be specified in the command.</p>
-<h2>Adding Serial via MC68681</h2>
+<h2 id="adding-serial-via-mc68681">Adding Serial via MC68681</h2>
 <p>The ultimate goal was a standalone computer on a custom PCB, so I needed an IO device that wasn't
 the arduino.  The obvious choice was the MC68681 chip, which is designed to interface easily to the
 68000, and which is still widely available.  It has 2 serial ports, 6 general purpose input pins,
@@ -482,7 +482,7 @@ The code for the monitor at this point in time can be seen
 <a href="https://github.com/transistorfet/computie/tree/37a3d22eb2dc59042ab9b4293cf30fd41935a81a/68k-SBC/68kMonitor/src">here</a>.
 I was already starting to implementing some of the standard C library functions for formatting
 numbers and strings, so that I could easily print out debug information to the serial terminal</p>
-<h2>The First PCB</h2>
+<h2 id="the-first-pcb">The First PCB</h2>
 <p>While experimenting with the 68k on a breadboard, I started working on the PCB design in KiCad for a
 system that could run without the arduino, 68k-SBC Rev.0.  (Note: I started with revision numbers
 from 0 but later decided I should start from 1 instead, so I skipped Rev.1, and the second version
@@ -504,7 +504,7 @@ to addresses in the 0x000000 range, which is where the boot vector table is, all
 CPU without the EEPROMs.  The EEPROMs can also be programmed while in the 0x200000 address range.</p>
 <p>There were various issues with this board and it wasn't long before I moved on to the next revision,
 but I'll save that for another post.</p>
-<h2>End of the Beginning</h2>
+<h2 id="end-of-the-beginning">End of the Beginning</h2>
 <p>It's been such a fun and rewarding experience playing around with old CPUs again.  Using an arduino
 to bootstrap the process made it a lot easier to experiment and test things out quickly.  From the
 time I started playing around with memory chips in October of 2019, and working a full time job, I

@@ -54,13 +54,13 @@
     </div>
     <div id="content">
 
-<h1>Nerve Control Network</h1>
-<h6><em>Started August 05, 2013</em></h6>
+<h1 id="nerve-control-network">Nerve Control Network</h1>
+<h6 id="started-august-05-2013"><em>Started August 05, 2013</em></h6>
 <p>Nerve is a web-based home automation system implemented in python3.  It's primarily used as an interface to a media
 player/media library (VLC, XMMS2, etc).  Its modular structure makes it easy to extend and customize, and its generic
 widgets and devices system makes it easier to tie together different hardware devices, sensors, and internet
 information sources into one place (or across distributed servers).</p>
-<h2>Installation</h2>
+<h2 id="installation">Installation</h2>
 <p>Unpack the source code where ever is most convenient.  Check out dependencies.txt for a list of the Debian packages
 required for various features.  Most Debian/Ubuntu based distros will likely have the same package names.  The code has
 been run in Windows 7, with python and the necessary python libraries installed manually, although I no longer test the
@@ -81,7 +81,7 @@ be run on the same computer by simply specifying a different configuration direc
 
 <p>This script will check for a 'restart' exit status and relaunch nerve if found, so that the server can be restarted
 using a specific query.</p>
-<h2>Configuration</h2>
+<h2 id="configuration">Configuration</h2>
 <p>To configure an instance of nerve, you might want to start with one of the example configurations included in the
 config/ directory of the source code.  The settings.json file is the main config file.  It describes what objects to
 create when the system starts, what configuration settings each object should initially be set to, and where in the
@@ -90,7 +90,7 @@ object filesystem hierarchy the object should be placed.</p>
 level 'directories' are '/modules', '/devices', and '/servers'.  The contents of the '/modules' directory is
 automatically generated based on the available modules in the system.  The '/devices' and '/servers' directories
 contain all the device and server objects respectively.  This is by convention only and is not enforced.</p>
-<h2>Gallery</h2>
+<h2 id="gallery">Gallery</h2>
 <p><img alt="" src="images/02-remote-extended-player-controls.png" />
 <img alt="" src="images/04-playlist-current.png" />
 <img alt="" src="images/05-media-search.png" />

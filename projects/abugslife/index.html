@@ -54,8 +54,8 @@
     </div>
     <div id="content">
 
-<h1>A Bug's Life</h1>
-<h6><em>Started December 13, 2016</em></h6>
+<h1 id="a-bugs-life">A Bug's Life</h1>
+<h6 id="started-december-13-2016"><em>Started December 13, 2016</em></h6>
 <p>This is a simple artificial life simulator written in Rust.  A grid of coloured squares represent the ground, with the shade
 representing the amount of food on that tile of ground.  A simulated seasons mechanism regenerates food on the tiles at
 different rates to encourage the creatures to move towards tiles with more food.</p>
@@ -67,7 +67,7 @@ themselves, which inherits a slightly changed version of the parent's neural net
 certain size will die.</p>
 <p>The effect looks like bugs scurrying about, in search of food.  It is possible, after many generations, to get creatures that
 show a strong tendency to hang around tiles with lots of food, and scatter in search of food when those tiles run out of food.</p>
-<h2>Running</h2>
+<h2 id="running">Running</h2>
 <p>You will need Rust and Cargo installed.  If using debian, you can run:</p>
 <div class="codehilite"><pre><span></span><code>sudo apt-get install rustc cargo
 </code></pre></div>
@@ -78,7 +78,7 @@ cargo run --release
 
 <p>You can edit the World::new function in src/world.rs to change which previously saved creatures to initialize the system with,
 or switch the commented code around to randomly generate new creatures from scratch.</p>
-<h2>Screenshots</h2>
+<h2 id="screenshots">Screenshots</h2>
 <p><img alt="" src="images/Screenshot1.png" />
 <img alt="" src="images/Screenshot2.png" />
 <img alt="" src="images/Screenshot3.png" />

@@ -54,15 +54,15 @@
     </div>
     <div id="content">
 
-<h1>Computie68k</h1>
-<h6><em>Started October 03, 2019</em></h6>
+<h1 id="computie68k">Computie68k</h1>
+<h6 id="started-october-03-2019"><em>Started October 03, 2019</em></h6>
 <p>A 68k-based computer, running a simple unix-like operating system.  68k-SBC is a single board computer with
 a 68010 CPU, 1MB SRAM, 1MB Flash, and a 68681 Dual UART controller.  The OS is a simple monolithic kernel
 written in C, with preemptive multitasking via the 68681 timer interrupt.</p>
 <p>68k-SMT is a mostly identical design using SMT and PLCC components.  A CompactFlash card slot has been added
 to this version, but it is also possible to connect a simple breadboarded version to 68k-SBC.</p>
 <p>For more details on how I got up and running, check out <a href="https://transistorfet.github.io/posts/2021-09-bootstrapping_with_arduino.html">Bootstrapping a Homebuilt Computer Using An Arduino</a></p>
-<h2>The Operating System</h2>
+<h2 id="the-operating-system">The Operating System</h2>
 <p>Currently it doesn't have a name.  It's largely based on reading Operating Systems Design and Implementation 2ed by
 Andrew S. Tanenbaum, although I've gone with a monolithic design, at least for the time being, for the simplicity of
 it.  It can do preemptive multitasking using the 68681 timer.  It also has an implementation of the minix version 1
@@ -73,7 +73,7 @@ a BSD sockets-style API, and an NTP command is provided for updating the system 
 <p>The above video shows connecting over serial from a modern PC and resetting the hardware to run the monitor in ROM
 which displays the welcome message.  The kernel is already loaded in RAM, so running the boot command will boot
 the kernel which then starts the shell.  From the shell, some basic file operations and the ps command are shown.</p>
-<h2>The 68k Single Board Computer</h2>
+<h2 id="the-68k-single-board-computer">The 68k Single Board Computer</h2>
 <p>A simple single board computer using a Motorola 68010 CPU, which can connect to a host computer via USB/TTL-Serial.
 It has a bus for connecting a supervisor arduino or expansion devices, but it can operate standalone using the onboard
 UARTs.  It has 1MB of onboard Flash, 1MB of onboard SRAM, and a 68681 Dual UART chip with GPIO.  Some of the GPIO
@@ -94,15 +94,15 @@ It previously was working at 10MHz on the rev0 board.</p>
 <p>The SBC version uses all DIP packaged chips and through-hole parts.  The SMT version uses surface mount chips for the
 logic and ram, and PLCC packaged chips for the rest.  A CompactFlash socket and a 74HC32 to accommodate it has been
 added and the power supply has been removed, but it is otherwise the same design.</p>
-<h2>SMT Revision 1</h2>
+<h2 id="smt-revision-1">SMT Revision 1</h2>
 <p><img alt="alt text" src="images/68k-SMT-rev1/SMT.jpg" title="68k-SMT Rev. 1" />
 <img alt="alt text" src="images/68k-SMT-rev1/SMT-running.jpg" title="68k-SMT Running" /></p>
-<h2>SBC Revision 2</h2>
+<h2 id="sbc-revision-2">SBC Revision 2</h2>
 <p><img alt="alt text" src="images/68k-SBC-rev2/SBC.jpg" title="68k-SBC Rev. 2" />
 <img alt="alt text" src="images/68k-SBC-rev2/ArduinoShield.jpg" title="Supervisor Arduino Shield" />
 <img alt="alt text" src="images/68k-SBC-rev2/SBC-running.jpg" title="68k-SBC Running" />
 <img alt="alt text" src="images/68k-SBC-rev2/PCBs.jpg" title="68k-SBC PCBs" /></p>
-<h2>SBC Revision 0</h2>
+<h2 id="sbc-revision-0">SBC Revision 0</h2>
 <p>This version has 64KB of EEPROM instead of Flash, and doesn't have onboard interrupt circuitry.  It started off with a
 68000 CPU, but that was later upgraded to a 68010 to allow for relocatable interrupt tables when using off-board
 interrupt circuitry.</p>
@@ -113,9 +113,9 @@ interrupt circuitry.</p>
 a single byte to memory, it would also attempt to write to both the high and low chips, instead of only one.  Thanks to
 a poster on EEVblog who suggested patching it with a P-channel MOSFET shown soldered to the back of the SRAM chips to
 interpose the UDS/LDS signals into the chip selects, with the original traces cut.</p>
-<h2>Breadboard Version</h2>
+<h2 id="breadboard-version">Breadboard Version</h2>
 <p><img alt="alt text" src="images/Breadboard-serial.jpg" title="68k-SBC Breadboard" /></p>
-<h2>Operating System Booting From Monitor/Compact Flash</h2>
+<h2 id="operating-system-booting-from-monitorcompact-flash">Operating System Booting From Monitor/Compact Flash</h2>
 <p><img alt="alt text" src="images/OS-booting.gif" title="OS Booting" /></p>
 <p>The above video shows connecting over serial from a modern computer after first powering the board on.  The monitor
 runs first, giving the "&gt;" prompt.  The bootloader has been burnt into flash at address 0x20000.  From the monitor, the
@@ -126,7 +126,7 @@ the ntpdate command to update the system time.  It then runs an interactive shel
 <p>Some commands are shown after boot, and then the httpd program is run (which has forking disabled for the time being).
 From another computer, the curl command is run to issue a request to the board.  The httpd program responds with the
 data "This is a secret message"</p>
-<h2>References</h2>
+<h2 id="references">References</h2>
 <ul>
 <li><a href="http://s100computers.com/My%20System%20Pages/68000%20Board/68K%20CPU%20Board.htm">S-100 68000 CPU Board</a></li>
 <li><a href="https://www.retrobrewcomputers.org/doku.php?id=boards:sbc:tiny68k">Tiny68K, 68000 SBC</a></li>

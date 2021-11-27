@@ -54,8 +54,8 @@
     </div>
     <div id="content">
 
-<h1>Super Duper MOO</h1>
-<h6><em>Started March 13, 2008</em></h6>
+<h1 id="super-duper-moo">Super Duper MOO</h1>
+<h6 id="started-march-13-2008"><em>Started March 13, 2008</em></h6>
 <p>The Super Duper MOO is a generic text-based game/world engine that
 can be used to make a diverse range of games and interactive
 environments.  I started it as a fun project to relax and don't have
@@ -71,7 +71,7 @@ the original LambdaMOO engine which provided much of the inspiration.
 Despite many hours of work, no official releases were ever made.
 It has largely been superseded by the IRCMOO project, written
 in python.</p>
-<h2>Running</h2>
+<h2 id="running">Running</h2>
 <p>There shouldn't be a need to change anything before compiling, but there are some basic settings in config.mk.
 After compiling, a single binary named 'moo' will be created in bin/.</p>
 <div class="codehilite"><pre><span></span><code>tar -xvzf sdm.tar.gz
@@ -82,8 +82,8 @@ bin/moo -l code/core.moo
 
 <p>Note: All paths are relative to the data directory, which defaults to data/, so the correct way to run the program
 is with 'code/core.moo' and not 'data/code/core.moo'</p>
-<h2>Scripting</h2>
-<h3>Basic Example of an Object</h3>
+<h2 id="scripting">Scripting</h2>
+<h3 id="basic-example-of-an-object">Basic Example of an Object</h3>
 <div class="codehilite"><pre><span></span><code>(define *global*.thing (root:clone))
 
 (define thing.name &quot;generic-thing&quot;)

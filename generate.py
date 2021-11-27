@@ -111,7 +111,7 @@ def load_file(filename):
 def convert_markdown(filename):
     with open(filename, 'r') as f:
         text = f.read()
-        html = markdown.markdown(text, extensions=['extra', 'codehilite'], extension_configs={ 'codehilite': { 'guess_lang': False } })
+        html = markdown.markdown(text, extensions=['extra', 'codehilite', 'toc'], extension_configs={ 'codehilite': { 'guess_lang': False } })
     return html
 
 

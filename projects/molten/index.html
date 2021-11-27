@@ -54,8 +54,8 @@
     </div>
     <div id="content">
 
-<h1>Molten</h1>
-<h6><em>Started November 06, 2017</em></h6>
+<h1 id="molten">Molten</h1>
+<h6 id="started-november-06-2017"><em>Started November 06, 2017</em></h6>
 <p>Molten is a programming language which borrows from the ML family of languages,
 as well as from Rust and Python.  The compiler is written in Rust and uses LLVM
 to generate IR which can be compiled to machine code.</p>
@@ -67,7 +67,7 @@ as C++, Rust, and Python (eg. parenthesis-delimited blocks, conventional class
 definitions, generics/type parameters with angle brackets, etc).  For more info
 on the internals, see <a href="https://transistorfet.github.io/posts/molten_overview.html">An Overview Of Molten
 Internals</a></p>
-<h2>Installing</h2>
+<h2 id="installing">Installing</h2>
 <p>You will need <code>rustc</code> and <code>cargo</code> installed.  It's recommended that you use
 <code>rustup</code> to install these.  I've most recently tested it with rustc version
 1.52.  You will also need LLVM 11 installed, as well as libgc
@@ -79,7 +79,7 @@ can be replace with gcc by editing the <code>molten</code> python script.</p>
 <code>brew install llvm@11</code></p>
 <p>You may need to add /usr/local/opt/llvm@11/bin to your path, and you will probably
 need to install libgc separately</p>
-<h2>Running</h2>
+<h2 id="running">Running</h2>
 <p>The <code>molten</code> script helps with compiling and linking IR files.  To run an example:</p>
 <div class="codehilite"><pre><span></span><code>./molten run examples/fac.mol
 </code></pre></div>
@@ -89,7 +89,7 @@ file, as well as all of its dependencies (in this case, the libcore.mol
 library), link them together using clang, along with libgc, and then run the
 binary.  It can also compile to LLVM IR, and run LLVM bitcode by using the <code>-S</code>
 flag.  The resulting .bc file can be run using <code>lli-11</code>.</p>
-<h2>Example</h2>
+<h2 id="example">Example</h2>
 <div class="codehilite"><pre><span></span><code>fn fac(x) {
     if x &lt; 1 then
         1
@@ -100,7 +100,7 @@ flag.  The resulting .bc file can be run using <code>lli-11</code>.</p>
 println(str(fac(10)))
 </code></pre></div>
 
-<h3>Types</h3>
+<h3 id="types">Types</h3>
 <div class="codehilite"><pre><span></span><code>()                  // unit type
 Nil
 Bool
@@ -116,12 +116,12 @@ Array&lt;Int&gt;          // array of integers
 { a: Int, b: Real } // record type
 </code></pre></div>
 
-<h3>Declarations</h3>
+<h3 id="declarations">Declarations</h3>
 <div class="codehilite"><pre><span></span><code>let foo = 0
 let bar: String = &quot;Hey&quot;
 </code></pre></div>
 
-<h3>Functions</h3>
+<h3 id="functions">Functions</h3>
 <div class="codehilite"><pre><span></span><code>fn foo(x, y) =&gt; x + y           // named inline function
 
 fn foo(x, y) { x + y }          // named block function
@@ -131,14 +131,14 @@ let foo = fn x, y =&gt; x + y      // anonymous function
 fn foo(x: Int, y) -&gt; Int { x + y }  // with optional type annotations
 </code></pre></div>
 
-<h3>Invoking Functions</h3>
+<h3 id="invoking-functions">Invoking Functions</h3>
 <p>Unlike in ML, the brackets of a function call are not elidable.  This is a
 design decision to improve readability of the code and to make the parser
 simpler and more predictable.</p>
 <div class="codehilite"><pre><span></span><code>foo(1, 2)
 </code></pre></div>
 
-<h3>Blocks</h3>
+<h3 id="blocks">Blocks</h3>
 <p>A block is a collection of expressions which return the result of the last
 expression in the block.  They can be used in place of a single expression.
 They do not create their own local scope, at least at the moment, so variables
@@ -154,7 +154,7 @@ level.</p>
 }
 </code></pre></div>
 
-<h3>Math</h3>
+<h3 id="math">Math</h3>
 <p>Infix operators are evaluated using order of operations.  Both sides of an infix
 operation must be on the same line, or a <code>\</code> character can be used to
 continue the line.</p>
@@ -164,7 +164,7 @@ continue the line.</p>
    % 5          // equals 3
 </code></pre></div>
 
-<h3>And / Or</h3>
+<h3 id="and-or">And / Or</h3>
 <p>The keyword operators <code>and</code> and <code>or</code> have side-effects and will not execute the
 second expression if the result can be determined from the first expression.
 The expressions must have the same type, and the returned value is the first
@@ -177,12 +177,12 @@ let result = is_cat and println(&quot;It&#39;s a cat&quot;) == ()
 <code>println()</code> function returns Unit, we compare it with itself which will always
 be true.  The <code>println()</code> will only execute if <code>is_cat</code> is true, and <code>result</code>
 will be true if <code>is_cat</code> is true, or false if <code>is_cat</code> is false.</p>
-<h3>Tuples</h3>
+<h3 id="tuples">Tuples</h3>
 <div class="codehilite"><pre><span></span><code>let tup = (1, &quot;String&quot;, 4.5)
 println(tup.1)                  // prints &quot;String&quot;
 </code></pre></div>
 
-<h3>Records</h3>
+<h3 id="records">Records</h3>
 <p>Records are like tuples but with named fields.  Record literals use the equals
 sign ("=") to assign a value to a field.  Specifying a record type uses a colon
 (":") to separate the field name from the type.</p>
@@ -201,7 +201,7 @@ println(&quot;New Value: &quot; + newrec.s)       // prints &quot;Updated&quot;
 println(&quot;Old Value: &quot; + rec.s)          // prints &quot;String&quot;
 </code></pre></div>
 
-<h3>Arrays</h3>
+<h3 id="arrays">Arrays</h3>
 <div class="codehilite"><pre><span></span><code>let array1 = [ 1, 3, 6 ]
 for x in array1
     println(str(x))
@@ -212,7 +212,7 @@ println(array2[0])
 </code></pre></div>
 
 <p>The Array type is defined in libcore, which must be imported if arrays are used.</p>
-<h3>Flow Control</h3>
+<h3 id="flow-control">Flow Control</h3>
 <p>The return value of an if expression is the result of evaluating either the
 <code>then</code> clause or <code>else</code> clause.  The types of both clauses must match.  The
 <code>else</code> clause can be left out as long as the true clause evaluates to Nil.</p>
@@ -241,7 +241,7 @@ record:</p>
 | { num = _, name = value } =&gt; println(&quot;Something else named &quot; + value)
 </code></pre></div>
 
-<h3>Loops</h3>
+<h3 id="loops">Loops</h3>
 <div class="codehilite"><pre><span></span><code>while true
     println(&quot;looping&quot;)
 
@@ -254,7 +254,7 @@ on it, running the body for each <code>Option::Some('item)</code> returned.  The
 function is defined for different types to convert them into an appropriate
 iterator.  In the case of arrays, it will return the result of <code>new
 ArrayInterator&lt;'item&gt;(input_array)</code></p>
-<h3>Refs</h3>
+<h3 id="refs">Refs</h3>
 <p>A ref is an indirect reference to some data.  It can be passed around as a
 value, and dereferenced to get or set the data inside of it.  The internal value
 of a reference is always mutable</p>
@@ -269,7 +269,7 @@ let r = ref { a = 42, b = &quot;The Answer&quot; }
 println(*r.b)                   // prints &quot;The Answer&quot;
 </code></pre></div>
 
-<h3>Classes</h3>
+<h3 id="classes">Classes</h3>
 <div class="codehilite"><pre><span></span><code>class Foo {
     // A field with type String
     val mut name: String
@@ -304,7 +304,7 @@ be reassigned to, but if the <code>mut</code> keyword is absent, the field can o
 assigned to within the constructor, and will be immutable after the constructor
 has returned.  Every constructor must also call the <code>Super::new</code> method of its
 parent class, if it has a parent that has a constructor.</p>
-<h3>Enums (Tagged Unions)</h3>
+<h3 id="enums-tagged-unions">Enums (Tagged Unions)</h3>
 <p>An enum can either have no arguments, or a tuple of arguments.  Constructing an
 enum variant requires using the Resolve (::) notation.  Pattern matching is
 currently the only way to get values out of a variant.  Unlike with classes,
@@ -338,7 +338,7 @@ used with enums.</p>
 val.is_some()
 </code></pre></div>
 
-<h3>Traits and Trait Objects</h3>
+<h3 id="traits-and-trait-objects">Traits and Trait Objects</h3>
 <p>A trait can be defined with method declarations in the body, with the predefined
 type alias "Self" used to refer to the current trait object</p>
 <div class="codehilite"><pre><span></span><code>trait Add {
@@ -384,7 +384,7 @@ println(str(do_some_adding(1.5)))
 3.000000
 </code></pre></div>
 
-<h3>Exceptions</h3>
+<h3 id="exceptions">Exceptions</h3>
 <p>All exceptions must be an instance of the <code>Exception</code> class defined in libcore.</p>
 <div class="codehilite"><pre><span></span><code>try open(&quot;file.txt&quot;)
 with e =&gt; println(&quot;Exception Occurred: &quot; + e.msg)
@@ -396,18 +396,18 @@ try {
     e =&gt; println(e.msg)
 </code></pre></div>
 
-<h3>Annotations</h3>
+<h3 id="annotations">Annotations</h3>
 <p>A value can be type annotated using a colon followed by the type.</p>
 <div class="codehilite"><pre><span></span><code>5 : Int
 str(i : Int)
 (func() : String)
 </code></pre></div>
 
-<h3>Import</h3>
+<h3 id="import">Import</h3>
 <div class="codehilite"><pre><span></span><code>import libcore
 </code></pre></div>
 
-<h3>External Functions</h3>
+<h3 id="external-functions">External Functions</h3>
 <p>A function can be declared without being implemented, and functions can also be
 defined with an ABI specifier so that they are accessible to other languages.
 Only C support is currently implemented. A C function cannot be a closure.</p>
@@ -419,7 +419,7 @@ fn baz(i: Int) / C {
 }
 </code></pre></div>
 
-<h3>Linking to C</h3>
+<h3 id="linking-to-c">Linking to C</h3>
 <p>An example of writing a C file, and linking it to a molten program is shown in
 <code>lib/libccore.c</code>.  When imported into a molten file and compiled with the
 <code>molten</code> script, the library will be compiling using clang and the
@@ -427,7 +427,7 @@ fn baz(i: Int) / C {
 importing molten program will be able to use declarations from libccore.cdec.
 Some declarations that can be used in C are in <code>include/molten.h</code>, such as
 accessing the garbage collected allocator.</p>
-<h2>Previously Uncompleted</h2>
+<h2 id="previously-uncompleted">Previously Uncompleted</h2>
 <ul>
 <li>
 <p>Dynamic Dispatch/vtables works now!</p>
