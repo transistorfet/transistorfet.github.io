@@ -99,7 +99,7 @@ def collect_posts(projects):
             title = line
         dest = os.path.splitext(os.path.basename(filename))[0] + '.html'
         posts.append({ 'src': filename, 'dest': dest, 'title': title })
-    posts.sort(key=lambda a: a['dest'])
+    posts.sort(key=lambda a: a['dest'], reverse=True)
     return posts
 
 
