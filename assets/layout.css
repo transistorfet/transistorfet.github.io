@@ -19,6 +19,10 @@ hr {
   border-bottom: 1px solid #000000;
 }
 
+li {
+  list-style: square;
+}
+
 /* Page Layout */
 
 #main {
@@ -95,9 +99,22 @@ input.toggle-trigger
   margin-bottom: 0.4em;
 }
 
-#sidebar ul {
+#sidebar .projects {
+  padding-left: 0em;
+  margin: 0em 0em;
+}
+
+#sidebar .projects li {
+  list-style: none;
+}
+
+#sidebar .posts {
   padding-left: 1em;
   margin: 0em 0em;
+}
+
+#sidebar .posts li {
+  margin-bottom: 0.4em;
 }
 
 #footer {

@@ -128,19 +128,26 @@ class Template (object):
         if data.get('project_github'):
             html += '<a href="#download">Get the Source</a><hr>\n'
 
-        for project in self.projects:
-            html += '<a href="{}">{}</a><br>\n'.format(os.path.join(data['rootdir'], 'projects', project['name']) + '/', project['title'])
+        html += self.generate_projects_list(data)
+
         if self.posts and len(self.posts) > 0:
             html += '<hr>\n'
             html += '<h3>Posts</h3>\n'
             html += self.generate_posts_list(data)
         return html
 
+    def generate_projects_list(self, data):
+        html = '<ul class="projects">\n'
+        for project in self.projects:
+            html += '<li><a href="{}">{}</a></li>\n'.format(os.path.join(data['rootdir'], 'projects', project['name']) + '/', project['title'])
+        html += '</ul>\n'
+        return html
+
     def generate_posts_list(self, data):
-        html = '<ul>'
+        html = '<ul class="posts">\n'
         for post in self.posts:
             html += '<li><a href="{}">{}</a></li>\n'.format(os.path.join(data['rootdir'], 'posts', post['dest']), post['title'])
-        html += '</ul>'
+        html += '</ul>\n'
         return html
 
     def generate_main_page(self, filename, data):
