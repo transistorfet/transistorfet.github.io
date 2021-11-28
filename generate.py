@@ -10,7 +10,7 @@ import subprocess
 
 local_repos = "/media/home/git"
 canonical_root = 'https://jabberwocky.ca'
-github_link_fmt = 'https://github.com/transistorfet/{}'
+github_link_fmt = 'https://github.com/transistorfet/{}/'
 github_git_fmt = 'git@github.com:transistorfet/{}'
 
 input_dir = "_input"
