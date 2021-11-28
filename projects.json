@@ -12,16 +12,16 @@
         "repo": "projects/molten/molten.git"
     },
     {
-        "name": "nerve",
-        "title": "Nerve Control Network",
-        "github": "default",
-        "repo": "projects/nerve/nerve.git"
-    },
-    {
         "name": "moa",
         "title": "Moa Emulator",
         "github": "default",
         "repo": "projects/moa/moa.git"
+    },
+    {
+        "name": "nerve",
+        "title": "Nerve Control Network",
+        "github": "default",
+        "repo": "projects/nerve/nerve.git"
     },
     {
         "name": "rgbnode",
