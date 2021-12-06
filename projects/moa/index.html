@@ -68,7 +68,7 @@ of the <a href="https://jabberwocky.ca/projects/computie/">Computie project</a>.
 working on supporting the Macintosh 512k and Sega Genesis.</p>
 <p>For more detail, check out this post about how I started the project:
 <a href="https://jabberwocky.ca/posts/2021-11-making_an_emulator.html">Making a 68000 Emulator in Rust</a></p>
-<h2 id="running">Running</h2>
+<h2 id="computie">Computie</h2>
 <p>For Computie, it can do everything the 68k-SMT board can do, including run the
 monitor program and load the Computie OS kernel and boot it from the
 CompactFlash card.  To run it:</p>
@@ -82,6 +82,7 @@ separate process and connect to the Computie PTY.  It will also launch
 host, and set up host routing.  The exact commands in
 <code>src/machines/computie.rs</code> might need to be adjusted to work on different
 hosts.</p>
+<h2 id="trs-80">TRS-80</h2>
 <p>For the TRS-80, it can run Level I or Level II Basic, but it doesn't yet
 support a cassette tape drive or floppy drive.  I haven't tested it that
 thoroughly either, so any help with it would be welcome.  I mostly made it to
@@ -89,15 +90,43 @@ test the Z80 cpu implementation in a simpler computer before I used in the
 Genesis emulator.  The frontend uses the
 <a href="https://github.com/emoon/rust_minifb"><code>minifb</code></a> rust crate to open a window
 and render the characters to screen, as well as accept input from the keyboard.</p>
-<div class="codehilite"><pre><span></span><code>cargo run -p moa-minifb --release --bin moa-trs-80 --
+<div class="codehilite"><pre><span></span><code>cargo run -p moa-minifb --release --bin moa-trs-80
 </code></pre></div>
 
 <p>By default it will start Level I Basic.  To use the other rom, add the option
 <code>--rom binaries/trs80/level2.rom</code></p>
-<p>The Genesis emulator is a work in progress but can be run with:</p>
-<div class="codehilite"><pre><span></span><code>cargo run -p moa-minifb --release --bin moa-genesis
+<p><img alt="alt text" src="images/trs-80-level-ii-basic.png" />
+The characters are being drawn pixel by pixel (6x8) using characters I drew
+using <a href="https://maxpromer.github.io/LCD-Character-Creator/">this handy website</a>.
+They aren't a perfect match of the characters used by the TRS-80</p>
+<h2 id="sega-genesismegadrive">Sega Genesis/MegaDrive</h2>
+<p>It can be run with:</p>
+<div class="codehilite"><pre><span></span><code>cargo run -p moa-minifb --release --bin moa-genesis -- &lt;ROM FILE&gt;
 </code></pre></div>
 
+<p>The Genesis emulator is a work in progress.  It can play a few games but some
+games won't run because the bank switching for the Z80 coprocessor is not
+working yet, and some games will hang waiting for the Z80 to respond.  For the
+video processor, the window layer is not drawn and the layer priority is not
+handled.  The horizontal scroll also doesn't work on a line-by-line basis so it
+tends to be quite jerky as you move, with the sprites and cells misaligned
+until you've moved one complete cell over (8x8 pixels).</p>
+<p>On the Sonic 2 title screen, the colours for Tails are wonky, probably because
+there's some trickery going on to get more than 16 colours per line, but the
+emulator currently renders the whole frame at once instead of line by line, so
+changes that should be made while the screen is updating don't show up
+<img alt="alt text" src="images/sega-genesis-sonic2-title.png" /></p>
+<p>The game play is mostly working but the bottom of the clouds should be a
+different colour, probably because highlight/shadow colours are not yet
+supported.  The time in the upper left corner also doesn't seem to progress
+<img alt="alt text" src="images/sega-genesis-sonic2-start.png" /></p>
+<p>I'm not yet sure why the clouds in the background are cut off suddenly.  They
+change in a glitchy way when you move around
+<img alt="alt text" src="images/sega-genesis-sonic2-bridge.png" /></p>
+<p>There are some graphics glitches in Earthworm Jim, but it's almost playable if it
+wasn't for the 'jump' button, which only makes him jump a few pixels
+<img alt="alt text" src="images/sega-genesis-earthworm-jim.png" /></p>
+<h2 id="general-options">General Options</h2>
 <p>By default, the minifb frontend will scale the window by 2.  This can be
 changed with the <code>--scale [1,2,4]</code> option.</p>
 <p>The <code>-d</code> or <code>--debugger</code> option will make the emulator start the debugger
