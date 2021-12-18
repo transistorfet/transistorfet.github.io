@@ -62,9 +62,12 @@
 
 <h1 id="computie68k">Computie68k</h1>
 <h6 id="started-october-03-2019"><em>Started October 03, 2019</em></h6>
-<p>A 68k-based computer, running a simple unix-like operating system.  68k-SBC is a single board computer with
-a 68010 CPU, 1MB SRAM, 1MB Flash, and a 68681 Dual UART controller.  The OS is a simple monolithic kernel
-written in C, with preemptive multitasking via the 68681 timer interrupt.</p>
+<p>Computie is a series of single board computers using the 68010 and 68030 CPUs, along with a simple unix-like
+operating system written in C, with preemptive multitasking via a timer interrupt provided by the 68681
+serial port controller that is common to all boards.</p>
+<p>k30-SBC is the newest board, using a surface-mount 68030 CPU, 2MB of Static RAM, 512KB of Flash for the boot
+software and monitor program, and a CompactFlash slot.</p>
+<p>68k-SBC is a single board computer with a 68010 CPU, 1MB SRAM, 1MB Flash, and a 68681 Dual UART controller.</p>
 <p>68k-SMT is a mostly identical design using SMT and PLCC components.  A CompactFlash card slot has been added
 to this version, but it is also possible to connect a simple breadboarded version to 68k-SBC.</p>
 <p>For more details on how I got up and running, check out <a href="https://transistorfet.github.io/posts/2021-09-bootstrapping_with_arduino.html">Bootstrapping a Homebuilt Computer Using An Arduino</a></p>
@@ -79,6 +82,23 @@ a BSD sockets-style API, and an NTP command is provided for updating the system 
 <p>The above video shows connecting over serial from a modern PC and resetting the hardware to run the monitor in ROM
 which displays the welcome message.  The kernel is already loaded in RAM, so running the boot command will boot
 the kernel which then starts the shell.  From the shell, some basic file operations and the ps command are shown.</p>
+<h2 id="the-k30-single-board-computer">The k30 Single Board Computer</h2>
+<p>The k30 is the latest version, using a 68030.  It has 2MB SRAM, 512KB Flash, a 68681 Dual UART, and a CompactFlash.
+It's as similar to 68k-SMT as possible while still upgrading the CPU.  It doesn't use a programmable logic device for
+the glue logic as many similar projects use, instead opting for eleven 74 series logic chips.  It still manages to
+use the full 32-bit data bus for RAM, but only one flash chip is used which has an 8-bit data bus in order to reduce
+complexity.  Most of the software will be run from RAM, so this shouldn't be a problem.</p>
+<p><a href="https://github.com/transistorfet/computie/raw/main/hardware/k30-SBC/k30-SBC.pdf">k30 Schematics</a></p>
+<p>DIP switches are used to select the time delay to use for the CompactFlash card (which is interfaced directly to the
+CPU), to enable the bus error watchdog timer, and to enable/disable the cache and MMU features.</p>
+<p>I made a mistake and used the wrong size footprint for the two 74HC253s, which only come in a 16SSOP package and not
+the TSSOP package used by the other logic chips.  The footprint used was 3.9 mm wide but should have been 6.2mm.
+Luckily I managed to bend the pins under the body of the chips which was enough to get all the pins touching all the
+pads.  It was very tricky to solder, and there was a bridge between DS3 and ground which was very difficult to get
+unstuck, but it's working now.</p>
+<h2 id="k30-revision-1">k30 Revision 1</h2>
+<p><img alt="alt text" src="images/k30-SBC-rev1/k30-SBC-running.jpg" title="k30-SBC Running" />
+<img alt="alt text" src="images/k30-SBC-rev1/k30-PCBs.jpg" title="k30-SBC Rev. 1 PCB" /></p>
 <h2 id="the-68k-single-board-computer">The 68k Single Board Computer</h2>
 <p>A simple single board computer using a Motorola 68010 CPU, which can connect to a host computer via USB/TTL-Serial.
 It has a bus for connecting a supervisor arduino or expansion devices, but it can operate standalone using the onboard
@@ -121,7 +141,7 @@ a poster on EEVblog who suggested patching it with a P-channel MOSFET shown sold
 interpose the UDS/LDS signals into the chip selects, with the original traces cut.</p>
 <h2 id="breadboard-version">Breadboard Version</h2>
 <p><img alt="alt text" src="images/Breadboard-serial.jpg" title="68k-SBC Breadboard" /></p>
-<h2 id="operating-system-booting-from-monitorcompact-flash">Operating System Booting From Monitor/Compact Flash</h2>
+<h2 id="operating-system-booting-from-monitorcompact-flash-on-68k-smt">Operating System Booting From Monitor/Compact Flash on 68k-SMT</h2>
 <p><img alt="alt text" src="images/OS-booting.gif" title="OS Booting" /></p>
 <p>The above video shows connecting over serial from a modern computer after first powering the board on.  The monitor
 runs first, giving the "&gt;" prompt.  The bootloader has been burnt into flash at address 0x20000.  From the monitor, the
