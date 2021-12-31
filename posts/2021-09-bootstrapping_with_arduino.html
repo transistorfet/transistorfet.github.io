@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../assets/normalize.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="../assets/layout.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="../assets/code.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../assets/theme-light.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../assets/code-default.css" type="text/css" charset="utf-8" />
 </head>
 <body>
 <div id="main">
@@ -52,10 +53,10 @@
 
 
         <hr>
-        <a href="https://github.com/transistorfet"><img width="32" src="../assets/github.png"></a>
-        <a href="https://twitter.com/transistorfet"><img width="32" src="../assets/twitter.svg"></a>
-        <a href="https://dev.to/transistorfet"><img width="32" src="../assets/dev-badge.svg"></a>
-        <a href="https://linkedin.com/in/sarimcfarland"><img width="32" src="../assets/linkedin.png"></a>
+        <a href="https://github.com/transistorfet"><img width="32" src="../assets/icons/github.svg"></a>
+        <a href="https://twitter.com/transistorfet"><img width="32" src="../assets/icons/twitter.svg"></a>
+        <a href="https://dev.to/transistorfet"><img width="32" src="../assets/icons/dev-badge.svg"></a>
+        <a href="https://linkedin.com/in/sarimcfarland"><img width="32" src="../assets/icons/linkedin.svg"></a>
     </div>
     <div id="content">
 
@@ -112,71 +113,71 @@ disconnected for the M5M5118P, but it is used by some chips, so I've left it in 
 <span class="cp">#define MEM_WR      41      </span><span class="c1">// PG0</span>
 
 <span class="c1">// Address Bus</span>
-<span class="n">PORTL</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>               <span class="c1">// A8 - A15</span>
-<span class="n">DDRL</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>                <span class="c1">// Configure as outputs</span>
-<span class="n">PORTC</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>               <span class="c1">// A0 - A7</span>
-<span class="n">DDRC</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>                <span class="c1">// Configure as outputs</span>
+<span class="n">PORTL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">               </span><span class="c1">// A8 - A15</span>
+<span class="n">DDRL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">;</span><span class="w">                </span><span class="c1">// Configure as outputs</span>
+<span class="n">PORTC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">               </span><span class="c1">// A0 - A7</span>
+<span class="n">DDRC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">;</span><span class="w">                </span><span class="c1">// Configure as outputs</span>
 
 <span class="c1">// Data Bus</span>
-<span class="n">PORTA</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>               <span class="c1">// D0 - D7</span>
-<span class="n">DDRA</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>                <span class="c1">// Configure the data bus as inputs by default</span>
+<span class="n">PORTA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">               </span><span class="c1">// D0 - D7</span>
+<span class="n">DDRA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">                </span><span class="c1">// Configure the data bus as inputs by default</span>
 
 <span class="c1">// Controls</span>
-<span class="n">pinMode</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-<span class="n">pinMode</span><span class="p">(</span><span class="n">MEM_RD</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-<span class="n">pinMode</span><span class="p">(</span><span class="n">MEM_WR</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-<span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>    <span class="c1">// Each control signal is normally-high,</span>
-<span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_RD</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>    <span class="c1">// active-low, so set them all to &quot;high&quot;</span>
-<span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_WR</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>    <span class="c1">// to disable the chip</span>
+<span class="n">pinMode</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="n">pinMode</span><span class="p">(</span><span class="n">MEM_RD</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="n">pinMode</span><span class="p">(</span><span class="n">MEM_WR</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">    </span><span class="c1">// Each control signal is normally-high,</span>
+<span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_RD</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">    </span><span class="c1">// active-low, so set them all to &quot;high&quot;</span>
+<span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_WR</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">    </span><span class="c1">// to disable the chip</span>
 </code></pre></div>
 
 <p>The data written to each memory address during the write test will be the lower byte of the address,
 so the data returned should be a sequence of numbers from 0x00 to 0xFF</p>
-<div class="codehilite"><pre><span></span><code><span class="n">PORTA</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
-<span class="n">DDRA</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>                    <span class="c1">// Set the PORTA pins to &quot;output&quot; mode</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2048</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">PORTL</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">);</span>           <span class="c1">// Set the upper address bits</span>
-    <span class="n">PORTC</span> <span class="o">=</span> <span class="mh">0x00FF</span> <span class="o">&amp;</span> <span class="n">i</span><span class="p">;</span>         <span class="c1">// Set the lower address bits</span>
-    <span class="n">PORTA</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">);</span>       <span class="c1">// Set the output data byte</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_WR</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>    <span class="c1">// Set the WR and CS pins to low to start a memory write</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="c1">//delayMicroseconds(1);     // Optional delay for slower chips</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_WR</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>    <span class="c1">// Set the WR and CS pins high to end the memory write</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="n">PORTA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w"></span>
+<span class="n">DDRA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">;</span><span class="w">                    </span><span class="c1">// Set the PORTA pins to &quot;output&quot; mode</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2048</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w">           </span><span class="c1">// Set the upper address bits</span>
+<span class="w">    </span><span class="n">PORTC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00FF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">         </span><span class="c1">// Set the lower address bits</span>
+<span class="w">    </span><span class="n">PORTA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x00FF</span><span class="p">);</span><span class="w">       </span><span class="c1">// Set the output data byte</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_WR</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// Set the WR and CS pins to low to start a memory write</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//delayMicroseconds(1);     // Optional delay for slower chips</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_WR</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">    </span><span class="c1">// Set the WR and CS pins high to end the memory write</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>The data is then read back and printed to the arduino serial monitor.  When a byte is read that
 doesn't match the lower byte of that address, it's recorded as an error and displayed at the end.
 This will give us an indication if there was a glitch during reading or writing, or if the cell is
 not working properly, although it's not a conclusive test because only one value is tested per cell.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">byte</span> <span class="n">value</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">errors</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="n">byte</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-<span class="n">PORTA</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
-<span class="n">DDRA</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>                    <span class="c1">// Set the PORTA pins to &quot;input&quot; mode</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2048</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">PORTL</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">);</span>           <span class="c1">// Set the upper address bits</span>
-    <span class="n">PORTC</span> <span class="o">=</span> <span class="mh">0x00FF</span> <span class="o">&amp;</span> <span class="n">i</span><span class="p">;</span>         <span class="c1">// Set the lower address bits</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_RD</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>    <span class="c1">// Start a memory read by setting CS and RD low</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="c1">//delayMicroseconds(1);     // Optional delay for slower chips</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">PINA</span><span class="p">;</span>               <span class="c1">// Read in the data and store in temporarily</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_RD</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>    <span class="c1">// Stop the memory read by setting CS and RD high</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">PORTA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w"></span>
+<span class="n">DDRA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">                    </span><span class="c1">// Set the PORTA pins to &quot;input&quot; mode</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2048</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w">           </span><span class="c1">// Set the upper address bits</span>
+<span class="w">    </span><span class="n">PORTC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00FF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">         </span><span class="c1">// Set the lower address bits</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_RD</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// Start a memory read by setting CS and RD low</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//delayMicroseconds(1);     // Optional delay for slower chips</span>
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PINA</span><span class="p">;</span><span class="w">               </span><span class="c1">// Read in the data and store in temporarily</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_RD</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">    </span><span class="c1">// Stop the memory read by setting CS and RD high</span>
+<span class="w">    </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">MEM_CS</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">!=</span> <span class="p">(</span><span class="n">i</span> <span class="o">&amp;</span> <span class="mh">0x00FF</span><span class="p">))</span>  <span class="c1">// If the value isn&#39;t the expected value, record as an error</span>
-        <span class="n">errors</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">HEX</span><span class="p">);</span>   <span class="c1">// Print the value read in hexadecimal</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">64</span> <span class="o">==</span> <span class="mi">63</span><span class="p">)</span>           <span class="c1">// Wrap the output line every 64 bytes for readability</span>
-        <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x00FF</span><span class="p">))</span><span class="w">  </span><span class="c1">// If the value isn&#39;t the expected value, record as an error</span>
+<span class="w">        </span><span class="n">errors</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span><span class="w">   </span><span class="c1">// Print the value read in hexadecimal</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">63</span><span class="p">)</span><span class="w">           </span><span class="c1">// Wrap the output line every 64 bytes for readability</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Errors: &quot;</span><span class="p">);</span>
-<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="n">DEC</span><span class="p">);</span>
-<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Errors: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span><span class="w"> </span><span class="n">DEC</span><span class="p">);</span><span class="w"></span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 
 <p>The complete <a href="https://github.com/transistorfet/computie/blob/main/software/arduino/MemTest/MemTest.ino">MemTest</a> code</p>
@@ -250,71 +251,71 @@ call instructions were executing as expected.</p>
 <span class="cp">#define Z80_SET_WAIT()  ((PINB | 0x08))</span>
 <span class="cp">#define Z80_CLR_WAIT()  ((PINB &amp; 0xF7))</span>
 
-<span class="n">word</span> <span class="n">mem_size</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">;</span>
-<span class="n">byte</span> <span class="n">mem</span><span class="p">[</span><span class="mi">4096</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">word</span><span class="w"> </span><span class="n">mem_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4096</span><span class="p">;</span><span class="w"></span>
+<span class="n">byte</span><span class="w"> </span><span class="n">mem</span><span class="p">[</span><span class="mi">4096</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="c1">// The Makefile that compiles the Z80 program will format the binary as</span>
 <span class="c1">// C-compatible text which is #included here, so that whenever this arduino</span>
 <span class="c1">// code is uploaded, it will have the latest Z80 binary image</span>
-<span class="cp">#include</span> <span class="cpf">&quot;../Z80Monitor/output.txt&quot;</span><span class="cp"></span>
-<span class="p">};</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../Z80Monitor/output.txt&quot;</span><span class="cp"></span>
+<span class="p">};</span><span class="w"></span>
 
 <span class="c1">// This interrupt will only be enabled when the CPU is running</span>
 <span class="c1">// and the arduino is listening for requests (&quot;device&quot; mode)</span>
-<span class="n">ISR</span> <span class="p">(</span><span class="n">PCINT0_vect</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">PCICR</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>       <span class="c1">// Disable pin change interrupts</span>
+<span class="n">ISR</span><span class="w"> </span><span class="p">(</span><span class="n">PCINT0_vect</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">PCICR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">       </span><span class="c1">// Disable pin change interrupts</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">Z80_IS_MREQ</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">Z80_HADDR_PIN</span> <span class="o">&lt;</span> <span class="mh">0x20</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Z80_CLR_WAIT</span><span class="p">();</span>                     <span class="c1">// Assert the wait signal</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Z80_IS_MREQ</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">Z80_HADDR_PIN</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">0x20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Z80_CLR_WAIT</span><span class="p">();</span><span class="w">                     </span><span class="c1">// Assert the wait signal</span>
 
-        <span class="c1">// CPU Read Operation</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">Z80_IS_RD</span><span class="p">())</span> <span class="p">{</span>
-            <span class="k">register</span> <span class="n">word</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">Z80_HADDR_PIN</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">Z80_LADDR_PIN</span><span class="p">;</span>
-            <span class="n">Z80_LDATA_DDR</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>           <span class="c1">// Configure data bus pins as output</span>
+<span class="w">        </span><span class="c1">// CPU Read Operation</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Z80_IS_RD</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">register</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Z80_HADDR_PIN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Z80_LADDR_PIN</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">Z80_LDATA_DDR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">;</span><span class="w">           </span><span class="c1">// Configure data bus pins as output</span>
 
-            <span class="cp">#if BUS_DEBUG                   </span><span class="c1">// Print debug information</span>
-            <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;R&#39;</span><span class="p">);</span>
-            <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">HEX</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">addr</span> <span class="o">&lt;</span> <span class="n">mem_size</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;|&#39;</span><span class="p">);</span>
-                <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">mem</span><span class="p">[</span><span class="n">addr</span><span class="p">],</span> <span class="n">HEX</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
-            <span class="cp">#endif</span>
+<span class="w">            </span><span class="cp">#if BUS_DEBUG                   </span><span class="c1">// Print debug information</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;R&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">addr</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mem_size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;|&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">mem</span><span class="p">[</span><span class="n">addr</span><span class="p">],</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#endif</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">addr</span> <span class="o">&lt;</span> <span class="n">mem_size</span><span class="p">)</span>
-                <span class="n">Z80_LDATA_PORT</span> <span class="o">=</span> <span class="n">mem</span><span class="p">[</span><span class="n">addr</span><span class="p">];</span> <span class="c1">// Output the requested byte</span>
-            <span class="k">else</span>
-                <span class="n">Z80_LDATA_PORT</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>      <span class="c1">// Output 0 for all other addresses</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">addr</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mem_size</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="n">Z80_LDATA_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mem</span><span class="p">[</span><span class="n">addr</span><span class="p">];</span><span class="w"> </span><span class="c1">// Output the requested byte</span>
+<span class="w">            </span><span class="k">else</span><span class="w"></span>
+<span class="w">                </span><span class="n">Z80_LDATA_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">      </span><span class="c1">// Output 0 for all other addresses</span>
 
-            <span class="n">Z80_SET_WAIT</span><span class="p">();</span>                 <span class="c1">// Clear the wait signal</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">Z80_IS_MREQ</span><span class="p">())</span> <span class="p">{</span> <span class="p">}</span>       <span class="c1">// Wait until the CPU ends the MREQ</span>
-            <span class="n">Z80_LDATA_PORT</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
-            <span class="n">Z80_LDATA_DDR</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>           <span class="c1">// Configure data bus pins as inputs</span>
-        <span class="p">}</span>
-        <span class="c1">// CPU Write Operation</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">Z80_IS_WR</span><span class="p">())</span> <span class="p">{</span>
-            <span class="k">register</span> <span class="n">word</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">Z80_HADDR_PIN</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">Z80_LADDR_PIN</span><span class="p">;</span>
+<span class="w">            </span><span class="n">Z80_SET_WAIT</span><span class="p">();</span><span class="w">                 </span><span class="c1">// Clear the wait signal</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Z80_IS_MREQ</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="c1">// Wait until the CPU ends the MREQ</span>
+<span class="w">            </span><span class="n">Z80_LDATA_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">Z80_LDATA_DDR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">           </span><span class="c1">// Configure data bus pins as inputs</span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// CPU Write Operation</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Z80_IS_WR</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">register</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Z80_HADDR_PIN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Z80_LADDR_PIN</span><span class="p">;</span><span class="w"></span>
 
-            <span class="cp">#if BUS_DEBUG                   </span><span class="c1">// Print debug information</span>
-            <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;W&#39;</span><span class="p">);</span>
-            <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">HEX</span><span class="p">);</span>
-            <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;|&#39;</span><span class="p">);</span>
-            <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">Z80_LDATA_PIN</span><span class="p">,</span> <span class="n">HEX</span><span class="p">);</span>
-            <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
-            <span class="cp">#endif</span>
+<span class="w">            </span><span class="cp">#if BUS_DEBUG                   </span><span class="c1">// Print debug information</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;W&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;|&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">Z80_LDATA_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#endif</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">addr</span> <span class="o">&lt;</span> <span class="n">mem_size</span><span class="p">)</span>
-                <span class="n">mem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">=</span> <span class="n">Z80_LDATA_PIN</span><span class="p">;</span>  <span class="c1">// Save the byte from the data bus</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">addr</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mem_size</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="n">mem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Z80_LDATA_PIN</span><span class="p">;</span><span class="w">  </span><span class="c1">// Save the byte from the data bus</span>
 
-            <span class="n">Z80_SET_WAIT</span><span class="p">();</span>                 <span class="c1">// Clear the wait signal</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">Z80_IS_MREQ</span><span class="p">())</span> <span class="p">{</span> <span class="p">}</span>       <span class="c1">// Wait until the CPU ends the MREQ</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<span class="w">            </span><span class="n">Z80_SET_WAIT</span><span class="p">();</span><span class="w">                 </span><span class="c1">// Clear the wait signal</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Z80_IS_MREQ</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="c1">// Wait until the CPU ends the MREQ</span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="n">PCIFR</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>       <span class="c1">// Clear pin change interrupt flag</span>
-    <span class="n">PCICR</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>       <span class="c1">// Enable pin change interrupts</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">PCIFR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span><span class="w">       </span><span class="c1">// Clear pin change interrupt flag</span>
+<span class="w">    </span><span class="n">PCICR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x01</span><span class="p">;</span><span class="w">       </span><span class="c1">// Enable pin change interrupts</span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>Check out the
