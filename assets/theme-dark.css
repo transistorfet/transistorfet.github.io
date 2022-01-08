@@ -2,20 +2,22 @@
 body {
   font-family: 'Recursive', sans-serif;
   font-size: 12pt;
+  color: #D1CBC7;
+  background-color: #222425;
 }
 
 a {
-  color: #209000;
+  color: #20C000;
   text-decoration: none;
 }
 
 a:visited {
-  color: #206000;
+  color: #209000;
 }
 
 hr {
   border: 0;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #D1CBC7;
 }
 
 li {
@@ -36,30 +38,30 @@ li {
 }
 
 #content .codehilite {
-  background-color: #eeffcc;
+  background-color: #203008;
 }
 
 #content pre {
-  color: #333333;
-  background-color: #eeffcc;
-  border: 1px solid #ae3;
+  color: #C8C0BC;
+  background-color: #203008;
+  border: 1px solid #7AB21A;
   border-radius: 6px;
 }
 
 #content code:not(pre > code) {
-  color: #333333;
-  background-color: #eeffcc;
+  color: #C8C0BC;
+  background-color: #203008;
   border-radius: 6px;
 }
 
 /* Project List Entries (Main Index) */
 
 .project {
-  border: 1px solid black;
+  border: 1px solid #D1CBC7;
 }
 
 .project h2 {
-  color: black;
+  color: #D1CBC7;
 }
 
 /* News Entry */
