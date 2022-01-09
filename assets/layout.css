@@ -70,6 +70,12 @@ input.toggle-trigger
   font-size: 32px;
 }
 
+#theme-toggle {
+  margin: 0px;
+  float: right;
+  cursor: pointer;
+}
+
 #content {
   text-align: justify;
 }
