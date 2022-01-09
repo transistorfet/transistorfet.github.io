@@ -55,10 +55,10 @@
 
 
         <hr>
-        <a href="https://github.com/transistorfet"><img width="32" src="../assets/icons/github.svg"></a>
-        <a href="https://twitter.com/transistorfet"><img width="32" src="../assets/icons/twitter.svg"></a>
-        <a href="https://dev.to/transistorfet"><img width="32" src="../assets/icons/dev-badge.svg"></a>
-        <a href="https://linkedin.com/in/sarimcfarland"><img width="32" src="../assets/icons/linkedin.svg"></a>
+        <a href="https://github.com/transistorfet"><img class="icon" src="../assets/icons/github.svg"></a>
+        <a href="https://twitter.com/transistorfet"><img class="icon" src="../assets/icons/twitter.svg"></a>
+        <a href="https://dev.to/transistorfet"><img class="icon" src="../assets/icons/dev-badge.svg"></a>
+        <a href="https://linkedin.com/in/sarimcfarland"><img class="icon" src="../assets/icons/linkedin.svg"></a>
     </div>
     <div id="content">
 
@@ -330,33 +330,33 @@ to the LED port, which confirmed that the IOREQ code was working and the Z80 was
 added a check for port 0xF1, which would send the byte written by the CPU to the arduino's serial
 monitor.  The following Z80 program could then be run to print a message to the serial monitor!</p>
 <p>The first Z80 program, welcome.asm, which was compiled using SDCC's assembler</p>
-<div class="codehilite"><pre><span></span><code>    <span class="k">org </span><span class="mh">0000h</span>         <span class="c1">; After a reset, the Z80 starts executing at 0x0000</span>
-    <span class="nf">jp</span>  <span class="nv">start</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="k">org</span><span class="w"> </span><span class="mh">0000h</span><span class="w">         </span><span class="c1">; After a reset, the Z80 starts executing at 0x0000</span><span class="w"></span>
+<span class="w">    </span><span class="nf">jp</span><span class="w">  </span><span class="nv">start</span><span class="w"></span>
 
-<span class="nl">start:</span>
-    <span class="nf">ld</span>   <span class="nb">sp</span><span class="p">,</span> <span class="mh">0200h</span>    <span class="c1">; Set the stack pointer to an area above the program</span>
-    <span class="nf">call</span> <span class="nv">_main</span>
-    <span class="nf">halt</span>
+<span class="nl">start:</span><span class="w"></span>
+<span class="w">    </span><span class="nf">ld</span><span class="w">   </span><span class="nb">sp</span><span class="p">,</span><span class="w"> </span><span class="mh">0200h</span><span class="w">    </span><span class="c1">; Set the stack pointer to an area above the program</span><span class="w"></span>
+<span class="w">    </span><span class="nf">call</span><span class="w"> </span><span class="nv">_main</span><span class="w"></span>
+<span class="w">    </span><span class="nf">halt</span><span class="w"></span>
 
-<span class="nl">_main:</span>
-    <span class="nf">ld</span>  <span class="nv">a</span><span class="p">,</span> <span class="mh">01h</span>
-    <span class="nf">out</span> <span class="p">(</span><span class="mh">00FFh</span><span class="p">),</span> <span class="nv">a</span>    <span class="c1">; Output 1 to our arduino LED control port to turn it on</span>
+<span class="nl">_main:</span><span class="w"></span>
+<span class="w">    </span><span class="nf">ld</span><span class="w">  </span><span class="nv">a</span><span class="p">,</span><span class="w"> </span><span class="mh">01h</span><span class="w"></span>
+<span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="p">(</span><span class="mh">00FFh</span><span class="p">),</span><span class="w"> </span><span class="nv">a</span><span class="w">    </span><span class="c1">; Output 1 to our arduino LED control port to turn it on</span><span class="w"></span>
 
-    <span class="nf">ld</span>  <span class="nv">de</span><span class="p">,</span> <span class="nv">msg</span>       <span class="c1">; Load the address of the message to print</span>
+<span class="w">    </span><span class="nf">ld</span><span class="w">  </span><span class="nv">de</span><span class="p">,</span><span class="w"> </span><span class="nv">msg</span><span class="w">       </span><span class="c1">; Load the address of the message to print</span><span class="w"></span>
 
-<span class="nl">loop:</span>
-    <span class="nf">ld</span>  <span class="nv">a</span><span class="p">,</span> <span class="p">(</span><span class="nv">de</span><span class="p">)</span>       <span class="c1">; Load the byte at message address</span>
-    <span class="nf">cp</span>  <span class="mi">0</span>             <span class="c1">; If it&#39;s a null character, jump to loop_end</span>
-    <span class="nf">jp</span>  <span class="nv">Z</span><span class="p">,</span> <span class="nv">loop_end</span>
-    <span class="nf">out</span> <span class="p">(</span><span class="mh">00F1h</span><span class="p">),</span> <span class="nv">a</span>    <span class="c1">; Output the character to arduino serial</span>
-    <span class="nf">inc</span> <span class="nv">de</span>
-    <span class="nf">jp</span>  <span class="nv">loop</span>
+<span class="nl">loop:</span><span class="w"></span>
+<span class="w">    </span><span class="nf">ld</span><span class="w">  </span><span class="nv">a</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">de</span><span class="p">)</span><span class="w">       </span><span class="c1">; Load the byte at message address</span><span class="w"></span>
+<span class="w">    </span><span class="nf">cp</span><span class="w">  </span><span class="mi">0</span><span class="w">             </span><span class="c1">; If it&#39;s a null character, jump to loop_end</span><span class="w"></span>
+<span class="w">    </span><span class="nf">jp</span><span class="w">  </span><span class="nv">Z</span><span class="p">,</span><span class="w"> </span><span class="nv">loop_end</span><span class="w"></span>
+<span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="p">(</span><span class="mh">00F1h</span><span class="p">),</span><span class="w"> </span><span class="nv">a</span><span class="w">    </span><span class="c1">; Output the character to arduino serial</span><span class="w"></span>
+<span class="w">    </span><span class="nf">inc</span><span class="w"> </span><span class="nv">de</span><span class="w"></span>
+<span class="w">    </span><span class="nf">jp</span><span class="w">  </span><span class="nv">loop</span><span class="w"></span>
 
-<span class="nl">loop_end:</span>
+<span class="nl">loop_end:</span><span class="w"></span>
 
-    <span class="nf">ret</span>               <span class="c1">; End of _main</span>
+<span class="w">    </span><span class="nf">ret</span><span class="w">               </span><span class="c1">; End of _main</span><span class="w"></span>
 
-<span class="nl">msg:</span>    <span class="nf">defm</span>    <span class="s">&quot;Welcome To Bread80!\n\n\0&quot;</span>
+<span class="nl">msg:</span><span class="w">    </span><span class="nf">defm</span><span class="w">    </span><span class="s">&quot;Welcome To Bread80!\n\n\0&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p><a href="https://github.com/transistorfet/computie/blob/main/hardware/Z80-NQC/Z80Monitor/">Z80 Monitor</a>
@@ -417,33 +417,33 @@ quite different.  Register names are preceded with a <code>%</code> character an
 left-hand location to the right-hand location, so <code>move.b #0x01, %d1</code> loads the D1 register with the
 value 0x01.  The comments should also start with <code>|</code> but I changed them to <code>;</code> for the code
 formatter here.</p>
-<div class="codehilite"><pre><span></span><code>    <span class="na">.org</span>    <span class="mi">0x0000</span>          <span class="c1">; After reset, the 68k expects the interrupt vector table here</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="na">.org</span><span class="w">    </span><span class="mi">0x0000</span><span class="w">          </span><span class="c1">; After reset, the 68k expects the interrupt vector table here</span>
 
-    <span class="na">.word</span>   <span class="mi">0x0000</span>          <span class="c1">; stack pointer value loaded on reset</span>
-    <span class="na">.word</span>   <span class="mi">0x1000</span>
-    <span class="na">.word</span>   <span class="mi">0x0000</span>          <span class="c1">; PC value loaded on reset</span>
-    <span class="na">.word</span>   <span class="mi">0x0020</span>
+<span class="w">    </span><span class="na">.word</span><span class="w">   </span><span class="mi">0x0000</span><span class="w">          </span><span class="c1">; stack pointer value loaded on reset</span>
+<span class="w">    </span><span class="na">.word</span><span class="w">   </span><span class="mi">0x1000</span><span class="w"></span>
+<span class="w">    </span><span class="na">.word</span><span class="w">   </span><span class="mi">0x0000</span><span class="w">          </span><span class="c1">; PC value loaded on reset</span>
+<span class="w">    </span><span class="na">.word</span><span class="w">   </span><span class="mi">0x0020</span><span class="w"></span>
 
-    <span class="na">.org</span>    <span class="mi">0x0020</span>          <span class="c1">; Reserve space for the first 8 interrupt vectors</span>
-<span class="nl">_start:</span>
+<span class="w">    </span><span class="na">.org</span><span class="w">    </span><span class="mi">0x0020</span><span class="w">          </span><span class="c1">; Reserve space for the first 8 interrupt vectors</span>
+<span class="nl">_start:</span><span class="w"></span>
 
-    <span class="nf">move.b</span>  <span class="mi">#0</span><span class="no">x01</span><span class="p">,</span> <span class="nv">%d1</span>
-    <span class="nf">lea</span>     <span class="mi">0x20ff</span><span class="p">,</span> <span class="nv">%a1</span>     <span class="c1">; Load the address of the LED register</span>
-    <span class="nf">move.b</span>  <span class="nv">%d1</span><span class="p">,</span> <span class="p">(</span><span class="nv">%a1</span><span class="p">)</span>      <span class="c1">; Write 0x01 to turn the LED on</span>
+<span class="w">    </span><span class="nf">move.b</span><span class="w">  </span><span class="mi">#0</span><span class="no">x01</span><span class="p">,</span><span class="w"> </span><span class="nv">%d1</span><span class="w"></span>
+<span class="w">    </span><span class="nf">lea</span><span class="w">     </span><span class="mi">0x20ff</span><span class="p">,</span><span class="w"> </span><span class="nv">%a1</span><span class="w">     </span><span class="c1">; Load the address of the LED register</span>
+<span class="w">    </span><span class="nf">move.b</span><span class="w">  </span><span class="nv">%d1</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">%a1</span><span class="p">)</span><span class="w">      </span><span class="c1">; Write 0x01 to turn the LED on</span>
 
-    <span class="nf">lea</span>     <span class="no">message</span><span class="p">,</span> <span class="nv">%a1</span>    <span class="c1">; Load the message address</span>
-    <span class="nf">lea</span>     <span class="mi">0x20f1</span><span class="p">,</span> <span class="nv">%a2</span>     <span class="c1">; Load the address of serial output register</span>
+<span class="w">    </span><span class="nf">lea</span><span class="w">     </span><span class="no">message</span><span class="p">,</span><span class="w"> </span><span class="nv">%a1</span><span class="w">    </span><span class="c1">; Load the message address</span>
+<span class="w">    </span><span class="nf">lea</span><span class="w">     </span><span class="mi">0x20f1</span><span class="p">,</span><span class="w"> </span><span class="nv">%a2</span><span class="w">     </span><span class="c1">; Load the address of serial output register</span>
 
-<span class="nl">loop:</span>
-    <span class="nf">move.b</span>  <span class="p">(</span><span class="nv">%a1</span><span class="p">)</span><span class="err">+</span><span class="p">,</span> <span class="nv">%d2</span>     <span class="c1">; Load the next character and increment the pointer</span>
-    <span class="nf">move.b</span>  <span class="nv">%d2</span><span class="p">,</span> <span class="p">(</span><span class="nv">%a2</span><span class="p">)</span>      <span class="c1">; Write the character to serial</span>
+<span class="nl">loop:</span><span class="w"></span>
+<span class="w">    </span><span class="nf">move.b</span><span class="w">  </span><span class="p">(</span><span class="nv">%a1</span><span class="p">)</span><span class="err">+</span><span class="p">,</span><span class="w"> </span><span class="nv">%d2</span><span class="w">     </span><span class="c1">; Load the next character and increment the pointer</span>
+<span class="w">    </span><span class="nf">move.b</span><span class="w">  </span><span class="nv">%d2</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nv">%a2</span><span class="p">)</span><span class="w">      </span><span class="c1">; Write the character to serial</span>
 
-    <span class="nf">cmpi.b</span>  <span class="mi">#0</span><span class="no">x00</span><span class="p">,</span> <span class="nv">%d2</span>      <span class="c1">; Loop until the null character is found</span>
-    <span class="nf">bne</span>     <span class="no">loop</span>
+<span class="w">    </span><span class="nf">cmpi.b</span><span class="w">  </span><span class="mi">#0</span><span class="no">x00</span><span class="p">,</span><span class="w"> </span><span class="nv">%d2</span><span class="w">      </span><span class="c1">; Loop until the null character is found</span>
+<span class="w">    </span><span class="nf">bne</span><span class="w">     </span><span class="no">loop</span><span class="w"></span>
 
-    <span class="nf">stop</span>    <span class="mi">#0</span><span class="no">x2700</span>         <span class="c1">; Halt the CPU</span>
+<span class="w">    </span><span class="nf">stop</span><span class="w">    </span><span class="mi">#0</span><span class="no">x2700</span><span class="w">         </span><span class="c1">; Halt the CPU</span>
 
-<span class="nl">message:</span> <span class="na">.ascii</span> <span class="s">&quot;Welcome to Bread68k!\n\n\0&quot;</span>
+<span class="nl">message:</span><span class="w"> </span><span class="na">.ascii</span><span class="w"> </span><span class="s">&quot;Welcome to Bread68k!\n\n\0&quot;</span><span class="w"></span>
 </code></pre></div>
 
 <p>The 68000 uses memory-mapped IO so the arduino program recognizes the addresses 0x2000 - 0x20FF as

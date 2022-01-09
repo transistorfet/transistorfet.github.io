@@ -28,6 +28,10 @@ li {
   color: gray;
 }
 
+.icon {
+  filter: invert(80%);
+}
+
 /* Markdown Elements Styling */
 
 

@@ -3,6 +3,10 @@ body {
   line-height: 1.4em;
 }
 
+.icon {
+  width: 32px;
+}
+
 /* Page Layout */
 
 #main {
