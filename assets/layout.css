@@ -38,13 +38,13 @@ body {
     max-width: 750px;
     max-height: 750px;
   }
+
+  #theme-toggle {
+    float: right;
+  }
 }
 
 @media all and (max-width: 1000px) {
-  #main { 
-    margin-top: 3em;
-  }
-
   .toggle-trigger[type="checkbox"]:checked + .toggle {
     display: none;
   }
@@ -71,9 +71,9 @@ input.toggle-trigger
 }
 
 #theme-toggle {
-  margin: 0px;
-  float: right;
   cursor: pointer;
+  font-size: 12px;
+  height: 12px;
 }
 
 #content {
