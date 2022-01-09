@@ -1,18 +1,25 @@
 
+function setTheme(toggle, theme) {
+    if (theme == 'light') {
+        document.getElementById("pagetheme").setAttribute('href', "/assets/theme-light.css");
+        document.getElementById("codetheme").setAttribute('href', "/assets/code-default.css");
+        toggle.innerText = 'dark';
+    } else {
+        document.getElementById("pagetheme").setAttribute('href', "/assets/theme-dark.css");
+        document.getElementById("codetheme").setAttribute('href', "/assets/code-manni.css");
+        toggle.innerText = 'light';
+    }
+}
+
 window.onload = function() {
+    var theme = window.localStorage.getItem('theme') || 'light';
     var toggle = document.getElementById("theme-toggle");
-    toggle.innerText = 'dark';
+    setTheme(toggle, theme);
 
     toggle.onclick = function() {
-        if (toggle.innerText == 'light') {
-            document.getElementById("pagetheme").setAttribute('href', "/assets/theme-light.css");
-            document.getElementById("codetheme").setAttribute('href', "/assets/code-default.css");
-            toggle.innerText = 'dark';
-        } else {
-            document.getElementById("pagetheme").setAttribute('href', "/assets/theme-dark.css");
-            document.getElementById("codetheme").setAttribute('href', "/assets/code-manni.css");
-            toggle.innerText = 'light';
-        }
+        theme = (theme == 'light') ? 'dark' : 'light';
+        window.localStorage.setItem('theme', theme);
+        setTheme(toggle, theme);
     }
 }
 
