@@ -65,7 +65,8 @@
     <div id="content">
 
 <h1 id="emulating-the-sega-genesis-part-i">Emulating the Sega Genesis - Part I</h1>
-<h6 id="written-december-2021-by-transistor_fet"><em>Written December 2021 by transistor_fet</em></h6>
+<p><em>Also available on <a href="https://dev.to/transistorfet/emulating-the-sega-genesis-part-i-1ao5">dev.to</a></em></p>
+<h6 id="written-december-2021january-2022-by-transistor_fet"><em>Written December 2021/January 2022 by transistor_fet</em></h6>
 <p>A few months ago, I wrote a 68000 emulator in Rust named
 <a href="https://jabberwocky.ca/projects/moa/">Moa</a>.  My original goal was to emulate a simple
 <a href="https://jabberwocky.ca/projects/computie/">computer</a> I had previously built.  After only a few
@@ -81,8 +82,10 @@ structure and function of the emulator, as well as details about the 68000.  I w
 detail about that here and instead focus on the Genesis-specific hardware, and the challenges of
 debugging the emulator itself.</p>
 <p>This is Part I in the series, which covers setting up the emulator, getting some game ROMs to run,
-and implementing the DMA and memory features of the VDP.  Part II covers adding a graphical frontend
-to Moa, and then implementing a first attempt at generating video output.  Part III will be about
+and implementing the DMA and memory features of the VDP.  <a href="https://jabberwocky.ca/posts/2022-01-emulating_the_sega_genesis_part2.html">Part
+II</a> will cover adding a
+graphical frontend to Moa, and then implementing a first attempt at generating video output.  <a href="https://jabberwocky.ca/posts/2022-01-emulating_the_sega_genesis_part3.html">Part
+III</a> will be about
 debugging the various problems in the VDP and CPU implementations to get a working emulator capable
 of playing games.</p>
 <ul>

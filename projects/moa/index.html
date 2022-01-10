@@ -70,11 +70,13 @@
 <p>Moa is an emulator/simulator for computers using various 68000 and Z80 CPUs and
 peripherals.  The original idea was to emulate the computer I had built as part
 of the <a href="https://jabberwocky.ca/projects/computie/">Computie project</a>.</p>
-<p>Currently it can simulate Computie (68000), the TRS-80 Model I (Z80), and the
-Sega Genesis.  Support for the Macintosh 512k is partially implemented but the
+<p>Currently it can simulate the Sega Genesis, Computie (68000), and the TRS-80
+Model I (Z80).  Support for the Macintosh 512k is partially implemented but the
 ROM still wont boot.</p>
-<p>For more detail, check out this post about how I started the project:
+<p>For more details on how it works, check out this post about how I started the project:
 <a href="https://jabberwocky.ca/posts/2021-11-making_an_emulator.html">Making a 68000 Emulator in Rust</a></p>
+<p>For more about the Sega Genesis support, check out this series I wrote about implementing it:
+<a href="http://jabberwocky.ca/posts/2022-01-emulating_the_sega_genesis_part1.html">Emulating the Sega Genesis</a></p>
 <h2 id="sega-genesismegadrive">Sega Genesis/MegaDrive</h2>
 <p>From the project root, run the following:</p>
 <div class="codehilite"><pre><span></span><code>cargo run -p moa-minifb --release --bin moa-genesis -- &lt;ROM FILE&gt;
