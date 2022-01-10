@@ -1,12 +1,16 @@
 
+function changeHref(el, file) {
+    el.setAttribute('href', el.getAttribute('href').replace(/assets.*$/, file));
+}
+
 function setTheme(theme, toggle) {
     if (theme == 'light') {
-        document.getElementById("pagetheme").setAttribute('href', "/assets/theme-light.css");
-        document.getElementById("codetheme").setAttribute('href', "/assets/code-default.css");
+        changeHref(document.getElementById("pagetheme"), "assets/theme-light.css");
+        changeHref(document.getElementById("codetheme"), "assets/code-default.css");
         if (toggle) toggle.innerText = 'dark';
     } else {
-        document.getElementById("pagetheme").setAttribute('href', "/assets/theme-dark.css");
-        document.getElementById("codetheme").setAttribute('href', "/assets/code-manni.css");
+        changeHref(document.getElementById("pagetheme"), "assets/theme-dark.css");
+        changeHref(document.getElementById("codetheme"), "assets/code-manni.css");
         if (toggle) toggle.innerText = 'light';
     }
 }
