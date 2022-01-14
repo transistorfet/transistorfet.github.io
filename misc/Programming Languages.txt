@@ -1,0 +1,164 @@
+
+Last Updated: 2022/01/12
+
+Languages I Know Well:
+
+- Rust
+- Python
+- C
+- C++
+- JavaScript
+
+Languages I Mostly Know, Maybe Rusty:
+
+- Ocaml
+- Standard ML
+- Scheme/Racket
+- Clojure
+- Go
+- Elm
+- SQL (MySQL)
+- Perl5
+- Prolog
+- Java
+- Assembly (x86)
+- Assembly (68k)
+- Assembly (Z80)
+
+Languages I Used To Know:
+
+- Qbasic
+- Lua
+- PHP
+- Pascal
+- Forth
+- Assembly (PIC)
+- Ladder Logic
+- VHDL
+
+
+Languages I'd Like To Know/Know A Bit:
+
+- Common Lisp
+- Haskell
+- Koka
+- Oz
+- F#
+- Smalltalk
+- Mercury
+- Coq
+- Elixir
+- Erlang
+- Perl6/Raku
+- Swift
+- Julia
+- Scala
+- TypeScript
+- Ada
+- Verilog
+
+
+Languages I've Heard Of But Am Not Interested In (At The Moment):
+
+(GENERAL-PURPOSE)
+
+- Kotlin
+- Nim
+- Zig
+- Crystal
+- Groovy
+- Eiffel
+- Dart
+- Reason ML
+- D
+- Modula-2/3
+- Spark (Restricted Ada)
+- Oberon
+- Chapel
+- Ceylon
+- Dylan
+- Ruby
+- Pony
+- ObjectiveC
+- C#
+- VisualBasic
+- Delphi/Object Pascal
+- Tea
+- Tcl
+- Nemerle
+- Rebol
+- Red
+
+
+(RESEARCH/EXPERIMENTAL)
+
+- Idris
+- Agda
+- ATS
+- Lucid
+- Clean
+- Alice (ML)
+- Curry
+- 1ML
+- F*
+- Miranda
+- Boomerang
+- Factor
+- CLU
+- Self
+- Regent
+- Escher
+- Subtext
+- AspectJ
+- Lithe
+- Occam
+- Futhark
+- cKanren/miniKanren (constraint language)
+- Pict (based on PI calculus)
+- Kaleidoscope (constraint language)
+- Janus (time-reversible language)
+
+
+(DOMAIN-SPECIFIC)
+
+- Mint
+- Ur/Web
+- MOO
+- Pike (LPC4)
+- R (descendant of S)
+- Matlab/Mathematica/Maple
+- DRAKON
+- S-Lang
+- Scratch (Beginner Language)
+
+
+(HISTORIC)
+
+- APL
+- IPL
+- Simula
+- Algol-60/68/W
+- BCPL
+- PL/1
+- Euclid
+- GCL (Guarded Command Language)
+- SNOBOL
+- Icon
+- Fortan
+- F (Fortan Related)
+- COBOL
+- RPG
+
+
+(ESOTERIC)
+
+- INTERCAL
+- Brainfuck
+- BeFunge 93/98
+- Malbolge
+- Dis
+- Whitespace
+- lolcode
+- Piet
+- Chef
+
