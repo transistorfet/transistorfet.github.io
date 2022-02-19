@@ -1,5 +1,5 @@
 
-Last Updated: 2022/01/12
+Last Updated: 2022/02/18
 
 Languages I Know Well:
 
@@ -9,24 +9,28 @@ Languages I Know Well:
 - C++
 - JavaScript
 
+
 Languages I Mostly Know, Maybe Rusty:
 
 - Ocaml
-- Standard ML
-- Scheme/Racket
-- Clojure
-- Go
-- Elm
-- SQL (MySQL)
-- Perl5
 - Prolog
-- Java
+- Haskell
+- Scheme/Racket
+- Go
+- SQL (MySQL)
 - Assembly (x86)
 - Assembly (68k)
 - Assembly (Z80)
+- Clojure
+- TypeScript
+- Perl5
+- Java
 
-Languages I Used To Know:
 
+Languages I Used To Know (Haven't Used In Years):
+
+- Standard ML
+- Elm
 - Qbasic
 - Lua
 - PHP
@@ -34,60 +38,59 @@ Languages I Used To Know:
 - Forth
 - Assembly (PIC)
 - Ladder Logic
-- VHDL
 
 
 Languages I'd Like To Know/Know A Bit:
 
-- Common Lisp
-- Haskell
+- Ada
 - Koka
 - Oz
-- F#
-- Smalltalk
 - Mercury
 - Coq
-- Elixir
-- Erlang
-- Perl6/Raku
-- Swift
+- F#
 - Julia
 - Scala
-- TypeScript
-- Ada
+- Common Lisp
 - Verilog
+- VHDL
 
 
 Languages I've Heard Of But Am Not Interested In (At The Moment):
 
 (GENERAL-PURPOSE)
 
-- Kotlin
 - Nim
 - Zig
 - Crystal
-- Groovy
+- Chapel
+- Elixir
+- Swift
+- Spark (Restricted Ada)
+- Kotlin
 - Eiffel
 - Dart
 - Reason ML
-- D
-- Modula-2/3
-- Spark (Restricted Ada)
-- Oberon
-- Chapel
 - Ceylon
 - Dylan
 - Ruby
 - Pony
+- Oberon
+- Erlang
+- Perl6/Raku
+- Modula-2/3
+- Smalltalk
+- D
 - ObjectiveC
-- C#
 - VisualBasic
 - Delphi/Object Pascal
 - Tea
-- Tcl
+- Groovy
 - Nemerle
 - Rebol
 - Red
+- C#
+- Vala
+- Tcl
 
 
 (RESEARCH/EXPERIMENTAL)
@@ -97,8 +100,13 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - ATS
 - Lucid
 - Clean
-- Alice (ML)
 - Curry
+- Eff (effect system)
+- cKanren/miniKanren (constraint language)
+- Kaleidoscope (constraint language)
+- Pict (based on PI calculus)
+- Janus (time-reversible language)
+- Alice (ML)
 - 1ML
 - F*
 - Miranda
@@ -113,10 +121,6 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - Lithe
 - Occam
 - Futhark
-- cKanren/miniKanren (constraint language)
-- Pict (based on PI calculus)
-- Kaleidoscope (constraint language)
-- Janus (time-reversible language)
 
 
 (DOMAIN-SPECIFIC)
