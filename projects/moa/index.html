@@ -32,6 +32,7 @@
 <li><a href="../../projects/computie/">Computie 68k</a></li>
 <li><a href="../../projects/molten/">Molten</a></li>
 <li><a href="../../projects/moa/">Moa Emulator</a></li>
+<li><a href="../../projects/ruxpin/">RuxpinOS</a></li>
 <li><a href="../../projects/nerve/">Nerve Control Network</a></li>
 <li><a href="../../projects/rgbnode/">RGB Node</a></li>
 <li><a href="../../projects/rgbnode-rs/">RGB Node with Rust</a></li>
@@ -159,7 +160,10 @@ with tracking down errors in the emulator itself.</p>
 <p>The <code>-x</code> or <code>--speed</code> option, when given a decimal number, will multiply that
 number by the milliseconds per frame, increasing or decreasing the gameplay
 clock relative to the frontend's update loop.  Setting it to 0.5 slows the game
-down to half speed and setting it to 2 doubles the speed.</p><hr>
+down to half speed and setting it to 2 doubles the speed.</p>
+<p>The <code>-a</code> or <code>--disable-audio</code> option will prevent the audio device from being
+created, so no audio will be played (although it will still be simulated by any
+devices that simulate it).</p><hr>
 <a name="download"></a>
 <h3>Get the Source</h3>
 <a href="https://github.com/transistorfet/moa/">https://github.com/transistorfet/moa/</a><br><br>

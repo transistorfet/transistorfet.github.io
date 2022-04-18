@@ -1,5 +1,5 @@
 
-Last Updated: 2022/02/18
+Last Updated: 2022/02/22
 
 Languages I Know Well:
 
@@ -24,13 +24,13 @@ Languages I Mostly Know, Maybe Rusty:
 - Clojure
 - TypeScript
 - Perl5
-- Java
 
 
 Languages I Used To Know (Haven't Used In Years):
 
 - Standard ML
 - Elm
+- Java
 - Qbasic
 - Lua
 - PHP
@@ -47,9 +47,7 @@ Languages I'd Like To Know/Know A Bit:
 - Oz
 - Mercury
 - Coq
-- F#
 - Julia
-- Scala
 - Common Lisp
 - Verilog
 - VHDL
@@ -65,7 +63,9 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - Chapel
 - Elixir
 - Swift
+- F#
 - Spark (Restricted Ada)
+- Scala
 - Kotlin
 - Eiffel
 - Dart
@@ -121,6 +121,7 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - Lithe
 - Occam
 - Futhark
+- Esterel
 
 
 (DOMAIN-SPECIFIC)

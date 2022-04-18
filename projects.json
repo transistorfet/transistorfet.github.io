@@ -18,6 +18,12 @@
         "repo": "projects/moa/moa.git"
     },
     {
+        "name": "ruxpin",
+        "title": "RuxpinOS",
+        "github": "default",
+        "repo": "projects/ruxpin/ruxpin.git"
+    },
+    {
         "name": "nerve",
         "title": "Nerve Control Network",
         "github": "default",
