@@ -6,7 +6,6 @@ Languages I Know Well:
 - Rust
 - Python
 - C
-- C++
 - JavaScript
 
 
@@ -17,6 +16,7 @@ Languages I Mostly Know, Maybe Rusty:
 - Haskell
 - Scheme/Racket
 - Go
+- C++
 - SQL (MySQL)
 - Assembly (x86)
 - Assembly (68k)
