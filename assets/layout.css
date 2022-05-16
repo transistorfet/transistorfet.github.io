@@ -117,6 +117,12 @@ input.toggle-trigger
   float: right;
 }
 
+.view-on-github {
+  float: right;
+  font-size: 10pt;
+  margin-top: 1em;
+}
+
 /* Markdown Elements Styling */
 
 #content h1 {

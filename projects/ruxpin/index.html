@@ -68,6 +68,7 @@
     </div>
     <div id="content">
 
+<div class="view-on-github"><a href="https://github.com/transistorfet/ruxpin/">[view on github]</a></div>
 <h1 id="ruxpinos">RuxpinOS</h1>
 <h6 id="started-march-1-2022"><em>Started March 1, 2022</em></h6>
 <p>An attempt at making an Operating System in Rust for a Raspberry Pi 3.  Due to
@@ -120,7 +121,7 @@ partition table into the image, which replicates the partitions used by the
 hardware.</p>
 <p>Once the image has been created, the kernel can be compiled and run in qemu,
 using:</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> kernel/
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> config/raspberrypi3/
 make
 ./qemu.sh
 </code></pre></div>

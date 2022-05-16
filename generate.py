@@ -158,7 +158,10 @@ class Template (object):
         return html
 
     def generate_project_page(self, readme, data):
-        html = convert_markdown(readme)
+        html = ''
+        if data.get('project_github'):
+            html += '<div class="view-on-github"><a href="{}">[view on github]</a></div>\n'.format(data['project_github'] if data['project_github'] != 'default' else github_link_fmt.format(data['project_name']))
+        html += convert_markdown(readme)
         if data.get('project_github'):
             html += '<hr>\n<a name="download"></a>\n<h3>Get the Source</h3>\n'
             html += '<a href="{0}">{0}</a><br><br>\n'.format(data['project_github'] if data['project_github'] != 'default' else github_link_fmt.format(data['project_name']))
