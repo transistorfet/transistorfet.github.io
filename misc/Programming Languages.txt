@@ -1,5 +1,5 @@
 
-Last Updated: 2022/02/22
+Last Updated: 2022/08/25
 
 Languages I Know Well:
 
@@ -73,7 +73,9 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - Ceylon
 - Dylan
 - Ruby
-- Pony
+- Pony (Actor-model)
+- Janet
+- Fennel
 - Oberon
 - Erlang
 - Perl6/Raku
@@ -91,6 +93,8 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - C#
 - Vala
 - Tcl
+- Carbon
+- Vale
 
 
 (RESEARCH/EXPERIMENTAL)
@@ -166,4 +170,5 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - lolcode
 - Piet
 - Chef
+- Kvikkalkul
 
