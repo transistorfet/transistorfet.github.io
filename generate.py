@@ -8,7 +8,7 @@ import markdown
 import subprocess
 
 
-local_repos = "/media/home/git"
+local_repos = "/media/pool/home/git"
 canonical_root = 'https://jabberwocky.ca'
 github_link_fmt = 'https://github.com/transistorfet/{}/'
 github_git_fmt = 'git@github.com:transistorfet/{}'

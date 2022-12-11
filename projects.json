@@ -30,6 +30,12 @@
         "repo": "projects/nerve/nerve.git"
     },
     {
+        "name": "deskclock2",
+        "title": "DeskClock2",
+        "github": "default",
+        "repo": "projects/deskclock2/deskclock2.git"
+    },
+    {
         "name": "rgbnode",
         "title": "RGB Node",
         "github": "default",

@@ -34,6 +34,7 @@
 <li><a href="../../projects/moa/">Moa Emulator</a></li>
 <li><a href="../../projects/ruxpin/">RuxpinOS</a></li>
 <li><a href="../../projects/nerve/">Nerve Control Network</a></li>
+<li><a href="../../projects/deskclock2/">DeskClock2</a></li>
 <li><a href="../../projects/rgbnode/">RGB Node</a></li>
 <li><a href="../../projects/rgbnode-rs/">RGB Node with Rust</a></li>
 <li><a href="../../projects/webmush/">WebMUSH</a></li>
@@ -83,7 +84,7 @@ ROM still wont boot.</p>
 <a href="http://jabberwocky.ca/posts/2022-01-emulating_the_sega_genesis_part1.html">Emulating the Sega Genesis</a></p>
 <h2 id="sega-genesismegadrive">Sega Genesis/MegaDrive</h2>
 <p>From the project root, run the following:</p>
-<div class="codehilite"><pre><span></span><code>cargo run -p moa-minifb --release --bin moa-genesis -- &lt;ROM FILE&gt;
+<div class="codehilite"><pre><span></span><code>cargo run -p moa_minifb --release --bin moa-genesis -- &lt;ROM FILE&gt;
 </code></pre></div>
 
 <p>The Genesis emulator is slowly coming along.  It can play a decent number of
@@ -95,12 +96,15 @@ compatible mode 4).  I've rewritten the frame drawing code to operate pixel by
 pixel, so it will now draw all the layers, including the window, sort out the
 priority of the pixels, and almost accurately implement the shadow and highlight
 colour modes.  Audio is not implemented yet.</p>
-<p>There are still some problems like the colour of Tails in the Sonic 2 title
+<p>~~There are still some problems like the colour of Tails in the Sonic 2 title
 screen being off.  I'm not sure why that happens, but it could be trying to
 update the colours during the drawing of the frame, and since the code is
 drawing the entire frame at once when the vertical blanking period is reached,
-the on-the-fly changes don't have an affect.</p>
-<p><img alt="alt text" src="images/sega-genesis-sonic2-title.png" /></p>
+the on-the-fly changes don't have an affect.~~
+I've since fixed the colour issue with Tails by fixing some 68000 instruction
+behaviour with the help of
+<a href="https://github.com/TomHarte/ProcessorTests">Tom Harte's test suite</a>.</p>
+<p><img alt="alt text" src="images/sega-genesis-sonic2-title-fixed.png" /></p>
 <p>The game play is mostly working but the time in the upper left corner doesn't
 seem to progress</p>
 <p><img alt="alt text" src="images/sega-genesis-sonic2-start.png" /></p>
@@ -116,7 +120,7 @@ though that doesn't happen during normal play</p>
 <p>For Computie, it can do everything the 68k-SMT board can do, including run the
 monitor program and load the Computie OS kernel and boot it from the
 CompactFlash card.  To run it:</p>
-<div class="codehilite"><pre><span></span><code>cargo run -p moa-console --bin moa-computie
+<div class="codehilite"><pre><span></span><code>cargo run -p moa_console --bin moa-computie
 </code></pre></div>
 
 <p>It will open two PTYs: one for the serial terminal, and one for the SLIP
@@ -134,7 +138,7 @@ test the Z80 cpu implementation in a simpler computer before I used in the
 Genesis emulator.  The frontend uses the
 <a href="https://github.com/emoon/rust_minifb"><code>minifb</code></a> rust crate to open a window
 and render the characters to screen, as well as accept input from the keyboard.</p>
-<div class="codehilite"><pre><span></span><code>cargo run -p moa-minifb --release --bin moa-trs-80
+<div class="codehilite"><pre><span></span><code>cargo run -p moa_minifb --release --bin moa-trs80
 </code></pre></div>
 
 <p>By default it will start Level I Basic.  To use the other rom, add the option
