@@ -5,6 +5,7 @@ import json
 import os.path
 import argparse
 import markdown
+import datetime
 import subprocess
 
 
@@ -209,6 +210,40 @@ def generate_site(projects, posts):
         template.render_template(link, convert_markdown(post['src']), data)
 
 
+def generate_sitemap_url_entry(data):
+    data['timestamp'] = datetime.datetime.utcnow().isoformat(timespec="seconds") + "+00:00"
+    return """
+<url>
+  <loc>{url}</loc>
+  <lastmod>{timestamp}</lastmod>
+  <priority>{priority:.2f}</priority>
+</url>""".format(**data)
+
+
+def generate_sitemap(projects, posts):
+    urls = []
+
+    # Generate url data for root
+    urls.append({ 'url': canonical_root + '/', 'priority': 1.0 })
+
+    # Generate url data for each project
+    for project in projects:
+        url = os.path.join(canonical_root, 'projects', project['name']) + '/'
+        urls.append({ 'url': url, 'priority': 0.8 })
+
+    # Generate url data for each post
+    for post in posts:
+        url = os.path.join(canonical_root, 'posts', post['dest'])
+        urls.append({ 'url': url, 'priority': 0.9 })
+
+    with open(os.path.join(input_dir, 'sitemap.template.xml'), 'r') as f:
+        template = f.read()
+    data = {}
+    data['urls'] = "".join([ generate_sitemap_url_entry(url) for url in urls ])
+    with open('sitemap.xml', 'w') as f:
+        f.write(template.format(**data))
+
+
 def main():
     parser = argparse.ArgumentParser(prog='generate', formatter_class=argparse.ArgumentDefaultsHelpFormatter, description='Fetch and generate website html from markdown')
     parser.add_argument('-F', '--no-fetch', action='store_true', help="Do not fetch repository data before generating")
@@ -226,6 +261,7 @@ def main():
     posts = collect_posts(projects)
     if not args.no_generate:
         generate_site(projects, posts)
+        generate_sitemap(projects, posts)
 
 
 if __name__ == '__main__':
