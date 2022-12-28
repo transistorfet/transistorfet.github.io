@@ -24,6 +24,12 @@
         "repo": "projects/ruxpin/ruxpin.git"
     },
     {
+        "name": "z280",
+        "title": "Z280 Computer",
+        "github": "default",
+        "repo": "projects/z280/z280.git"
+    },
+    {
         "name": "nerve",
         "title": "Nerve Control Network",
         "github": "default",

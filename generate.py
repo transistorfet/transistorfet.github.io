@@ -186,7 +186,7 @@ def generate_site(projects, posts):
     template = Template(os.path.join(input_dir, 'index.template.html'), projects, posts)
 
     # Generate the main page index
-    index = os.path.join(input_dir, 'index.html')
+    index = os.path.join(input_dir, 'mainpage.html')
     if os.path.exists(index):
         data = dict(rootdir='.', link='', title='Projects')
         html = template.generate_main_page(index, data)

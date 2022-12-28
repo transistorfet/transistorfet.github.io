@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Z280 Computer</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="canonical" href="https://jabberwocky.ca/projects/z280/" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link id="pagetheme" rel="stylesheet" href="../../assets/theme-light.css" type="text/css" charset="utf-8" />
+    <link id="codetheme" rel="stylesheet" href="../../assets/code-default.css" type="text/css" charset="utf-8" />
+    <script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div id="main">
+
+    <div id="theme-toggle"></div>
+
+    <div id="menu-toggle">&#x2630;</div>
+    <input class="toggle-trigger" type="checkbox" checked />
+    <div id="sidebar" class="toggle">
+        <a href="../../"><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr>
+<ul class="projects">
+<li><a href="../../projects/computie/">Computie 68k</a></li>
+<li><a href="../../projects/molten/">Molten</a></li>
+<li><a href="../../projects/moa/">Moa Emulator</a></li>
+<li><a href="../../projects/ruxpin/">RuxpinOS</a></li>
+<li><a href="../../projects/z280/">Z280 Computer</a></li>
+<li><a href="../../projects/nerve/">Nerve Control Network</a></li>
+<li><a href="../../projects/deskclock2/">DeskClock2</a></li>
+<li><a href="../../projects/rgbnode/">RGB Node</a></li>
+<li><a href="../../projects/rgbnode-rs/">RGB Node with Rust</a></li>
+<li><a href="../../projects/webmush/">WebMUSH</a></li>
+<li><a href="../../projects/conlog/">Conlog</a></li>
+<li><a href="../../projects/fallingrust/">Falling Rust</a></li>
+<li><a href="../../projects/abugslife/">A Bug's Life</a></li>
+<li><a href="../../projects/acamlslife/">A Caml's Life</a></li>
+<li><a href="../../projects/synthetik/">Synthetik Synth</a></li>
+<li><a href="../../projects/meteorman/">Meteor Games</a></li>
+<li><a href="../../projects/logarithm/">Logarithm IRC Bot</a></li>
+<li><a href="../../projects/sdm/">Super Duper Moo</a></li>
+<li><a href="../../projects/sdrl/">SDRL Interpreter</a></li>
+<li><a href="../../projects/stutter/">Stutter IRC Client</a></li>
+</ul>
+<hr>
+<h3>Posts</h3>
+<ul class="posts">
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part3.html">Emulating the Sega Genesis - Part III</a></li>
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part2.html">Emulating the Sega Genesis - Part II</a></li>
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part1.html">Emulating the Sega Genesis - Part I</a></li>
+<li><a href="../../posts/2021-11-making_an_emulator.html">Making a 68000 Emulator in Rust</a></li>
+<li><a href="../../posts/2021-09-bootstrapping_with_arduino.html">Bootstrapping a Homebuilt Computer Using An Arduino</a></li>
+<li><a href="../../posts/2021-08-molten_overview.html">An Overview Of Molten Internals</a></li>
+</ul>
+
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img class="icon" src="../../assets/icons/github.svg"></a>
+        <a href="https://mastodon.social/@transistor_fet"><img class="icon" src="../../assets/icons/mastodon.svg"></a>
+        <a href="https://twitter.com/transistorfet"><img class="icon" src="../../assets/icons/twitter.svg"></a>
+        <a href="https://dev.to/transistorfet"><img class="icon" src="../../assets/icons/dev-badge.svg"></a>
+        <a href="https://linkedin.com/in/sarimcfarland"><img class="icon" src="../../assets/icons/linkedin.svg"></a>
+    </div>
+    <div id="content">
+
+<div class="view-on-github"><a href="https://github.com/transistorfet/z280/">[view on github]</a></div>
+<h1 id="z280-computer">Z280 Computer</h1>
+<h6 id="started-october-29-2022"><em>Started October 29, 2022</em></h6>
+<p>A [series of] computers using the Z280, similar to the <a href="https://jabberwocky.ca/projects/computie/">Computie
+project</a>.  The first board is a prototyping board with
+the CPU's basic needs (clock/pullup resistors/etc), a 1MB Static RAM, a 1MB Flash chip, plus an
+expansion bus that an Arduino can be connected to.  The bus pin assignments match Computie's
+Supervisor shield, so the onboard flash chip can be programmed using the same harness as
+<a href="https://github.com/transistorfet/computie/raw/main/hardware/68k-Supervisor">Computie</a>.</p>
+<h2 id="z280-sbc-revision-1">Z280-SBC Revision 1</h2>
+<p><img alt="alt text" src="images/Z280-SBC-rev1/board-top.jpg" title="Z280-SBC Rev. 1 Assembled Board Top" /></p>
+<p><a href="https://github.com/transistorfet/z280/raw/main/hardware/Z280-SBC/Z280-SBC.pdf">Schematics</a></p>
+<p>I designed the first board quickly with the idea of it being rough.  Rather than prototype the CPU
+using solderless breadboards, which are prone to electrical faults, I thought I'd design a minimal
+board instead, with footprints for various additional components, like memory, a compact flash card
+slot, and a CPLD.  I made the mistake of using vias that were 0.4 mm total diameter, which made the
+boards more expensive at JLC.  If I redesign the board, I'll probably try to use 0.45 mm vias to
+avoid that.</p>
+<p>Building the board was pretty quick and easy.  I used the supervisor shield from Computie, along
+with the Arduino program
+<a href="https://github.com/transistorfet/z280/raw/main/software/arduino/Z280Supervisor/">here</a> to try to
+feed data to the CPU live, without the memory.  I couldn't find documentation on the frequency range
+of the CPU, so I used a 12 MHz crystal, which clocks the CPU at 3 MHz.  That's still too fast
+though for the Arduino to assert the WAIT signal without an external flip flop to latch it.</p>
+<p>I added the memory to the board to see if I could get the CPU executing from there instead, but it
+turns out the footprint for the flash chip is upside down, and I installed the chip right way up.  I
+didn't notice at first, and while trying to read from the RAM I was getting duplicate numbers in the
+test pattern because the A4 address line was being held always low by the flash chip.  The flash
+chip was also getting extremely hot when programming the Arduino, but not when idle, oddly enough.
+Eventually I clued into the fact that the chip needed to be rotated, and was able to do that using a
+hot air rework station to remove the chip.  I reused the same chip, and it seems to work, but there
+are other issues with the board, and I'm a bit suspicious of it still.</p>
+<p>Using a <a href="https://www.sparkfun.com/products/18627">logic analyzer</a>, I captured some signals after a
+reset (I held the reset button while starting a capture and released it during the capture to get
+the initial startup).  The bus cycles didn't seem to make sense for the program it should have been
+executing, so I programmed the halt instruction into each byte of the first 2K of the flash and ran
+it to make sure it halted pretty much right away.  It accessed memory twice before halting instead
+of just once, but that might be the instruction pre-fetch (not sure yet).</p>
+<p>I was able to use the /DS line wired to the /WAIT line to pause the CPU on the first instruction,
+and then inspect the address and data buses at that point, mid bus cycle.  The address bus had the
+halt instruction (0x76) on the lower byte, as did the data bus.  The lower address and data buses
+are multiplexed on this CPU, and the external latches are supposed to save the address portion when
+/AS is low and output them on dedicated address lines wired to the separate address pins of the
+memory chips.  Since this was just after a reset, it should have been accessing address 0x0000.  The
+address demultiplexing latches should have taken care of this, but it was as if they were open all
+the time.  Well, I got the logic backwards on the latch enable pin, so it was was latching when the
+/AS line <em>wasn't</em> asserted (low).  I must have thought it was negative logic instead of positive
+logic, because the /OE pin on the same chip to enable the output is negative logic.</p>
+<p>I was able to use one of the inverter gates for the backup clock, which wasn't populated yet, to
+invert the /AS line before going into the latch enable pin (positive-logic).  That fixed the
+latching issue, and it seems to execute code now, but I can't get much visibility into it yet.</p>
+<p>I looked at the ST0-ST3 signals in particular, which output a number corresponding to the
+transaction type during each bus cycle.  It seems to be running as expected, accessing memory either
+cacheable (0x8) or non-cacheable (0x9), and refreshing memory (0x1).  When the CPU halts, it issues
+a halt bus cycle (0x3) and then only performs refresh cycles after that.  Beyond that though, I
+haven't yet confirmed it's running the program as expected.  Getting the on-chip peripherals
+programmed will take a decent amount of code.</p>
+<p><img alt="alt text" src="images/Z280-SBC-rev1/board-bottom.jpg" title="Z280-SBC Rev. 1 Assembled Board Bottom" /></p>
+<p><img alt="alt text" src="images/Z280-SBC-rev1/pcb-top.jpg" title="Z280-SBC Rev. 1 PCB Top" /></p><hr>
+<a name="download"></a>
+<h3>Get the Source</h3>
+<a href="https://github.com/transistorfet/z280/">https://github.com/transistorfet/z280/</a><br><br>
+Or clone with:<pre><code>git clone git@github.com:transistorfet/z280</code></pre>
+
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+
