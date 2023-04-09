@@ -1,5 +1,5 @@
 
-Last Updated: 2022/08/25
+Last Updated: 2023/01/20
 
 Languages I Know Well:
 
@@ -11,6 +11,7 @@ Languages I Know Well:
 
 Languages I Mostly Know, Maybe Rusty:
 
+- Verilog
 - Ocaml
 - Prolog
 - Haskell
@@ -49,7 +50,6 @@ Languages I'd Like To Know/Know A Bit:
 - Coq
 - Julia
 - Common Lisp
-- Verilog
 - VHDL
 
 
@@ -81,6 +81,7 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - Perl6/Raku
 - Modula-2/3
 - Smalltalk
+- Wren
 - D
 - ObjectiveC
 - VisualBasic

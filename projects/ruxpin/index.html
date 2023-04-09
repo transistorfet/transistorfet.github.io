@@ -33,6 +33,7 @@
 <li><a href="../../projects/molten/">Molten</a></li>
 <li><a href="../../projects/moa/">Moa Emulator</a></li>
 <li><a href="../../projects/ruxpin/">RuxpinOS</a></li>
+<li><a href="../../projects/fidget/">Fidget</a></li>
 <li><a href="../../projects/z280/">Z280 Computer</a></li>
 <li><a href="../../projects/nerve/">Nerve Control Network</a></li>
 <li><a href="../../projects/deskclock2/">DeskClock2</a></li>
@@ -66,6 +67,7 @@
         <a href="https://github.com/transistorfet"><img class="icon" src="../../assets/icons/github.svg"></a>
         <a href="https://mastodon.social/@transistor_fet"><img class="icon" src="../../assets/icons/mastodon.svg"></a>
         <a href="https://twitter.com/transistorfet"><img class="icon" src="../../assets/icons/twitter.svg"></a>
+        <a href="mailto:trans@jabberwocky.ca"><img class="icon" src="../../assets/icons/email.svg"></a>
         <a href="https://dev.to/transistorfet"><img class="icon" src="../../assets/icons/dev-badge.svg"></a>
         <a href="https://linkedin.com/in/sarimcfarland"><img class="icon" src="../../assets/icons/linkedin.svg"></a>
     </div>
@@ -113,8 +115,8 @@ make it easier to test the code in qemu or on hardware, it creates a disk image
 that looks the same as the microSD card (ie. a FAT partition plus an ext2
 partition).  When using qemu, the FAT partition is ignored.</p>
 <p>To create an image, from a linux computer run:</p>
-<div class="codehilite"><pre><span></span><code>make create-image
-make load-image
+<div class="codehilite"><pre><span></span><code>make<span class="w"> </span>create-image
+make<span class="w"> </span>load-image
 </code></pre></div>
 
 <p>This will create a new 4GB image file, use <code>mkfs.ext2</code> to create a new file
@@ -124,7 +126,7 @@ partition table into the image, which replicates the partitions used by the
 hardware.</p>
 <p>Once the image has been created, the kernel can be compiled and run in qemu,
 using:</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> config/raspberrypi3/
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>config/raspberrypi3/
 make
 ./qemu.sh
 </code></pre></div>

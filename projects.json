@@ -24,6 +24,12 @@
         "repo": "projects/ruxpin/ruxpin.git"
     },
     {
+        "name": "fidget",
+        "title": "Fidget",
+        "github": "default",
+        "repo": "projects/fidget/fidget.git"
+    },
+    {
         "name": "z280",
         "title": "Z280 Computer",
         "github": "default",

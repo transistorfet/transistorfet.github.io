@@ -33,6 +33,7 @@
 <li><a href="../../projects/molten/">Molten</a></li>
 <li><a href="../../projects/moa/">Moa Emulator</a></li>
 <li><a href="../../projects/ruxpin/">RuxpinOS</a></li>
+<li><a href="../../projects/fidget/">Fidget</a></li>
 <li><a href="../../projects/z280/">Z280 Computer</a></li>
 <li><a href="../../projects/nerve/">Nerve Control Network</a></li>
 <li><a href="../../projects/deskclock2/">DeskClock2</a></li>
@@ -66,6 +67,7 @@
         <a href="https://github.com/transistorfet"><img class="icon" src="../../assets/icons/github.svg"></a>
         <a href="https://mastodon.social/@transistor_fet"><img class="icon" src="../../assets/icons/mastodon.svg"></a>
         <a href="https://twitter.com/transistorfet"><img class="icon" src="../../assets/icons/twitter.svg"></a>
+        <a href="mailto:trans@jabberwocky.ca"><img class="icon" src="../../assets/icons/email.svg"></a>
         <a href="https://dev.to/transistorfet"><img class="icon" src="../../assets/icons/dev-badge.svg"></a>
         <a href="https://linkedin.com/in/sarimcfarland"><img class="icon" src="../../assets/icons/linkedin.svg"></a>
     </div>
@@ -87,11 +89,11 @@ certain size will die.</p>
 show a strong tendency to hang around tiles with lots of food, and scatter in search of food when those tiles run out of food.</p>
 <h2 id="running">Running</h2>
 <p>You will need Rust and Cargo installed.  If using debian, you can run:</p>
-<div class="codehilite"><pre><span></span><code>sudo apt-get install rustc cargo
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>rustc<span class="w"> </span>cargo
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> abugslife
-cargo run --release
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>abugslife
+cargo<span class="w"> </span>run<span class="w"> </span>--release
 </code></pre></div>
 
 <p>You can edit the World::new function in src/world.rs to change which previously saved creatures to initialize the system with,
