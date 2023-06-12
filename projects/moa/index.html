@@ -86,6 +86,11 @@ ROM still wont boot.</p>
 <a href="https://jabberwocky.ca/posts/2021-11-making_an_emulator.html">Making a 68000 Emulator in Rust</a></p>
 <p>For more about the Sega Genesis support, check out this series I wrote about implementing it:
 <a href="http://jabberwocky.ca/posts/2022-01-emulating_the_sega_genesis_part1.html">Emulating the Sega Genesis</a></p>
+<p>I've also generated rustdocs of the workspace. All the various crates within moa
+are listed in the crates section in the sidebar on the left. There's not a lot
+of doc comments in the code yet but I plan to eventually write more:
+<a href="http://jabberwocky.ca/moa/doc/moa_core/">rustdocs for moa_core</a>
+<a href="http://jabberwocky.ca/moa/doc/moa_peripherals_yamaha/ym2612/index.html">rustdocs for ym2612</a></p>
 <h2 id="sega-genesismegadrive">Sega Genesis/MegaDrive</h2>
 <p>From the project root, run the following:</p>
 <div class="codehilite"><pre><span></span><code>cargo run -p moa_minifb --release --bin moa-genesis -- &lt;ROM FILE&gt;
