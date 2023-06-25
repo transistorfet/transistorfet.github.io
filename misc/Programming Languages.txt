@@ -1,5 +1,5 @@
 
-Last Updated: 2023/01/20
+Last Updated: 2023/06/24
 
 Languages I Know Well:
 
@@ -11,7 +11,7 @@ Languages I Know Well:
 
 Languages I Mostly Know, Maybe Rusty:
 
-- Verilog
+- Verilog (HDL)
 - Ocaml
 - Prolog
 - Haskell
@@ -19,6 +19,7 @@ Languages I Mostly Know, Maybe Rusty:
 - Go
 - C++
 - SQL (MySQL)
+- Assembly (arm64)
 - Assembly (x86)
 - Assembly (68k)
 - Assembly (Z80)
@@ -43,6 +44,7 @@ Languages I Used To Know (Haven't Used In Years):
 
 Languages I'd Like To Know/Know A Bit:
 
+- Fennel
 - Ada
 - Koka
 - Oz
@@ -50,7 +52,7 @@ Languages I'd Like To Know/Know A Bit:
 - Coq
 - Julia
 - Common Lisp
-- VHDL
+- VHDL (HDL)
 
 
 Languages I've Heard Of But Am Not Interested In (At The Moment):
@@ -75,7 +77,6 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - Ruby
 - Pony (Actor-model)
 - Janet
-- Fennel
 - Oberon
 - Erlang
 - Perl6/Raku
