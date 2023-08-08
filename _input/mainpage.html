@@ -3,8 +3,8 @@
 
 <div class="project">
 <a href="projects/computie/"><h2>Computie 68k</h2><img src="assets/covers/cover-computie-k30.jpg" /></a>
-<p>A series of single board computers using 68010 and 68030 processors, along with a
-Unix-like OS that runs on them.
+<p>A series of single board computers using 68010 and 68030 processors, along with
+<a href="projects/gloworm/">Gloworm</a>, a Unix-like OS, that runs on them.
 </p>
 </div>
 
@@ -25,7 +25,7 @@ also been working on support for the Macintosh 512k.
 </div>
 
 <div class="project">
-<a href="projects/ruxpin/"><h2>RuxpinOS</h2></a>
+<a href="projects/ruxpin/"><h2>Ruxpin OS</h2></a>
 <p>An Operating System written in Rust for a Raspberry Pi 3 (Aarch64), which also runs in Qemu.  For the
 moment, it's a simple monolithic OS with a Unix-like API.  It can run user processes in their own virtual
 memory address space, loaded from an elf binary compiled by Cargo, which is in turn loaded from the
@@ -45,6 +45,16 @@ generic peripheral device for Computie, or possibly an in-circuit debugger or lo
 <p>A prototype for bootstrapping development with the Z280, a 16-bit extension of the Z80 CPU.  It has
 some onboard memory, and space for a CompactFlash card slot, and ATF1504AS CPLD to extend the onboard
 logic.
+</p>
+</div>
+
+<div class="project">
+<a href="projects/gloworm/"><h2>Gloworm OS</h2></a>
+<p>A Unix-like Operating System written in C for <a href="projects/computie/">Computie</a> (68k).  It
+supports the Minix file system, along with a simple procfs, devfs, and memory-backed file system.  Through
+the second serial port on Computie, it can operate SLIP (Serial Line IP), with a rudimentary UDP and TCP
+implementation, which when bridged to the internet using another computer, can run NTP to update its
+system clock, and host a proof-of-concept HTTP server.
 </p>
 </div>
 

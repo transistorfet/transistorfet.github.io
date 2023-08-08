@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gloworm OS</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="canonical" href="https://jabberwocky.ca/projects/gloworm/" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link id="pagetheme" rel="stylesheet" href="../../assets/theme-light.css" type="text/css" charset="utf-8" />
+    <link id="codetheme" rel="stylesheet" href="../../assets/code-default.css" type="text/css" charset="utf-8" />
+    <script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div id="main">
+
+    <div id="theme-toggle"></div>
+
+    <div id="menu-toggle">&#x2630;</div>
+    <input class="toggle-trigger" type="checkbox" checked />
+    <div id="sidebar" class="toggle">
+        <a href="../../"><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr>
+<ul class="projects">
+<li><a href="../../projects/computie/">Computie 68k</a></li>
+<li><a href="../../projects/molten/">Molten</a></li>
+<li><a href="../../projects/moa/">Moa Emulator</a></li>
+<li><a href="../../projects/ruxpin/">Ruxpin OS</a></li>
+<li><a href="../../projects/fidget/">Fidget</a></li>
+<li><a href="../../projects/z280/">Z280 Computer</a></li>
+<li><a href="../../projects/gloworm/">Gloworm OS</a></li>
+<li><a href="../../projects/nerve/">Nerve Control Network</a></li>
+<li><a href="../../projects/deskclock2/">DeskClock2</a></li>
+<li><a href="../../projects/rgbnode/">RGB Node</a></li>
+<li><a href="../../projects/rgbnode-rs/">RGB Node with Rust</a></li>
+<li><a href="../../projects/webmush/">WebMUSH</a></li>
+<li><a href="../../projects/conlog/">Conlog</a></li>
+<li><a href="../../projects/fallingrust/">Falling Rust</a></li>
+<li><a href="../../projects/abugslife/">A Bug's Life</a></li>
+<li><a href="../../projects/acamlslife/">A Caml's Life</a></li>
+<li><a href="../../projects/synthetik/">Synthetik Synth</a></li>
+<li><a href="../../projects/meteorman/">Meteor Games</a></li>
+<li><a href="../../projects/logarithm/">Logarithm IRC Bot</a></li>
+<li><a href="../../projects/sdm/">Super Duper Moo</a></li>
+<li><a href="../../projects/sdrl/">SDRL Interpreter</a></li>
+<li><a href="../../projects/stutter/">Stutter IRC Client</a></li>
+</ul>
+<hr>
+<h3>Posts</h3>
+<ul class="posts">
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part3.html">Emulating the Sega Genesis - Part III</a></li>
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part2.html">Emulating the Sega Genesis - Part II</a></li>
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part1.html">Emulating the Sega Genesis - Part I</a></li>
+<li><a href="../../posts/2021-11-making_an_emulator.html">Making a 68000 Emulator in Rust</a></li>
+<li><a href="../../posts/2021-09-bootstrapping_with_arduino.html">Bootstrapping a Homebuilt Computer Using An Arduino</a></li>
+<li><a href="../../posts/2021-08-molten_overview.html">An Overview Of Molten Internals</a></li>
+</ul>
+
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img class="icon" src="../../assets/icons/github.svg"></a>
+        <a href="https://mastodon.social/@transistor_fet"><img class="icon" src="../../assets/icons/mastodon.svg"></a>
+        <a href="https://twitter.com/transistorfet"><img class="icon" src="../../assets/icons/twitter.svg"></a>
+        <a href="mailto:trans@jabberwocky.ca"><img class="icon" src="../../assets/icons/email.svg"></a>
+        <a href="https://dev.to/transistorfet"><img class="icon" src="../../assets/icons/dev-badge.svg"></a>
+        <a href="https://linkedin.com/in/sarimcfarland"><img class="icon" src="../../assets/icons/linkedin.svg"></a>
+    </div>
+    <div id="content">
+
+<div class="view-on-github"><a href="https://github.com/transistorfet/gloworm/">[view on github]</a></div>
+<h1 id="gloworm-os">Gloworm OS</h1>
+<h6 id="started-as-part-of-computie-may-23-2020"><em>Started as part of Computie May 23, 2020</em></h6>
+<h6 id="split-into-its-own-repository-august-07-2023"><em>Split into its own repository August 07, 2023</em></h6>
+<p>Gloworm is a simple Unix-like OS written in C for retro hardware, specifically the
+<a href="https://github.com/transistorfet/computie/">Computie68k</a> series of computers.  It's largely based
+on reading Operating Systems Design and Implementation 2ed by Andrew S.  Tanenbaum, although I've
+gone with a monolithic design, at least for the time being, for the simplicity of it.  It can do
+preemptive multitasking using the 68681 timer.  It also has an implementation of the minix version 1
+filesystem, which uses RAM (through a device driver) to store the data, or a Compact Flash card
+connected as an IDE device.  The second serial port can be configured as a SLIP device, with a basic
+implementation of UDP and TCP through a BSD sockets-style API, and an NTP command is provided for
+updating the system time on boot (when booting from disk).</p>
+<p><img alt="alt text" src="images/OS-basic.gif" title="OS" /></p>
+<p>The above video shows connecting over serial from a modern PC and resetting the hardware to run the
+monitor in ROM which displays the welcome message.  The kernel is already loaded in RAM, so running
+the boot command will boot the kernel which then starts the shell.  From the shell, some basic file
+operations and the ps command are shown.</p>
+<h2 id="operating-system-booting-from-monitorcompact-flash-on-68k-smt">Operating System Booting From Monitor/Compact Flash on 68k-SMT</h2>
+<p><img alt="alt text" src="images/OS-booting.gif" title="OS Booting" /></p>
+<p>The above video shows connecting over serial from a modern computer after first powering the board
+on.  The monitor runs first, giving the "&gt;" prompt.  The bootloader has been burnt into flash at
+address 0x20000.  From the monitor, the boot loader is run, which then loads the kernel from the
+attached compact flash card.  Each period (.) character printed represents 1 kilobyte of data loaded
+from disk).  The boot loader then jumps to the loaded kernel, which displays boot messages before
+running the init process from disk.  The init process first runs <code>sh /etc/rc</code>", which runs the
+ntpdate command to update the system time.  It then runs an interactive shell.</p>
+<p>Some commands are shown after boot, and then the httpd program is run (which has forking disabled
+for the time being).  From another computer, the curl command is run to issue a request to the
+board.  The httpd program responds with the data "This is a secret message"</p>
+<h2 id="running-the-kernel">Running the Kernel</h2>
+<p>To compile the kernel for transfer over serial, run:</p>
+<div class="codehilite"><pre><span></span><code>make<span class="w"> </span>kernel.load
+</code></pre></div>
+
+<p>It can be sent over serial like the monitor.  You might want to modify the kernel configuration in
+<code>src/kernel/main.c</code> if you're using a board without the CompactFlash card, or you don't want to use
+networking.</p>
+<h2 id="building-a-flashcard-root-image">Building A FlashCard Root Image</h2>
+<p>The image can be built using a loopback device and following make commands:</p>
+<div class="codehilite"><pre><span></span><code>make<span class="w"> </span>create-image
+make<span class="w"> </span>mount-image
+make<span class="w"> </span>build-system
+make<span class="w"> </span>umount-image
+</code></pre></div>
+
+<p>Which will produce a 20MB disk image in <code>minix-build.img</code> using the <code>build/</code> directory as the
+mountpoint, and the minix1 filesystem.  It does not include a partition table, so that needs to be
+created on the flash drive by other means.  It can be written to the partition-specific block device
+file using <code>dd</code> on a unix-like desktop.</p>
+<p>In order to boot off the CompactFlash directly, the <code>boot.load</code> script can be loaded over serial and
+written to an alternate location such as <code>0x020000</code>.  It must be a location that is outside of the
+Flash chip's sector in which monitor is written, or else the system will be unbootable.  The
+boot.bin image doesn't contain a vector table like the monitor.bin image does.</p>
+<p>After sending the <code>boot.load</code> file over serial, without running it, in the monitor, run the
+following:</p>
+<div class="codehilite"><pre><span></span><code>eraserom<span class="w"> </span><span class="m">20000</span>
+writerom<span class="w"> </span><span class="m">20000</span>
+verifyrom<span class="w"> </span><span class="m">20000</span>
+</code></pre></div>
+
+<p>You can then boot from the monitor at any time by running:</p>
+<div class="codehilite"><pre><span></span><code>boot<span class="w"> </span><span class="m">20000</span>
+</code></pre></div>
+
+<p>The bootloader will print a period character for every 1K of the kernel image loaded from the disk
+into RAM, and then it will run the kernel after.  If it works, you should see the heartbeat LED
+flashing to indicate the kernel is running and multiprocessing is enabled and switching.</p>
+<h2 id="configuring-networking">Configuring Networking</h2>
+<p>If the second serial port is connected to a desktop, it will act like a SLIP connection, which can
+be bridged to the desktop's network, where <code>/dev/ttyUSB1</code> is the serial device connected to the
+second serial port of the board, and <code>192.168.1.x</code> is the local network, and enp3s0 is the
+internet-connected network interface on the linux desktop:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>slattach<span class="w"> </span>-s<span class="w"> </span><span class="m">38400</span><span class="w"> </span>-p<span class="w"> </span>slip<span class="w"> </span>/dev/ttyUSB1
+sudo<span class="w"> </span>ifconfig<span class="w"> </span>sl0<span class="w"> </span><span class="m">192</span>.168.1.2<span class="w"> </span>pointopoint<span class="w"> </span><span class="m">192</span>.168.1.200<span class="w"> </span>up
+<span class="c1"># (this is automatically added on my machine, but might be required) sudo route add -host 192.168.1.200 sl0</span>
+sudo<span class="w"> </span>arp<span class="w"> </span>-Ds<span class="w"> </span><span class="m">192</span>.168.1.200<span class="w"> </span>enp3s0<span class="w"> </span>pub
+sudo<span class="w"> </span>iptables<span class="w"> </span>-A<span class="w"> </span>FORWARD<span class="w"> </span>-i<span class="w"> </span>sl0<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+sudo<span class="w"> </span>iptables<span class="w"> </span>-A<span class="w"> </span>FORWARD<span class="w"> </span>-o<span class="w"> </span>sl0<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo 1 &gt; /proc/sys/net/ipv4/ip_forward&quot;</span>
+</code></pre></div>
+
+<p>The device will have IP <code>192.168.1.200</code> which also needs to be configured in the kernel's
+<code>src/kernel/main.c</code> function at the bottom.</p><hr>
+<a name="download"></a>
+<h3>Get the Source</h3>
+<a href="https://github.com/transistorfet/gloworm/">https://github.com/transistorfet/gloworm/</a><br><br>
+Or clone with:<pre><code>git clone git@github.com:transistorfet/gloworm</code></pre>
+
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+

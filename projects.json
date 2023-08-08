@@ -19,7 +19,7 @@
     },
     {
         "name": "ruxpin",
-        "title": "RuxpinOS",
+        "title": "Ruxpin OS",
         "github": "default",
         "repo": "projects/ruxpin/ruxpin.git"
     },
@@ -34,6 +34,12 @@
         "title": "Z280 Computer",
         "github": "default",
         "repo": "projects/z280/z280.git"
+    },
+    {
+        "name": "gloworm",
+        "title": "Gloworm OS",
+        "github": "default",
+        "repo": "projects/gloworm/gloworm.git"
     },
     {
         "name": "nerve",

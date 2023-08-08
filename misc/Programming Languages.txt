@@ -143,6 +143,17 @@ Languages I've Heard Of But Am Not Interested In (At The Moment):
 - Scratch (Beginner Language)
 
 
+(HARDWARE-DESCRIPTION)
+
+- Veryl
+- SpinalHDL
+- Clash
+- HardCaml
+- CUPL
+- Chisel
+- SystemC
+
+
 (HISTORIC)
 
 - APL

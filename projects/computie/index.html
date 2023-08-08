@@ -32,9 +32,10 @@
 <li><a href="../../projects/computie/">Computie 68k</a></li>
 <li><a href="../../projects/molten/">Molten</a></li>
 <li><a href="../../projects/moa/">Moa Emulator</a></li>
-<li><a href="../../projects/ruxpin/">RuxpinOS</a></li>
+<li><a href="../../projects/ruxpin/">Ruxpin OS</a></li>
 <li><a href="../../projects/fidget/">Fidget</a></li>
 <li><a href="../../projects/z280/">Z280 Computer</a></li>
+<li><a href="../../projects/gloworm/">Gloworm OS</a></li>
 <li><a href="../../projects/nerve/">Nerve Control Network</a></li>
 <li><a href="../../projects/deskclock2/">DeskClock2</a></li>
 <li><a href="../../projects/rgbnode/">RGB Node</a></li>
@@ -86,13 +87,18 @@ software and monitor program, and a CompactFlash slot.</p>
 to this version, but it is also possible to connect a simple breadboarded version to 68k-SBC.</p>
 <p>For more details on how I got up and running, check out <a href="https://transistorfet.github.io/posts/2021-09-bootstrapping_with_arduino.html">Bootstrapping a Homebuilt Computer Using An Arduino</a></p>
 <p>For instructions on getting a board set up and software compiled, check out <a href="https://github.com/transistorfet/computie/blob/main/INSTALL.md">INSTALL.md</a></p>
-<h2 id="the-operating-system">The Operating System</h2>
-<p>Currently it doesn't have a name.  It's largely based on reading Operating Systems Design and Implementation 2ed by
-Andrew S. Tanenbaum, although I've gone with a monolithic design, at least for the time being, for the simplicity of
-it.  It can do preemptive multitasking using the 68681 timer.  It also has an implementation of the minix version 1
-filesystem, which uses RAM (through a device driver) to store the data, or a Compact Flash card connected as an IDE
-device.  The second serial port can be configured as a SLIP device, with a basic implementation of UDP and TCP through
-a BSD sockets-style API, and an NTP command is provided for updating the system time on boot (when booting from disk).</p>
+<p>This repository uses git submodules, and can be cloned using:</p>
+<div class="codehilite"><pre><span></span><code>git clone --recurse-submodules git@github.com:transistorfet/computie.git
+</code></pre></div>
+
+<h2 id="the-operating-system-gloworm">The Operating System (Gloworm)</h2>
+<p><a href="https://github.com/transistorfet/gloworm/">Gloworm</a> (now in a separate repository) is largely based on reading
+Operating Systems Design and Implementation 2ed by Andrew S. Tanenbaum, although I've gone with a monolithic design, at
+least for the time being, for the simplicity of it.  It can do preemptive multitasking using the 68681 timer.  It also
+has an implementation of the minix version 1 filesystem, which uses RAM (through a device driver) to store the data, or
+a Compact Flash card connected as an IDE device.  The second serial port can be configured as a SLIP device, with a
+basic implementation of UDP and TCP through a BSD sockets-style API, and an NTP command is provided for updating the
+system time on boot (when booting from disk).</p>
 <p><img alt="alt text" src="images/OS-basic.gif" title="OS" /></p>
 <p>The above video shows connecting over serial from a modern PC and resetting the hardware to run the monitor in ROM
 which displays the welcome message.  The kernel is already loaded in RAM, so running the boot command will boot
