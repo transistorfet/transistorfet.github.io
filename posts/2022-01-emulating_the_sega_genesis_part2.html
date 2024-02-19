@@ -176,7 +176,7 @@ frontend for the Sega Genesis, so I made separate crates for each.  Cargo has a 
 to make it easy to organize a single repository into multiple crates, each compiled separately.  The
 Cargo.toml file in the root directory of the project needs the following lines:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">[workspace]</span>
-<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;frontends/moa-console&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;frontends/moa-minifb&quot;</span><span class="p">]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;frontends/moa-console&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;frontends/moa-minifb&quot;</span><span class="p">]</span>
 </code></pre></div>
 
 <p>The first directory is the current directory, which has the common Moa code in <code>src/</code>, and
@@ -281,9 +281,9 @@ Macintosh machines).</p>
 <p>There's not much to it.  Only one window can be created at the moment, and input is not yet
 supported.  The threaded option is also not shown here.  Before long, the code grew more
 complicated, and now includes parsing of command line arguments with the <code>clap</code> crate.  To see the
-latest version, check out the <a href="https://github.com/transistorfet/moa/blob/main/frontends/moa-minifb/src/bin/moa-genesis.rs">Genesis machine-specific
+latest version, check out the <a href="https://github.com/transistorfet/moa/blob/c3951999771bbb56f45e1a8c5cd0b61758aed778/frontends/moa-minifb/src/bin/moa-genesis.rs">Genesis machine-specific
 binary</a>
-and the <a href="https://github.com/transistorfet/moa/blob/main/frontends/moa-minifb/src/lib.rs">MiniFB host impl and main
+and the <a href="https://github.com/transistorfet/moa/blob/c3951999771bbb56f45e1a8c5cd0b61758aed778/frontends/moa-minifb/src/lib.rs">MiniFB host impl and main
 loop</a></p>
 <h2 id="updating-windows">Updating Windows</h2>
 <p>I now needed to implement the <code>WindowUpdater</code> trait and to do this, I made a <code>Frame</code> object which
