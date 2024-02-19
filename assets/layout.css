@@ -14,9 +14,9 @@ body {
   padding: 0px 10px;
 }
 
-@media all and (min-width: 1000px) {
+@media all and (min-width: 1040px) {
   #main {
-    width: 1000px;
+    width: 1040px;
   }
 
   #content {
@@ -26,7 +26,7 @@ body {
 
   #sidebar {
     float: left;
-    width: 220px;
+    width: 260px;
     display: block;
   }
 
@@ -44,7 +44,7 @@ body {
   }
 }
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 1040px) {
   .toggle-trigger[type="checkbox"]:checked + .toggle {
     display: none;
   }
