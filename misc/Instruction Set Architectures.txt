@@ -1,0 +1,179 @@
+
+Last Updated: 2024/02/24
+
+Architectures I Know Well:
+
+- 68000
+
+
+Architectures I've Worked With:
+
+- 68000                     moa, computie, 68k-tester
+- Z80, Z280                 moa, z280
+- 80386                     early OSdev
+- Arm Cortex-M v6/7         bigboy, professional work
+- Aarch64                   ruxpin
+
+
+Architectures I'd Like To Work With:
+
+- MIPS (emulating Playstation 1/2, PSP, Nintendo 64, retro computers)
+- more Aarch64 (custom computers, OS dev, professional work)
+- RISC-V (custom computers, OS dev)
+- more 68000 (emulating Sega CD, Atari Jaguar? Macintosh, SE/30 hardware)
+
+- ARM7 (emulating Gameboy Advance)
+- SH-2/SH-4 (emulating Saturn/Dreamcast, also Sega 32X)
+- PowerPC (emulating Gamecube, Xbox360, Wii, WiiU, PS3)
+
+- 6502/65816 (emulating NES, SNES, Apple2)
+- 8088/80186 (retro computer, maybe PC emulating)
+
+Longshots/Unlikely:
+- i960 (retro computer)
+- PDP-11/J-11 (retro computer)
+- Z8000 (retro computer)
+- 6809 (retro computer)
+
+
+Architectures I've Heard Of:
+
+- 4004/8008
+- 6502 (65816)
+- 6800 (6809)
+- 68000
+- 8080 (8085)
+- AMD Am29000
+- AMD64 (x86-64)
+- ARM (v1-4, Cortex-M/R/A, Aarch32)
+- Aaarch64 (v8/9)
+- Blackfin (barely heard of)
+- CDC6600
+- ColdFire
+- Cray-1
+- DEC Alpha
+- ENIAC?
+- Fairchild F8
+- IBM 1130
+- IBM 1401
+- Itanium
+- MIL-STD-1750A
+- MIPS
+- Motorola 88000
+- Motorola 14500 (1-bit)
+- NEC SX (SX-1/2/3/4, Earth Simulator)
+- NEC V60 (V70/V80)
+- National Semi NS32032
+- PA-RISC
+- PDP-11
+- PDP-8 (Intersil 6100)
+- POWER (IBM)
+- PowerPC
+- PowerQUICC
+- RCA CDP 1802
+- RISC-V
+- ROMP
+- Signetics 2650
+- SPARC
+- SuperH (SH-2, SH-3, SH-4, SH-5)
+- System 360 (S370, S390, zArchitecture)
+- TMS9900
+- Transputer
+- UNIVAC
+- VAX
+- Z80 (Z280/Z380)
+- Z8000 (Z80000)
+- i860
+- i960
+- iAPX432
+- x86
+
+Micontroller-Specific:
+- 8048
+- 8051
+- AVR
+- Hitachi H8 (H8/500)
+- Infineon TriCore
+- MSP430
+- NEC 78K (RL78, 17K)
+- PIC
+- Renesas V850 (RH850)
+- Signetics 8X300
+- STM8
+- TMS320
+- Z8
+
+Virtual Instruction Sets:
+- Wasm
+- BPF (eBPF)
+
+
+CPUs I Have In Parts:
+
+- Z8001
+- Z8002
+- MC68000
+- MC68010
+- MC68030 FE/RP/RC
+- MC68040
+- MC68LC060
+- Am2901, Am2910
+- 8088
+- 8086
+- 80C188
+- 80C186
+- 80C286
+- 80386SX
+- 80386EX
+- NG80386DX20
+- TMS9900, TMS9901, TMS9914
+- Z80
+- Z180
+- Z280
+- Z380
+- MC14500
+- 6502
+- W65C816
+- 6802
+- HD6303
+- 68B09
+- HD63B09
+- CDP1802
+- i960
+- MIPS R3000
+- MIPS R5500
+- STM32H743
+
+
+From CPU Shack (https://www.cpushack.com/CPU/cpuAppendA.html):
+
+    Complex/                                                         Simple/
+      CISC____________________________________________________________RISC
+      |                                                         14500B*
+4-bit |                                                    *Am2901
+      |                                   *4004
+      |                                *4040
+8-bit |                                     6800,650x         *1802
+      |                       8051*  *  *8008   *    SC/MP
+      |                              Z8    *         *    *F8
+      |                F100-L*   8080/5  2650
+      |                             *       *NOVA        *  *PIC16x
+      |          MCP1600*   *Z-80         *6809    IMS6100
+16-bit|          *Z-280           *PDP11             80C166*  *M17
+      |                      *8086    *TMS9900
+      |                 *Z8000          *65816
+      |                *56002
+      |            32016*   *68000 ACE HOBBIT  Clipper      R3000
+32-bit|432      [3]  96002 *68020    *   *  *  *   *29000     *   *ARM
+      | *         *VAX * 80486 68040 *PSC i960    *SPARC         *SH
+      |          Z80000*    *  *    TRON48    PA-RISC
+      |    PPro  Pent* [1]---*-------     *    *88100
+      | *    * [2]--<860>-*--*-----            *     *88110
+64-bit|Rekurs         POWER PowerPC   *        CDC6600     *R4000
+      |            x86-64*   *620 U-SPARC *     *R8000         *Alpha
+      |     --------------      R10000
+
+[1] - About here, from left to right, the Swordfish and 68060.
+[2] - In general, Pentium emulator 'clones' such as the 586, AMD K5, and Cyrix M1 fit about here.
+[3] - TMS 320C30 and IBM S/360 go here, for different reasons. Boy, it's getting awfully crowded there! 
+
