@@ -1,5 +1,5 @@
 
-Last Updated: 2024/02/24
+Last Updated: 2024/03/22
 
 Architectures I Know Well:
 
@@ -38,55 +38,60 @@ Longshots/Unlikely:
 
 Architectures I've Heard Of:
 
-- 4004/8008
 - 6502 (65816)
-- 6800 (6809)
-- 68000
-- 8080 (8085)
 - AMD Am29000
 - AMD64 (x86-64)
 - ARM (v1-4, Cortex-M/R/A, Aarch32)
 - Aaarch64 (v8/9)
 - Blackfin (barely heard of)
-- CDC6600
-- ColdFire
+- Burroughs B5500
+- CDC 6600
 - Cray-1
 - DEC Alpha
+- DEC PDP-11
+- DEC PDP-8 (Intersil 6100)
+- DEC VAX
 - ENIAC?
 - Fairchild F8
+- HP PA-RISC
 - IBM 1130
 - IBM 1401
-- Itanium
+- IBM 705, 704, 701
+- IBM ROMP (6150, 801)
+- IBM Stretch
+- IBM System 360 (S370, S390, zArchitecture)
+- Intel 4004/8008
+- Intel 8080 (8085)
+- Intel Itanium
+- Intel i860
+- Intel i960
+- Intel iAPX432
+- Intel x86
 - MIL-STD-1750A
 - MIPS
-- Motorola 88000
 - Motorola 14500 (1-bit)
+- Motorola 6800 (6809)
+- Motorola 68000 (020/030/040/060)
+- Motorola 88000
+- Motorola ColdFire
 - NEC SX (SX-1/2/3/4, Earth Simulator)
 - NEC V60 (V70/V80)
 - National Semi NS32032
-- PA-RISC
-- PDP-11
-- PDP-8 (Intersil 6100)
 - POWER (IBM)
 - PowerPC
 - PowerQUICC
 - RCA CDP 1802
 - RISC-V
-- ROMP
-- Signetics 2650
 - SPARC
+- STC ZEBRA
+- Signetics 2650
 - SuperH (SH-2, SH-3, SH-4, SH-5)
-- System 360 (S370, S390, zArchitecture)
-- TMS9900
+- Texas Instruments TMS9900
 - Transputer
-- UNIVAC
-- VAX
-- Z80 (Z280/Z380)
-- Z8000 (Z80000)
-- i860
-- i960
-- iAPX432
-- x86
+- UNIVAC 1130A
+- UNIVAC I
+- Zilog Z80 (Z280/Z380)
+- Zilog Z8000 (Z80000)
 
 Micontroller-Specific:
 - 8048
