@@ -3,43 +3,50 @@
         "name": "computie",
         "title": "Computie 68k",
         "github": "default",
-        "repo": "projects/computie/computie.git"
+        "repo": "projects/computie/computie.git",
+        "keywords": "m68k, retrocomputer, C, ardunio, gloworm"
     },
     {
         "name": "molten",
         "title": "Molten",
         "github": "default",
-        "repo": "projects/molten/molten.git"
+        "repo": "projects/molten/molten.git",
+        "keywords": "rust, programming language, pldi, ml, ml-like, ocaml"
     },
     {
         "name": "moa",
         "title": "Moa Emulator",
         "github": "default",
-        "repo": "projects/moa/moa.git"
+        "repo": "projects/moa/moa.git",
+        "keywords": "rust, m68k, z80, sega, genesis, megadrive, trs80, emulator"
     },
     {
         "name": "ruxpin",
         "title": "Ruxpin OS",
         "github": "default",
-        "repo": "projects/ruxpin/ruxpin.git"
+        "repo": "projects/ruxpin/ruxpin.git",
+        "keywords": "rust, operating system, osdev, unix"
     },
     {
         "name": "fidget",
         "title": "Fidget",
         "github": "default",
-        "repo": "projects/fidget/fidget.git"
+        "repo": "projects/fidget/fidget.git",
+        "keywords": "fpga, ice40, bus analyzer, verilog, tinyfpga"
     },
     {
         "name": "z280",
         "title": "Z280 Computer",
         "github": "default",
-        "repo": "projects/z280/z280.git"
+        "repo": "projects/z280/z280.git",
+        "keywords": "z280, z80, retrocomputer"
     },
     {
         "name": "gloworm",
         "title": "Gloworm OS",
         "github": "default",
-        "repo": "projects/gloworm/gloworm.git"
+        "repo": "projects/gloworm/gloworm.git",
+        "keywords": "C, operating system, osdev, unix, m68k, computie"
     },
     {
         "name": "nerve",
@@ -75,13 +82,15 @@
         "name": "conlog",
         "title": "Conlog",
         "github": "default",
-        "repo": "projects/conlog/conlog.git"
+        "repo": "projects/conlog/conlog.git",
+        "keywords": "prolog, interpreter, programming language, rust"
     },
     {
         "name": "fallingrust",
         "title": "Falling Rust",
         "github": "default",
-        "repo": "projects/fallingrust/fallingrust.git"
+        "repo": "projects/fallingrust/fallingrust.git",
+        "keywords": "falling sand, rust"
     },
     {
         "name": "abugslife",

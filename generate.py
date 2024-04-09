@@ -99,7 +99,13 @@ def collect_posts(projects):
                 break
             title = line
         dest = os.path.splitext(os.path.basename(filename))[0] + '.html'
-        posts.append({ 'src': filename, 'dest': dest, 'title': title })
+        keywords = next(project.get('keywords', "") for project in projects if project['name'] in filename)
+        posts.append({
+            'src': filename,
+            'dest': dest,
+            'title': title,
+            'keywords': keywords,
+        })
     posts.sort(key=lambda a: a['dest'], reverse=True)
     return posts
 
@@ -170,6 +176,10 @@ class Template (object):
         return html
 
     def render_template(self, filename, html, data):
+        if 'keywords' in data and data['keywords']:
+            data['keywords'] = ", " + data['keywords']
+        else:
+            data['keywords'] = ""
         data['canonical_root'] = canonical_root
         data['canonical_link'] = os.path.join(canonical_root, data['link'])
 
@@ -200,13 +210,24 @@ def generate_site(projects, posts):
         readme = find_source_files(project['name'], 'README.md')
         if readme:
             link = os.path.join('projects', project['name'])
-            data = dict(rootdir='../..', link=link + '/', title=project['title'], project_name=project['name'], project_github=project['github'])
-            template.render_template(os.path.join(link, 'index.html'), template.generate_project_page(readme[0], data), data)
+            data = dict(
+                rootdir='../..',
+                link=link + '/',
+                title=project['title'],
+                project_name=project['name'],
+                project_github=project['github'],
+                keywords=project.get('keywords', "")
+            )
+            template.render_template(
+                os.path.join(link, 'index.html'),
+                template.generate_project_page(readme[0], data),
+                data
+            )
 
     # Generate each post page
     for post in posts:
         link = os.path.join('posts', post['dest'])
-        data = dict(rootdir='..', link=link, title=post['title'])
+        data = dict(rootdir='..', link=link, title=post['title'], keywords=post['keywords'])
         template.render_template(link, convert_markdown(post['src']), data)
 
 

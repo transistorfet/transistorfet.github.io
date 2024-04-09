@@ -5,6 +5,9 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="transistorfet's website" />
+    <meta name="author" content="transistor fet" />
+    <meta name="keywords" content="jabberwocky, transistorfet, programming, electronics, rust, m68k, z80, sega, genesis, megadrive, trs80, emulator" />
 
     <link rel="canonical" href="https://jabberwocky.ca/projects/moa/" />
 
@@ -93,6 +96,10 @@ are listed in the crates section in the sidebar on the left. There's not a lot
 of doc comments in the code yet but I plan to eventually write more:
 <a href="http://jabberwocky.ca/moa/doc/moa_core/">rustdocs for moa_core</a>
 <a href="http://jabberwocky.ca/moa/doc/moa_peripherals_yamaha/ym2612/index.html">rustdocs for ym2612</a></p>
+<p>This repository uses submodules, so make sure to clone with</p>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>git@github.com:transistorfet/moa.git
+</code></pre></div>
+
 <h2 id="sega-genesismegadrive">Sega Genesis/MegaDrive</h2>
 <p>From the project root, run the following:</p>
 <div class="codehilite"><pre><span></span><code>cargo run -p moa_minifb --release --bin moa-genesis -- &lt;ROM FILE&gt;
