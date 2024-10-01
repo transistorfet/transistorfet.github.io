@@ -232,7 +232,7 @@ def generate_site(projects, posts):
 
 
 def generate_sitemap_url_entry(data):
-    data['timestamp'] = datetime.datetime.utcnow().isoformat(timespec="seconds") + "+00:00"
+    data['timestamp'] = datetime.datetime.now(datetime.UTC).isoformat(timespec="seconds") + "+00:00"
     return """
 <url>
   <loc>{url}</loc>
