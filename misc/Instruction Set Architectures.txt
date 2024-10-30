@@ -1,5 +1,5 @@
 
-Last Updated: 2024/03/22
+Last Updated: 2024/10/29
 
 Architectures I Know Well:
 
@@ -44,22 +44,37 @@ Architectures I've Heard Of:
 - ARM (v1-4, Cortex-M/R/A, Aarch32)
 - Aaarch64 (v8/9)
 - Blackfin (barely heard of)
-- Burroughs B5500
-- CDC 6600
+- Burroughs B5500 (48-bit)
+- Bull Gamma 60 (24 to 96-bit)
+- CDC 160 (12-bit)
+- CDC 1604 (48-bit)
+- CDC 3600 (48-bit)
+- CDC 6600 (7600, Cyber-170) (60-bit)
 - Cray-1
+- Data General Nova
+- Data General Eclipse/MV
 - DEC Alpha
-- DEC PDP-11
-- DEC PDP-8 (Intersil 6100)
-- DEC VAX
+- DEC PDP-10 (36-bit)
+- DEC PDP-11 (16-bit)
+- DEC PDP-8 (Intersil 6100) (12-bit)
+- DEC PDP-9 (preceded by PDP-7) (18-bit)
+- DEC VAX (32-bit)
 - ENIAC?
+- EDSAC
+- Ferranti Atlas (48-bit)
 - Fairchild F8
+- Fairchild Clipper
+- GE/600, Honeywell 6000 (36-bit)
+- Hitachi SuperH (SH-2, SH-3, SH-4, SH-5)
+- Honeywell 800 (48-bit)
 - HP PA-RISC
 - IBM 1130
-- IBM 1401
-- IBM 705, 704, 701
+- IBM 1401 (decimal/BCD)
+- IBM 709, 705, 704, 701 (36-bit)
 - IBM ROMP (6150, 801)
-- IBM Stretch
-- IBM System 360 (S370, S390, zArchitecture)
+- IBM Stretch (7030)
+- IBM System/360 (S370, S390, zArchitecture)
+- IBM POWER ISA
 - Intel 4004/8008
 - Intel 8080 (8085)
 - Intel Itanium
@@ -70,13 +85,15 @@ Architectures I've Heard Of:
 - MIL-STD-1750A
 - MIPS
 - Motorola 14500 (1-bit)
-- Motorola 6800 (6809)
+- Motorola 6800 (6809, 6309)
 - Motorola 68000 (020/030/040/060)
 - Motorola 88000
 - Motorola ColdFire
+- NCR/32
 - NEC SX (SX-1/2/3/4, Earth Simulator)
 - NEC V60 (V70/V80)
 - National Semi NS32032
+- Philco 2000 (48-bit)
 - POWER (IBM)
 - PowerPC
 - PowerQUICC
@@ -85,42 +102,52 @@ Architectures I've Heard Of:
 - SPARC
 - STC ZEBRA
 - Signetics 2650
-- SuperH (SH-2, SH-3, SH-4, SH-5)
 - Texas Instruments TMS9900
 - Transputer
-- UNIVAC 1130A
+- UNIVAC 1100/2200 Series
+- UNIVAC 1103A (36-bit)
 - UNIVAC I
 - Zilog Z80 (Z280/Z380)
 - Zilog Z8000 (Z80000)
 
 Micontroller-Specific:
-- 8048
-- 8051
-- AVR
+- Atmel ATiny
+- Atmel AVR
+- Atmel AVR32
 - Hitachi H8 (H8/500)
 - Infineon TriCore
-- MSP430
+- Intel 8048
+- Intel 8051
+- Microchip PIC
+- Microchip dsPIC33
+- Mostek MK3870 (based on Fairchild F8)
 - NEC 78K (RL78, 17K)
-- PIC
 - Renesas V850 (RH850)
+- ST STM8
 - Signetics 8X300
-- STM8
-- TMS320
-- Z8
+- Texas Instruments MSP430
+- Texas Instruments TMS320
+- Zilog Z8
 
 Virtual Instruction Sets:
 - Wasm
 - BPF (eBPF)
+- Java Bytecode
 
 
 CPUs I Have In Parts:
 
 - Z8001
 - Z8002
+- Z80
+- Z180
+- Z280
+- Z380
 - MC68000
 - MC68010
 - MC68030 FE/RP/RC
 - MC68040
+- MC68LC040
 - MC68LC060
 - Am2901, Am2910
 - 8088
@@ -132,10 +159,6 @@ CPUs I Have In Parts:
 - 80386EX
 - NG80386DX20
 - TMS9900, TMS9901, TMS9914
-- Z80
-- Z180
-- Z280
-- Z380
 - MC14500
 - 6502
 - W65C816
@@ -144,10 +167,13 @@ CPUs I Have In Parts:
 - 68B09
 - HD63B09
 - CDP1802
-- i960
+- i960 (5V and 3.3V)
 - MIPS R3000
+- IDT 79R3081E, 3081, 3071 (MIPS R3000)
 - MIPS R5500
 - STM32H743
+- J-11 (PDP-11)
+- IBM PowerPC 601
 
 
 From CPU Shack (https://www.cpushack.com/CPU/cpuAppendA.html):
