@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RetroVerse</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="transistorfet's website" />
+    <meta name="author" content="transistor fet" />
+    <meta name="keywords" content="jabberwocky, transistorfet, programming, electronics, vme, vmebus, m68k, retrocomputer, C, gloworm" />
+
+    <link rel="canonical" href="https://jabberwocky.ca/projects/retroverse/" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/normalize.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../../assets/layout.css" type="text/css" charset="utf-8" />
+    <link id="pagetheme" rel="stylesheet" href="../../assets/theme-light.css" type="text/css" charset="utf-8" />
+    <link id="codetheme" rel="stylesheet" href="../../assets/code-default.css" type="text/css" charset="utf-8" />
+    <script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div id="main">
+
+    <div id="theme-toggle"></div>
+
+    <div id="menu-toggle">&#x2630;</div>
+    <input class="toggle-trigger" type="checkbox" checked />
+    <div id="sidebar" class="toggle">
+        <a href="../../"><h2>Projects</h2></a>
+        <hr>
+
+<a href="#download">Get the Source</a><hr>
+<ul class="projects">
+<li><a href="../../projects/retroverse/">RetroVerse</a></li>
+<li><a href="../../projects/computie/">Computie 68k</a></li>
+<li><a href="../../projects/molten/">Molten</a></li>
+<li><a href="../../projects/moa/">Moa Emulator</a></li>
+<li><a href="../../projects/ruxpin/">Ruxpin OS</a></li>
+<li><a href="../../projects/fidget/">Fidget</a></li>
+<li><a href="../../projects/z280/">Z280 Computer</a></li>
+<li><a href="../../projects/gloworm/">Gloworm OS</a></li>
+<li><a href="../../projects/nerve/">Nerve Control Network</a></li>
+<li><a href="../../projects/deskclock2/">DeskClock2</a></li>
+<li><a href="../../projects/rgbnode/">RGB Node</a></li>
+<li><a href="../../projects/rgbnode-rs/">RGB Node with Rust</a></li>
+<li><a href="../../projects/webmush/">WebMUSH</a></li>
+<li><a href="../../projects/conlog/">Conlog</a></li>
+<li><a href="../../projects/fallingrust/">Falling Rust</a></li>
+<li><a href="../../projects/abugslife/">A Bug's Life</a></li>
+<li><a href="../../projects/acamlslife/">A Caml's Life</a></li>
+<li><a href="../../projects/synthetik/">Synthetik Synth</a></li>
+<li><a href="../../projects/meteorman/">Meteor Games</a></li>
+<li><a href="../../projects/logarithm/">Logarithm IRC Bot</a></li>
+<li><a href="../../projects/sdm/">Super Duper Moo</a></li>
+<li><a href="../../projects/sdrl/">SDRL Interpreter</a></li>
+<li><a href="../../projects/stutter/">Stutter IRC Client</a></li>
+</ul>
+<hr>
+<h3>Posts</h3>
+<ul class="posts">
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part3.html">Emulating the Sega Genesis - Part III</a></li>
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part2.html">Emulating the Sega Genesis - Part II</a></li>
+<li><a href="../../posts/2022-01-emulating_the_sega_genesis_part1.html">Emulating the Sega Genesis - Part I</a></li>
+<li><a href="../../posts/2021-11-making_an_emulator.html">Making a 68000 Emulator in Rust</a></li>
+<li><a href="../../posts/2021-09-bootstrapping_with_arduino.html">Bootstrapping a Homebuilt Computer Using An Arduino</a></li>
+<li><a href="../../posts/2021-08-molten_overview.html">An Overview Of Molten Internals</a></li>
+</ul>
+
+
+        <hr>
+        <a href="https://github.com/transistorfet"><img class="icon" src="../../assets/icons/github.svg"></a>
+        <a href="https://bsky.app/profile/transistorfet.bsky.social"><img class="icon" src="../../assets/icons/bluesky.svg"></a>
+        <a href="https://mastodon.social/@transistor_fet"><img class="icon" src="../../assets/icons/mastodon.svg"></a>
+        <a href="https://twitch.tv/transistorfet"><img class="icon" src="../../assets/icons/twitch.svg"></a>
+        <a href="https://youtube.com/@transistorfet"><img class="icon" src="../../assets/icons/youtube.svg"></a>
+        <a href="https://dev.to/transistorfet"><img class="icon" src="../../assets/icons/dev-badge.svg"></a>
+        <a href="mailto:trans@jabberwocky.ca"><img class="icon" src="../../assets/icons/email.svg"></a>
+        <a href="https://linkedin.com/in/sarimcfarland"><img class="icon" src="../../assets/icons/linkedin.svg"></a>
+    </div>
+    <div id="content">
+
+<div class="view-on-github"><a href="https://github.com/transistorfet/retroverse/">[view on github]</a></div>
+<h1 id="retroverse">RetroVerse</h1>
+<h6 id="started-august-06-2023"><em>Started August 06, 2023</em></h6>
+<p>A series of computer cards using the <a href="https://en.wikipedia.org/wiki/VMEbus">VME bus</a> as a common
+backplane, in the style of modular computer equipment, laboratory test equipment, and industrial
+controls systems.</p>
+<p>I've always liked the VME bus for its adaptability.  It's an asynchronous bus with dynamic sizing,
+so it can support both controllers and peripherals that require different signaling speeds and bus
+widths to communicate, without requiring a specialized bus interface chip.  It supports multiple
+controllers without the need for a special slot on the backplane, because it uses daisy chained
+priority bus arbitration.  It uses standard and readily available DIN41612 connectors, comes in a 3U
+variant, and it's possible to still buy equipment that conforms to the standard, namely card cases
+and power supplies.  The 3U Eurocard standard, which uses 160x100mm boards, is also fairly
+affordable for PCB printing, and it's possible to make 100x100mm cards, which can be printed for as
+low as $2.  The bus is perhaps slow by modern standards, but for CPUs that are below 100MHz, it's
+the perfect bus to build 16-bit and 32-bit retro computers around.</p>
+<p>My intention is to build a backplane, dedicated bus arbitration and interrupt controller card, and a
+generic 68030-based CPU card to start.  I have ordered an off-the-shelf desktop card case from
+<a href="https://schroff.nvent.com/en-de/products/enc24576-106">Schroff</a> via Digikey, on backorder, and I
+plan to adapt an affordable <a href="https://www.meanwell.com/productPdf.aspx?i=488">MeanWell power supply</a>.
+I'm hoping to be able to install multiple CPU cards into the same system to make a simple
+multiprocessor machine.  I've already made a generic card using a microcontroller wired to the bus,
+that I intended to use as a bus analyzer called
+<a href="https://github.com/transistorfet/retroverse/tree/main/controllers/bigboy">BigBoy</a>, but I haven't
+written software for it yet.</p>
+<p>I also intend to eventually make a 68010 version using only DIP chips and hopefully all hardwired
+logic, so that a specialized PLD programmer won't be needed to build one.  I might also make cards
+with other CPUs.  It should be possible for the system to support different CPUs in the same system
+at the same time.  My larger hope is for the VME bus to be used more broadly in the hobbyist
+computer community as a common means of interoperability.</p>
+<h2 id="why-vmebus">Why VMEbus?</h2>
+<ul>
+<li>
+<p>it uses the eurocard form factor, and equipment such as cases can still be bought new or used</p>
+</li>
+<li>
+<p>it's asynchronous, so it can support devices operating at different speeds</p>
+</li>
+<li>
+<p>the DIN41612 connectors it uses are still widely available with solder tails</p>
+</li>
+</ul>
+<h2 id="about-vmebus">About VMEbus</h2>
+<ul>
+<li><a href="https://mdavidsaver.github.io/epics-doc/vme/understanding-vme.pdf">Understanding VMEBus</a></li>
+<li><a href="https://www.vita.com/VMEbus-FAQ">VME FAQ from VITA</a></li>
+<li><a href="https://allpinouts.org/pinouts/connectors/buses/vme-versamodule-eurocard-p1/">VME P1 Connector Pinout</a></li>
+<li><a href="https://www.ge.infn.it/~musico/Vme/Vme64.pdf">VME64</a></li>
+</ul>
+<h2 id="other-vme-projects">Other VME Projects</h2>
+<h4 id="vmebus-prototyping-card-pcb">VMEbus prototyping card PCB:</h4>
+<ul>
+<li><a href="https://github.com/rhaamo/VME">https://github.com/rhaamo/VME</a></li>
+</ul>
+<h4 id="proto-boards-blanking-plates-plate-adapters-ecb-backplanes">Proto Boards, Blanking Plates, Plate Adapters, ECB backplanes:</h4>
+<ul>
+<li><a href="https://www.ebay.ca/usr/martenelectric">https://www.ebay.ca/usr/martenelectric</a></li>
+<li><a href="https://www.martenelectric.cz/index.html">https://www.martenelectric.cz/index.html</a></li>
+</ul>
+<h4 id="comet-backplane-prototyping-card-and-single-board-computer">COMET backplane, prototyping card, and single board computer:</h4>
+<ul>
+<li><a href="https://hackaday.io/project/192539-comet68k">https://hackaday.io/project/192539-comet68k</a></li>
+<li><a href="https://github.com/tomstorey/COMET">https://github.com/tomstorey/COMET</a></li>
+<li>computer card is missing bus arbitration, but the backplane supports it</li>
+</ul>
+<h2 id="desktop-case">Desktop Case</h2>
+<p>I bought a brand new Schroff PropacPro 3U 63HP 266mm deep Unshielded Complete Desktop case.  I
+initially requested a quote from Schroff, but unsurprisingly they sent me back a list of authorized
+redistributors instead.  It turned out that Digikey did actually have the cases available for
+backorder but the listing was uncategorized, so you had to search specifically for the part number
+to find it.</p>
+<p><a href="https://schroff.nvent.com/en-ca/products/enc24576-006">https://schroff.nvent.com/en-ca/products/enc24576-006</a>
+<a href="https://www.digikey.ca/en/products/detail/schroff/24576006/24659562?s=N4IgTCBcDaIARgCwFYDsA2AtABm%2BkAugL5A">https://www.digikey.ca/en/products/detail/schroff/24576006/24659562?s=N4IgTCBcDaIARgCwFYDsA2AtABm%2BkAugL5A</a></p><hr>
+<a name="download"></a>
+<h3>Get the Source</h3>
+<a href="https://github.com/transistorfet/retroverse/">https://github.com/transistorfet/retroverse/</a><br><br>
+Or clone with:<pre><code>git clone git@github.com:transistorfet/retroverse</code></pre>
+
+
+    </div>
+    <div id="footer">
+        <hr>
+        Made with <a href="../../generate.py">Python</a>
+        <div class="email">trans@jabberwocky.ca</div>
+    </div>
+</div>
+</body>
+</html>
+

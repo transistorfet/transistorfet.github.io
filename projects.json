@@ -1,5 +1,12 @@
 [
     {
+        "name": "retroverse",
+        "title": "RetroVerse",
+        "github": "default",
+        "repo": "projects/retroverse/retroverse.git",
+        "keywords": "vme, vmebus, m68k, retrocomputer, C, gloworm"
+    },
+    {
         "name": "computie",
         "title": "Computie 68k",
         "github": "default",
